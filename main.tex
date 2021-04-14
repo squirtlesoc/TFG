@@ -37,19 +37,18 @@
 \usepackage{multirow} % no se
 \usepackage{siunitx} % no se
 \usepackage{float} % no se
-
 %%CONFIG TEOREMAS EJEMPLOS ETC
 \newtheorem*{theorem*}{Teorema}
 \newtheorem{theorem}{Teorema}[section]
 \newtheorem{corollary}{Corol·lari}[theorem]
 \newtheorem{lemma}[theorem]{Lema}
+\newtheorem{proposition}[theorem]{Proposició}
 \theoremstyle{definition}
-\newtheorem{prop}[theorem]{Proposició}
-\newtheorem{deff}{Definició}[section]
+\newtheorem*{definition}{Definició}
 \newtheorem{ex}{Exemple}
 \newtheorem*{exs}{Exemples}
 \theoremstyle{remark}
-\newtheorem*{obs}{Observació}
+\newtheorem*{remark}{Observació}
 \renewcommand\qedsymbol{$\blacksquare$}
 %% CONFIGURACION DE PAQUETES 
 \hypersetup{ % configuracion de los links
@@ -118,15 +117,121 @@
         Aquesta tasca, però,  es inabordable sense fer algunes concessions. La més important es que donarem per fetes la majoria de nocions que s'obtindrien en un curs "elemental" d'anàlisi complexa, si més no, fins al teorema del mòdul màxim (tot i que l'enunciarem per refrescar la memòria). 
         
         Començarem amb unes definicions de conceptes bàsics, però que potser no s'arriben a veure habitualment.
-        \begin{deff}[Funció Conforme] Sigui  \(\Omega\) un domini de \(\mathbb{C}\) i \(f: \Omega\to\Omega\) una funció holomorfa, diem que \(f\) és conforme si \(f'(z) \neq 0\,\  \forall z\in\Omega\).
-        \end{deff}
-        \begin{deff}[Esfera de Riemann]
+        \begin{definition}[Funció Conforme] Sigui  \(\Omega\) un domini de \(\mathbb{C}\) i \(f: \Omega\to\Omega\) una funció holomorfa, diem que \(f\) és conforme si \(f'(z) \neq 0\,\  \forall z\in\Omega\).
+        \end{definition}
+        \begin{definition}[Esfera de Riemann]
             Diem esfera de Riemann a la compactificació del pla complex per un punt. La manera usual de pensar en aquest espai topològic és considerar una esfera on el pol nord es \(\infty\). La denotem per \(S^2\).
-        \end{deff}
+        \end{definition}
         No ens cal preocupar-nos per les propietats topològiques de \(S^2\), per al que a nosaltres ens ocupa, l'esfera de Riemann es comporta com \(\mathbb{C}\), però ens permet tractar \(\infty\) estalviant-nos limits. Es fàcil veure que \(1/0 = \infty\) i que \(1/\infty = 0\).
 
         De fet, aquest és el motiu principal per introduir el concepte de \(S^2\), ja que serveix de "cèrcol" per no deixar escapar els punts que habitualment hauríem de considerar pols de funcions altrament holomorfes. Per al nostre cas, ràpidament ens limitarem a no sortir de \(\D\).
 
     \end{section}
+    \begin{section}{Homografies}
+        \begin{definition}[Homografia]
+            Siguin \(a,b,c,d\in S^2\). L'aplicació \begin{displaymath}
+                z\to\frac{az+b}{cz+d}
+            \end{displaymath}
+            és una homografia.
+        \end{definition}
+        Observem que si \begin{math}
+            z\neq -d/c
+        \end{math}, les homografies són holomorfes a \begin{math}
+            \mathbb{C}
+        \end{math}
+        \begin{proposition}
+            Les homografies son invertibles i la seva inversa es una homografia.
+        \end{proposition}
+        \begin{proof}
+            Si \begin{math}
+                \omega = \frac{az+b}{cz+d} 
+            \end{math}, podem aïllar $z$ i obtenim \begin{math}
+                z = \frac{-d \omega+b}{c\omega-a}
+            \end{math}
+        \end{proof}
+        Es desprèn directament la següent proposició
+        \begin{proposition}
+            Les homografies son bijeccions de $S^2$.
+        \end{proposition}
+        Abans d'un teorema de caracterització veiem el següent lema:
+        \begin{lemma}
+            Donada $f$  una funció holomorfa tret d'un nombre finit de punts, si $f$ té un pol d'ordre igual o superior a 2, $f$ no pot ser injectiva.  
+        \end{lemma}
+        \begin{proof}
+            Considerem la funció $1/f$. $f$ és injectiva si i només si $1/f$ ho és, per tant demostrar la no injectivitat de $1/f$ és suficient.
+            
+            Sigui $a$ un pol d'ordre $m>1$ de $f$. Llavors $a$ és un zero d'ordre $m$ de $1/f$, per tant \begin{math}
+                \frac{1}{f}=(z-a)^mh(z)
+            \end{math} amb $h(a)\neq0$, per a una certa funció holomorfa $h$.
 
+            Considerem \begin{math}
+                g(z)=(z-a)h(z)^{1/m}
+            \end{math}. Aquesta funció és holomorfa i ben definida sobre l'arrel principal $m$-èssima. La seva derivada és 
+            \begin{displaymath}
+                g'(z)=\frac{1}{m}(z-a)h(z)^{\frac{1}{m}-1}h'(z)+h(z)^{\frac{1}{m}}
+            \end{displaymath} per tant $g'(a)\neq0$.
+            Tenim, doncs, un entorn de $a$ on $g$ és una funció holomorfa i invertible que envia $a$ al zero. Amb el canvi de coordenades $\omega = g(z)$, veiem que localment \begin{displaymath}
+                \omega^m = \frac{1}{f(g^{-1}(z))}
+            \end{displaymath} per tant en un entorn de $a$ la funció $1/f$ es comporta com la funció $z\to z^m$, que per $m>1$ no es injectiva.
+        \end{proof}
+        \begin{theorem}
+            Si, tret d'un nombre finit de punts de $S^2$, tenim una bijecció conforme entre $S^2$ i una regió del propi $S^2$, aquesta bijecció es una homografia.
+        \end{theorem}
+        \begin{proof}
+            Sigui $f$ aquesta bijecció i $q_1,\dots,q_n$ els punts exclòsos. Com $f$ és conforme, $f$ és holomorfa tret de en $q_i$. Aquests punts només poden ser pols, singularitats essencials o evitables. La possibilitat de que siguin essencials queda descartada, ja que en tot entorn d'una discontinuitat d'aquest tipus la imatge es tot el pla complex, per tant $f$ no podria ser bijectiva. Com les discontinuitats de $f$ són o evitables o pols, podem assegurar que $f$ es una funció racional. 
+            
+            A més, per la injectivitat a $S^2$, només un dels punts pot ser un pol, el qual pel lema anterior seria d'ordre 1. Si aquest es troba en un punt finit $q_k$, \begin{displaymath}
+                f(z)=\frac{A_1}{z-q_k}+A_0=\frac{A_0z+A_1-A_0q_k}{z-q_k}\,\text{, } A_1\neq0
+            \end{displaymath}
+            Si $q_k=\infty$, \begin{displaymath}
+                f(z)=A_1z+A_0\, \text{, } A_1\neq0
+            \end{displaymath}
+            Sigui com sigui, la funció és una homografia.
+        \end{proof}
+        \begin{proposition}
+            La composició finita d'homografies és equivalent a una sola homografia.
+        \end{proposition}
+        \begin{proof}
+            És suficient demostrar-ho per la composició de dues homografies. Siguin \begin{displaymath}
+                T(z)=\frac{az+b}{cz+d}
+            \end{displaymath}
+            \begin{displaymath}
+                S(z)=\frac{a'z+b'}{c'z+d'}
+            \end{displaymath}
+            Llavors\begin{displaymath}
+                (T\circ S)(z)=\frac{a\frac{a'z+b'}{c'z+d'}+b}{c\frac{a'z+b'}{c'z+d'}+d}=\frac{aa'z+ab'+bc'z+bd'}{ca'z+cb'+dc'z+dd'}=\frac{\left( aa'+bc' \right)z+(ab'+bd')}{\left( ca'+dc' \right)z+(cb'+dd')}
+            \end{displaymath}
+            que clarament és una homografia.
+        \end{proof}
+        Degut a això, podem descomposar totes les homografies en combinacions de tres classes fonamentals:
+        \begin{theorem}
+            Tota homografia és composició finita de translacions, rotacions, homotècies i inversions.
+        \end{theorem}
+        \begin{proof}
+            Totes aquestes transformacions són clarament homografies. Veiem que podem crear una cadena de composicions que ens porti a qualsevol homografia:
+            
+            Si $c=0$, simplement $z\to az\to az+b\to \frac{az+b}{d}$.
+
+            Si $c\neq0$, llavors \begin{displaymath}
+                z\to cz\to cz+d\to \frac{1}{cz+d}\to \frac{\frac{bc-ad}{c}}{cz+d}\to \frac{\frac{bc-ad}{c}}{cz+d}+\frac{a}{c}=\frac{bc-ad}{c(cz+d)}+\frac{a}{c}=\frac{bc-ad+azc+ad}{c(cz+d)}=\frac{az+b}{cz+d}
+            \end{displaymath}
+        \end{proof}
+        \begin{definition}[Raó doble]
+            Donats $z_1,z_2,z_3,z_4\in\mathbb{C}$, la raó doble entre ells es defineix per \begin{displaymath}
+                (z_1,z_2,z_3,z_4) = \frac{(z_1-z_3)(z_2-z_4)}{(z_2-z_3)(z_1-z_4)}
+            \end{displaymath}
+            
+            Ens serà útil considerar que algun d'aquests punts sigui $\infty$. En aquest cas, ometrem els termes que l'incloguin. Per exemple, si $z_1 = \infty$, llavors \begin{displaymath}
+                (\infty, z_2,z_3,z_4) = \frac{z_2-z_4}{z_1-z_3}
+            \end{displaymath}
+        \end{definition}
+    \end{section}
+    \begin{remark}
+        Donats $z_1,z_2,z_3\in\mathbb{C}$, la funció donada per la raó doble \begin{displaymath}
+            (z,z_1,z_2,z_3) = \frac{(z-z_2)(z_1-z_3)}{(z-z_3)(z_1-z_2)}=\frac{(z_1-z_3)z-z_2(z_1-z_3)}{(z_1-z_2)z-z_3(z_1-z_2)}
+        \end{displaymath}
+        és una homografia que envia $z_1\to1$, $z_2\to0$ i $z_3\to\infty$.
+
+        A més, si algun $z_i$ és $\infty$, utilitzant la raó doble que pertoca es segueix complint aquesta afirmació.
+    \end{remark}
 \end{document}
