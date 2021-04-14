@@ -38,6 +38,19 @@
 \usepackage{siunitx} % no se
 \usepackage{float} % no se
 
+%%CONFIG TEOREMAS EJEMPLOS ETC
+\newtheorem*{theorem*}{Teorema}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{corollary}{Corol·lari}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\theoremstyle{definition}
+\newtheorem{prop}[theorem]{Proposició}
+\newtheorem{deff}{Definició}[section]
+\newtheorem{ex}{Exemple}
+\newtheorem*{exs}{Exemples}
+\theoremstyle{remark}
+\newtheorem*{obs}{Observació}
+\renewcommand\qedsymbol{$\blacksquare$}
 %% CONFIGURACION DE PAQUETES 
 \hypersetup{ % configuracion de los links
     colorlinks=true,
@@ -84,13 +97,36 @@
                       % commands within the verbatim
  commentchar=*        % comment character
 }
+\newcommand{\D}{\mathbb{D}}
 \title{Teoria de Nevanlinna}
 \date{}
 \author{Daniel Benages}
 \begin{document}
+\shorthandoff{"}
     \maketitle
     \begin{abstract}
         WIP
     \end{abstract}
-    Situem-nos 
+    \begin{section}{Introducció}
+        L'objectiu d'aquest treball es donar un resultat sobre interpolació holomorfa dins el disc unitat, que denotarem per \(\D\). Per a això, començarem amb un breu estudi de les homografies. Aquestes ens permetran endinsar-nos en els automorfismes de \(\D\) i demostrar dos resultats de Schwarz i de Pick.
+
+        Posteriorment parlarem de l'última peça clau: els productes de Blaschke finits. Finalment, amb tot l'arsenal disponible demostrarem el teorema de Pick-Nevanlinna:
+        \begin{theorem*}[Pick-Nevanlinna]
+            Siguin \(z_1,z_2,...,\) %enunciar bn el teorema 
+        \end{theorem*}
+
+        Aquesta tasca, però,  es inabordable sense fer algunes concessions. La més important es que donarem per fetes la majoria de nocions que s'obtindrien en un curs "elemental" d'anàlisi complexa, si més no, fins al teorema del mòdul màxim (tot i que l'enunciarem per refrescar la memòria). 
+        
+        Començarem amb unes definicions de conceptes bàsics, però que potser no s'arriben a veure habitualment.
+        \begin{deff}[Funció Conforme] Sigui  \(\Omega\) un domini de \(\mathbb{C}\) i \(f: \Omega\to\Omega\) una funció holomorfa, diem que \(f\) és conforme si \(f'(z) \neq 0\,\  \forall z\in\Omega\).
+        \end{deff}
+        \begin{deff}[Esfera de Riemann]
+            Diem esfera de Riemann a la compactificació del pla complex per un punt. La manera usual de pensar en aquest espai topològic és considerar una esfera on el pol nord es \(\infty\). La denotem per \(S^2\).
+        \end{deff}
+        No ens cal preocupar-nos per les propietats topològiques de \(S^2\), per al que a nosaltres ens ocupa, l'esfera de Riemann es comporta com \(\mathbb{C}\), però ens permet tractar \(\infty\) estalviant-nos limits. Es fàcil veure que \(1/0 = \infty\) i que \(1/\infty = 0\).
+
+        De fet, aquest és el motiu principal per introduir el concepte de \(S^2\), ja que serveix de "cèrcol" per no deixar escapar els punts que habitualment hauríem de considerar pols de funcions altrament holomorfes. Per al nostre cas, ràpidament ens limitarem a no sortir de \(\D\).
+
+    \end{section}
+
 \end{document}
