@@ -38,6 +38,7 @@
 \usepackage{siunitx} % no se
 \usepackage{float} % no se
 %%CONFIG TEOREMAS EJEMPLOS ETC
+\numberwithin{equation}{section}
 \newtheorem*{theorem*}{Teorema}
 \newtheorem{theorem}{Teorema}[section]
 \newtheorem{corollary}{Corol·lari}[theorem]
@@ -97,6 +98,17 @@
  commentchar=*        % comment character
 }
 \newcommand{\D}{\mathbb{D}}
+\newcommand{\C}{\mathbb{C}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} % absolute value
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
 \title{Teoria de Nevanlinna}
 \date{}
 \author{Daniel Benages}
@@ -188,7 +200,7 @@
             \end{displaymath}
             Sigui com sigui, la funció és una homografia.
         \end{proof}
-        \begin{proposition}
+        \begin{proposition}\label{prop:comp_homo}
             La composició finita d'homografies és equivalent a una sola homografia.
         \end{proposition}
         \begin{proof}
@@ -225,13 +237,119 @@
                 (\infty, z_2,z_3,z_4) = \frac{z_2-z_4}{z_1-z_3}
             \end{displaymath}
         \end{definition}
-    \end{section}
     \begin{remark}
-        Donats $z_1,z_2,z_3\in\mathbb{C}$, la funció donada per la raó doble \begin{displaymath}
+        Donats $z_1,z_2,z_3\in\mathbb{C}$, la funció donada per la raó doble \begin{equation}\label{eq:rao_doble}
             (z,z_1,z_2,z_3) = \frac{(z-z_2)(z_1-z_3)}{(z-z_3)(z_1-z_2)}=\frac{(z_1-z_3)z-z_2(z_1-z_3)}{(z_1-z_2)z-z_3(z_1-z_2)}
-        \end{displaymath}
+        \end{equation}
         és una homografia que envia $z_1\to1$, $z_2\to0$ i $z_3\to\infty$.
 
         A més, si algun $z_i$ és $\infty$, utilitzant la raó doble que pertoca es segueix complint aquesta afirmació.
     \end{remark}
+    \begin{proposition}
+        Les homografies conserven la raó doble.
+    \end{proposition}
+    \begin{proof}
+        Siguin $z_1,z_2,z_3,z_4\in \C$ (finits), $z'_1,z'_2,z'_3,z'_4$ la seva imatge per una homografia que no envii cap a $\infty$.
+
+        Tenim \begin{align*}
+            z'_1-z'_3 &=\frac{az_1+b}{cz_1+d}-\frac{az_3+b}{cz_3+d} = \frac{acz_1z_3+adz_1+bcz_3+bd-acz_1z_3-adz_3-bcz_1-bd}{(cz_1+d)(cz_3+d)} = \\
+            &= \frac{(ad-bc)(z_1-z_3)}{(cz_1+d)(cz_3+d)}
+        \end{align*}
+        Ídem per a $z'_1-z'_4, z'_2-z'_4, z'_2-z'_3$, per tant un cop simplifiquem tenim 
+        \begin{displaymath}
+            \frac{(z'_1-z'_3)(z'_2-z'_4)}{(z'_1-z'_4)(z'_2-z'_3)}=\frac{\frac{(ad-bc)^2(z_1-z_3)(z_2-z_4)}{(cz_1+d)(cz_2+d)(cz_3+d)(cz_4+d)}}{\frac{(ad-bc)^2(z_1-z_4)(z_2-z_3))}{(cz_1+d)(cz_2+d)(cz_3+d)(cz_4+d)}} = \frac{(z_1-z_3)(z_3-z_4)}{(z_1-z_4)(z_2-z_3)}
+        \end{displaymath}
+        Per ultim, suposem un dels punts es $\infty$. Per exemple, sigui $z'_1=\infty$, tenim que $d=-cz_1$. La raó doble de les imatges és \begin{displaymath}
+            (\infty,z'_2,z'_3,z'_4)=\frac{(z'_2-z'_4)}{(z'_2-z'_3)}=\frac{(z_2-z_4)(cz_3+d)}{(z_2-z_3)(cz_4+d)}=\frac{(z_2-z_4)(cz_3-cz_1)}{(z_2-z_3)(cz_4-cz_1)}=\frac{(z_1-z_3)(z_2-z_4)}{(z_1-z_4)(z_2-z_3)}
+        \end{displaymath}
+    \end{proof}
+    \begin{theorem}
+        La única homografia que deixa fixos més de dos punts és la identitat.
+    \end{theorem}
+    \begin{proof}
+        Donada la homografia $\frac{az+b}{cz+d}$, els seus punts fixos compleixen \begin{displaymath}
+            \frac{az+b}{cz+d}=z\implies cz^2+(d-a)z+b=0
+        \end{displaymath}
+        Si $c=0$, només hi ha un punt fix $z=\frac{b}{d-a}$.
+
+        Si $c\neq0$, tenim una equació de segon grau i l'única forma que es compleixi per a tot $z$ es que $c=b=0$ i $a=d$, per tant \begin{displaymath}
+            \frac{az+b}{cz+d}=\frac{az}{a}=z\implies \text{és la aplicació identitat.}
+        \end{displaymath}
+    \end{proof}
+    Això ens porta al teorema de caracterització de les homografies.
+    \begin{theorem}
+        Tota homografia està definida per les imatges de tres punts diferents. 
+
+        És a dir, donats $z_1,z_2,z_3,z_4,z'_1,z'_2,z'_3,z'_4\in\C$, existeix una única homografia $T$ tal que $T(z_1)=z'_1$, $T(z_2)=z'_2$, $T(z_3)=z'_3$, $T(z_4)=z'_4$.
+    \end{theorem}
+    \begin{proof}
+        Demostrem primer la unicitat. Siguin $S$, $T$ dues homografies tals que $S(z_i)=T(z_i)=z'_i$. Llavors $S^{-1}T$ és una homografia per Proposició \ref{prop:comp_homo} que compleix $S^{-1}T(z_i)=S^{-1}(z'_i)=z_i\, i=1,\dots4$. Com té quatre punts fixos, $S^{-1}T=id\implies T=S$.
+
+        Per veure l'existència, recordem que per (\ref{eq:rao_doble}), la rao doble $(z,z_1,z_2,z_3)$ ens envia $z_1\to1,\, z_2\to0,\, z_3\to\infty$. 
+        Siguin $S=(z,z'_1,z'_2,z'_3)$ i $T=(z,z_1,z_2,z_3)$
+        Llavors, la composició \begin{displaymath}
+            S^{-1}\circ T
+        \end{displaymath}
+        és la homografia que busquem.
+    \end{proof}
+\end{section}
+\begin{section}[Automorfismes al Disc Unitat]{Automorfismes a $\D$}
+    Com ja hem comentat previament, centrarem la nostra atenció exclusivament a $\D$, per tant els teoremes i proposicions que enunciarem a partir d'ara seran sempre en aquesta regió. Recordem primer la definició \begin{definition}{Disc Unitat $\D$}
+        Definim la regió de $\C$ anomenada Disc Unitat com \begin{equation}
+            \D=\{\, z\in\C\mid |z|<1\, \}
+        \end{equation}
+    \end{definition}
+    \begin{remark}
+        La regió $\D$ és un domini acotat de $\C$.
+    \end{remark}
+
+    Enunciem ara el Teorema del Mòdul Màxim que, tot i que no el demostrarem (ens portaria massa feina i ens allunyaria de l'objectiu del treball), ens serà indispensable per als propers resultats. 
+    \begin{theorem}[Teorema del Mòdul Màxim]\label{th:TMM}
+        Sigui $K$ la clausura d'una regió acotada $\Omega$. Si $f$ és continua en $K$ i holomorfa en $\Omega$, llavors \begin{equation}
+            \abs{f(z)}\leq\norm{f}_{\partial\Omega},\;\forall z\in\Omega.
+        \end{equation}
+        Si es dona la igualtat per a algun $z\in\Omega$, llavors $f$ és constant.
+    \end{theorem}
+    Enunciem ara el Teorema de caracterització dels automorfismes holomorfs de $\D$:
+    \begin{theorem}
+        Una funció $T:\D\to\D$ holomorfa és bijectiva si i només si \begin{equation}
+            T(z)=\lambda\frac{a-z}{1-\bar{a}z},\, \text{amb }a\in\D\; \text{ i }\; \abs{\lambda}=1.
+        \end{equation}
+    \end{theorem}
+    Dit d'una altra manera, els automorfismes del disc són una classe molt concreta d'homografies.
+    \begin{proof}
+        Pel que ja hem vist, sabem que $T(z)=\lambda\frac{a-z}{1-\bar{a}z}$ és automorfisme holomorf de $\C$. Només cal veure que és bijectiu a $\D$. 
+
+        Sigui $z\in\D$. Tenim\begin{align}
+            \frac{\abs{a-z}}{\abs{1-\bar{a}z}}<1 &\iff \abs{a-z}^2<\abs{1-\bar{a}z}^2\iff\abs{a}^2+\abs{z}^2-2\Re{a\bar{z}}<1+\abs{\bar{a}z}^2-2\Re{\overline{\bar{a}z}}\iff\\
+            &\iff\abs{a}^2\abs{z}^2-\abs{a}^2\abs{z}^2-1<0\iff\left( \abs{z}^2-1 \right)\left( 1-\abs{a}^2 \right)<0\iff\abs{a}<1
+        \end{align}
+        Per tant $\D\xrightarrow{T} \D$ és automorfisme holomorf.
+
+        Vegem ara la implicació contraria. Sigui $T:\D\to\D$ holomorfa i bijectiva. 
+        Suposem primer que $T(0)=0$. Com $T$ és holomorfa, és una serie de potencies i si deixa el 0 fix, $\frac{T(z)}{z}$ és holomorfa en $\D$. Considerem $\abs{\frac{T(z)}{z}}$ en un disc $U$ de radi $r<1$ centrat a l'origen. Pel Teorema del Mòdul Màxim \ref{th:TMM}, $T(z)/z$ és màxim en $\abs{z}=r$. Llavors en $U$ tenim \begin{displaymath}
+            \abs{\frac{T(z)}{z}}<\frac{1}{r}\xrightarrow{r\to1}\abs{\frac{T(z)}{z}}\leq1,\, \text{en }\D
+        \end{displaymath}
+        Sigui $S$ la inversa de $T$, pel mateix raonament tenim $\abs{\frac{S(z)}{z}}<1$ en $\D$. Així doncs\begin{displaymath}
+            \frac{S(z)}{z}=\frac{z}{T(z)}\implies \abs{\frac{T(z)}{z}}=1,\; \forall z\in\D.
+        \end{displaymath}
+        i com el valor absolut es constant, també ho és la funció (pel fet de ser holomorfa), llavors \begin{equation}
+            \frac{T(z)}{z}=e^{i\alpha}\implies T(z)=e^{i\alpha}z
+        \end{equation}
+        per una $\alpha\in\mathbb{R}$ constant. Per tant, un automorfisme bijectiu de $\D$ que fixa l'origen és una rotació. 
+
+        Eliminem la restricció de que l'origen sigui fix. Sigui $T(z)=a\neq0$. Considerem l'homografia \begin{displaymath}
+            R=\lambda\frac{a-z}{1-\bar{a}z}
+        \end{displaymath}
+        amb $\lambda=e^{i\beta}$, $\beta\in\mathbb{R}$. La composició $R^{-1}T$ és un automorfisme holomorf de $\D$ que deixa fix l'origen, per tant és una rotació, diguem $e^{i\alpha}$. 
+
+        Llavors \begin{displaymath}
+            R^{-1}T=e^{i\alpha}\implies T=Re^{i\alpha}\implies T(z)=e^{i(\alpha+\beta)}\frac{a-z}{1-\bar{a}z}=\lambda'\frac{a-z}{1-\bar{a}z}
+        \end{displaymath}
+    \end{proof}
+    
+    A partir d'ara, denotarem \begin{equation}
+        \varphi_a(z):=\frac{a-z}{1-\bar{a}z}
+    \end{equation}
+\end{section}
 \end{document}
