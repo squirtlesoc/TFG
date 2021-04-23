@@ -1,5 +1,5 @@
 %% FORMATO DEL DOC
-\documentclass[dvipsnames, svgnames]{article}
+\documentclass[dvipsnames, svgnames, leqno, a4paper, 12pt]{report}
 \usepackage[left=3.0cm,top=3cm,right=3.0cm,bottom=3.2cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -39,9 +39,9 @@
 \usepackage{siunitx} % no se
 \usepackage{float} % no se
 %%CONFIG TEOREMAS EJEMPLOS ETC
-\numberwithin{equation}{section}
+\numberwithin{equation}{chapter}
 \newtheorem*{theorem*}{Teorema}
-\newtheorem{theorem}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[chapter]
 \newtheorem{corollary}{Corol·lari}[theorem]
 \newtheorem{lemma}[theorem]{Lema}
 \newtheorem{proposition}[theorem]{Proposició}
@@ -119,7 +119,7 @@
     \begin{abstract}
         WIP
     \end{abstract}
-    \begin{section}{Introducció}
+    \begin{chapter}{Introducció}
         L'objectiu d'aquest treball es donar un resultat sobre interpolació holomorfa dins el disc unitat, que denotarem per \(\D\). Per a això, començarem amb un breu estudi de les homografies. Aquestes ens permetran endinsar-nos en els automorfismes de \(\D\) i demostrar dos resultats de Schwarz i de Pick.
 
         Posteriorment parlarem de l'última peça clau: els productes de Blaschke finits. Finalment, amb tot l'arsenal disponible demostrarem el teorema de Pick-Nevanlinna:
@@ -139,8 +139,8 @@
 
         De fet, aquest és el motiu principal per introduir el concepte de \(S^2\), ja que serveix de "cèrcol" per no deixar escapar els punts que habitualment hauríem de considerar pols de funcions altrament holomorfes. Per al nostre cas, ràpidament ens limitarem a no sortir de \(\D\).
 
-    \end{section}
-    \begin{section}{Homografies}
+    \end{chapter}
+    \begin{chapter}{Homografies}
         \begin{definition}[Homografia]
             Siguin \(a,b,c,d\in S^2\). L'aplicació \begin{displaymath}
                 z\to\frac{az+b}{cz+d}
@@ -293,8 +293,8 @@
         \end{displaymath}
         és la homografia que busquem.
     \end{proof}
-\end{section}
-\begin{section}[Automorfismes al Disc Unitat]{Automorfismes a $\D$}
+\end{chapter}
+\begin{chapter}[Automorfismes al Disc Unitat]{Automorfismes a $\D$}
     Com ja hem comentat previament, centrarem la nostra atenció exclusivament a $\D$, per tant els teoremes i proposicions que enunciarem a partir d'ara seran sempre en aquesta regió. Recordem primer la definició \begin{definition}{Disc Unitat $\D$}
         Definim la regió de $\C$ anomenada Disc Unitat com \begin{equation}
             \D=\{\, z\in\C\mid |z|<1\, \}
@@ -423,5 +423,5 @@
             \frac{1}{1-\abs{z}^2}=\frac{\abs{(f^{-1}\circ f)'(z)}}{1-\abs{(f^{-1}\circ f)(z)}^2}\leq\frac{f'(z)}{1-\abs{f(z)}^2}\leq\frac{1}{1-\abs{z}^2}
         \end{equation} per tant igualtat.
     \end{proof}
-\end{section}
+\end{chapter}
 \end{document}
