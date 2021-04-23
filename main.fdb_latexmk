@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1619179964 "/home/dani/Documents/TFG/main.tex" "/home/dani/Documents/TFG/main.pdf" "main" 1619179966
-  "/home/dani/Documents/TFG/main.aux" 1619179966 5399 ff8f52fbcdc8392bce970c71365a4fec ""
-  "/home/dani/Documents/TFG/main.tex" 1619179962 25557 2d14cc9bd80560fc0ae1bf16c78ff182 ""
+["pdflatex"] 1619180720 "/home/dani/Documents/TFG/main.tex" "/home/dani/Documents/TFG/main.pdf" "main" 1619180722
+  "/home/dani/Documents/TFG/main.aux" 1619180722 5399 ff8f52fbcdc8392bce970c71365a4fec ""
+  "/home/dani/Documents/TFG/main.tex" 1619180719 21737 a7057dba48a6f0e5aca42565212894db ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1616952564 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1616952564 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1616952564 3584 402da0b29eafbad07963b1224b222f18 ""
@@ -206,13 +206,14 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1616952564 33301 a3134070eacafb10b1f371612ce2650d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1618814867 4885835 225b430335ea75120e4d14f95280dfb9 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1618814845 2635853 d6faead4e4a7eb200d888652fe6938bf ""
-  "main.aux" 1619179966 5399 ff8f52fbcdc8392bce970c71365a4fec "pdflatex"
-  "main.out" 1619179966 158 c445b5510eac7f60a4c01dcf06608697 "pdflatex"
-  "main.tex" 1619179962 25557 2d14cc9bd80560fc0ae1bf16c78ff182 ""
+  "main.aux" 1619180722 5399 ff8f52fbcdc8392bce970c71365a4fec "pdflatex"
+  "main.out" 1619180722 158 c445b5510eac7f60a4c01dcf06608697 "pdflatex"
+  "main.tex" 1619180719 21737 a7057dba48a6f0e5aca42565212894db ""
+  "preconfig.sty" 1619180713 3843 164f1b5f99c6f31236407c662af7bb8a ""
   (generated)
+  "/home/dani/Documents/TFG/main.pdf"
+  "/home/dani/Documents/TFG/main.log"
+  "main.out"
   "main.aux"
   "main.log"
   "main.pdf"
-  "main.out"
-  "/home/dani/Documents/TFG/main.pdf"
-  "/home/dani/Documents/TFG/main.log"
