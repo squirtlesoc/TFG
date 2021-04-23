@@ -5,6 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[catalan]{babel}
 \usepackage{hyperref} % links en el pdf
+\usepackage{enumerate} %cambiar estilo numeracion listas
 %% SIMBOLITOS Y COSAS DE MATES
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{mathtools}
@@ -283,7 +284,7 @@
         És a dir, donats $z_1,z_2,z_3,z_4,z'_1,z'_2,z'_3,z'_4\in\C$, existeix una única homografia $T$ tal que $T(z_1)=z'_1$, $T(z_2)=z'_2$, $T(z_3)=z'_3$, $T(z_4)=z'_4$.
     \end{theorem}
     \begin{proof}
-        Demostrem primer la unicitat. Siguin $S$, $T$ dues homografies tals que $S(z_i)=T(z_i)=z'_i$. Llavors $S^{-1}T$ és una homografia per Proposició \ref{prop:comp_homo} que compleix $S^{-1}T(z_i)=S^{-1}(z'_i)=z_i\, i=1,\dots4$. Com té quatre punts fixos, $S^{-1}T=id\implies T=S$.
+        Demostrem primer la unicitat. Siguin $S$, $T$ dues homografies tals que $S(z_i)=T(z_i)=z'_i$. Llavors $S^{-1}T$ és una homografia per Proposició \ref{prop:comp_homo} que compleix \[S^{-1}T(z_i)=S^{-1}(z'_i)=z_i\, i=1,\dots4\]. Com té quatre punts fixos, $S^{-1}T=id\implies T=S$.
 
         Per veure l'existència, recordem que per (\ref{eq:rao_doble}), la rao doble $(z,z_1,z_2,z_3)$ ens envia $z_1\to1,\, z_2\to0,\, z_3\to\infty$. 
         Siguin $S=(z,z'_1,z'_2,z'_3)$ i $T=(z,z_1,z_2,z_3)$
@@ -313,15 +314,15 @@
     Enunciem ara el Teorema de caracterització dels automorfismes holomorfs de $\D$:
     \begin{theorem}
         Una funció $T:\D\to\D$ holomorfa és bijectiva si i només si \begin{equation}
-            T(z)=\lambda\frac{a-z}{1-\bar{a}z},\, \text{amb }a\in\D\; \text{ i }\; \abs{\lambda}=1.
+            T(z)=\lambda\frac{a-z}{1-\overline{a}z},\, \text{amb }a\in\D\; \text{ i }\; \abs{\lambda}=1.
         \end{equation}
     \end{theorem}
     Dit d'una altra manera, els automorfismes del disc són una classe molt concreta d'homografies.
     \begin{proof}
-        Pel que ja hem vist, sabem que $T(z)=\lambda\frac{a-z}{1-\bar{a}z}$ és automorfisme holomorf de $\C$. Només cal veure que és bijectiu a $\D$. 
+        Pel que ja hem vist, sabem que $T(z)=\lambda\frac{a-z}{1-\overline{a}z}$ és automorfisme holomorf de $\C$. Només cal veure que és bijectiu a $\D$. 
 
         Sigui $z\in\D$. Tenim\begin{align}
-            \frac{\abs{a-z}}{\abs{1-\bar{a}z}}<1 &\iff \abs{a-z}^2<\abs{1-\bar{a}z}^2\iff\abs{a}^2+\abs{z}^2-2\Re{a\bar{z}}<1+\abs{\bar{a}z}^2-2\Re{\overline{\bar{a}z}}\iff\\
+            \frac{\abs{a-z}}{\abs{1-\overline{a}z}}<1 &\iff \abs{a-z}^2<\abs{1-\overline{a}z}^2\iff\abs{a}^2+\abs{z}^2-2\Re{a\overline{z}}<1+\abs{\overline{a}z}^2-2\Re{\overline{\overline{a}z}}\iff\\
             &\iff\abs{a}^2\abs{z}^2-\abs{a}^2\abs{z}^2-1<0\iff\left( \abs{z}^2-1 \right)\left( 1-\abs{a}^2 \right)<0\iff\abs{a}<1
         \end{align}
         Per tant $\D\xrightarrow{T} \D$ és automorfisme holomorf.
@@ -339,17 +340,88 @@
         per una $\alpha\in\mathbb{R}$ constant. Per tant, un automorfisme bijectiu de $\D$ que fixa l'origen és una rotació. 
 
         Eliminem la restricció de que l'origen sigui fix. Sigui $T(z)=a\neq0$. Considerem l'homografia \begin{displaymath}
-            R=\lambda\frac{a-z}{1-\bar{a}z}
+            R=\lambda\frac{a-z}{1-\overline{a}z}
         \end{displaymath}
         amb $\lambda=e^{i\beta}$, $\beta\in\mathbb{R}$. La composició $R^{-1}T$ és un automorfisme holomorf de $\D$ que deixa fix l'origen, per tant és una rotació, diguem $e^{i\alpha}$. 
 
         Llavors \begin{displaymath}
-            R^{-1}T=e^{i\alpha}\implies T=Re^{i\alpha}\implies T(z)=e^{i(\alpha+\beta)}\frac{a-z}{1-\bar{a}z}=\lambda'\frac{a-z}{1-\bar{a}z}
+            R^{-1}T=e^{i\alpha}\implies T=Re^{i\alpha}\implies T(z)=e^{i(\alpha+\beta)}\frac{a-z}{1-\overline{a}z}=\lambda'\frac{a-z}{1-\overline{a}z}
         \end{displaymath}
     \end{proof}
     
     A partir d'ara, denotarem \begin{equation}
-        \varphi_a(z):=\frac{a-z}{1-\bar{a}z}
+        \varphi_a(z):=\frac{a-z}{1-\overline{a}z}
     \end{equation}
+    Vegem ara un clàssic de l'anàlisi complexa
+    \begin{theorem}[Lema de Schwarz]\label{th:sch}
+        Sigui $f:\D\to\D$ una funció holomorfa amb $f(0)=0$.
+
+        Aleshores
+        \begin{enumerate}[(i)]
+            \item $\abs{f(z)}\leq\abs{z}$ per a tot $z\in\D$
+            \item $\abs{f'(0)}\leq 1$
+        \end{enumerate}
+        A més, si hi hagués igualtat en algun dels dos casos, aleshores $f(z)=e^{i\alpha}z$ per a algun $\alpha\in\mathbb{R}$ i per a tot $z\in\D$.
+    \end{theorem} 
+    \begin{proof}
+        Demostrarem primer \textit{(i)}.
+
+        Com $f(0)=0$ i és holomorfa, tenim que $h(z)=f(z)/z$ és holomorfa en tot $\D$. Pel Teorema del mòdul màxim \ref{th:TMM}, \begin{equation}
+            \sup_{\abs{z}\leq r}\abs{h(z)}=\sup_{\abs{z}= r}\abs{h(z)}=\frac{1}{r}\sup_{\abs{z}\leq r}\abs{f(z)}
+        \end{equation}
+        per a $0<r<1$. Com $\abs{f(z)}\leq 1$ per a tot $z\in\D$, fem tendir $r$ a 1 i tenim \begin{equation}
+            \sup_{z\in\D}\abs{h(z)}\leq 1\implies \abs{f(z)}\leq \abs{z}
+        \end{equation}
+        Veiem a més que si $\abs{f(z_0)}=\abs{z_0}$ per a algun $z_0\in\D\setminus\{0\}$, llavors $\abs{h(z_0)}=1$ i pel teorema del mòdul màxim, $h$ és constant de mòdul 1, és a dir, $\exists\alpha\in\mathbb{R}$ tal que \begin{displaymath}
+            f(z)=zh(z)=ze^{i\alpha}, \; \forall z\in\D.
+        \end{displaymath}
+        
+        Vegem ara \textit{(ii)}.
+
+        Com $f(z)/z=h(z)$ i $f(0)=0$, llavors \begin{equation}
+            \abs{f'(0)}=\lim_{z\to0}\frac{\abs{f(z)}}{\abs{z}}=\lim_{z\to0}\abs{h(z)}=\abs{h(0)}\leq1
+        \end{equation} 
+        A més, si $\abs{f'(0)}=\abs{h(0)}=1$, pel teorema del mòdul màxim un altre cop tenim $h=e^{i\alpha}$ per a un cert $\alpha\in\mathbb{R}$ i per tant $f(z)=e^{i\alpha}z$, $\forall z\in\D$.
+    \end{proof}
+    No tan famosa és una generalització d'aquest lema, on es relaxen les hipòtesis i no es suposa que $f(0)=0$. Aquest és el lema de Schwarz-Pick:
+    \begin{theorem}[Lema de Schwarz-Pick]
+        Sigui $f:\D\to\D$ una funció holomorfa. Llavors
+        \begin{enumerate}[(i)]
+            \item \(\displaystyle \abs{\frac{f(z)-f(\omega)}{1-f(z)\overline{f(\omega)}}}\leq\frac{z-\omega}{1-z\overline{\omega}},\text{ per a tot }z,\omega\in\D\)
+            \item \(\displaystyle \frac{\abs{f'(z)}}{1-\abs{f(z)}^2}\leq\frac{1}{1-\abs{z}^2}\text{ per a tot }z\in\D\) 
+        \end{enumerate}
+        La igualtat en tots dos casos es dona si $f$ és automorfisme de $\D$.
+
+        Si la igualtat de \textit{(i)} es compleix per $z\neq\omega$, o si es compleix \textit{(ii)} en un $z$, llavors $f$ és automorfisme de $\D$.
+    \end{theorem} 
+    \begin{proof}
+        Sigui $g = \varphi_{f(\omega)}\circ f\circ \varphi_{-\omega}$. $g$ és un automorfisme de $\D$ holomorf. 
+        \begin{sloppypar}Com \({\displaystyle g(z)=\varphi_{f(\omega)}\left( f\left( \frac{z+\omega}{1+\overline{\omega}z} \right) \right)}\), en particular tenim $g(0)=\varphi_{f(\omega)}\left( f(\omega) \right)=0$. Pel lema de Schwarz \ref{th:sch}, $\abs{g(\xi)}\leq\abs{\xi}$ per a tot $\xi\in\D$ i \begin{displaymath}
+            \abs{g(\varphi_{f(\omega)}(z))}\leq\abs{\varphi_{\omega}(z)}\implies\abs{\varphi_{f(\omega)}(f(z))}\leq\abs{\varphi_\omega(z)}
+        \end{displaymath} i substituint cada terme per la seva definició \begin{equation}
+            \abs{\frac{f(z)-f(\omega)}{1-\overline{f(\omega)}f(z)}}\leq\abs{\frac{z-\omega}{1-\overline{\omega}z}}
+        \end{equation}\end{sloppypar}
+        Si tenim igualtat per uns $z\neq\omega$, llavors $\abs{g(\varphi_\omega(z))}=\abs{\varphi_\omega(z)}$ i pel lema de Schwarz, $g(z)=ze^{i\alpha}\implies g$ és un automorfisme de $\D\implies$ $f=\varphi_{-f(\omega)}\circ g\circ \varphi_\omega$ també.
+        Veiem ara \textit{(ii)}.
+
+        \begin{displaymath}
+            \frac{\abs{f'(z)}}{1-\abs{f(z)}^2}=\lim_{\omega\to z}\left( \abs{\frac{f(z)-f(\omega)}{z-\omega}}\frac{1}{\abs{1-\overline{f(\omega)}f(z)}} \right)\leq\lim_{\omega\to z}\frac{1}{1-\overline{\omega}z}=\frac{1}{1-\abs{z}^2}
+        \end{displaymath}
+
+        Si tenim igualtat a \textit{(ii)}, considerem $z=\omega$ i com \(\displaystyle \varphi_{a}'(z)=\frac{1-\abs{a}^2}{(1-\overline{a}z)^2}\), tenim \begin{align*}
+            \abs{g'(0)} &= \abs{\varphi_{f(\omega)}'(f\circ\varphi_{-\omega}'(0))}\abs{f'\left( \varphi_{-\omega}(0) \right)}\abs{\varphi_{-\omega}'(0)}=\\
+            &=\abs{\varphi_{f(\omega)}'\left( f(\omega) \right)}\abs{f'(\omega)}\left( 1-\abs{\omega}^2 \right)=\\
+            &=\frac{1-\abs{f(\omega)}^2}{\left( 1-\overline{f(\omega)}f(\omega) \right)^2}\abs{f'(\omega)}\left( 1-\abs{\omega}^2 \right)=\\
+            &=\frac{\abs{f'(\omega)}}{1-\abs{f(\omega)}^2}\left( 1-\abs{\omega}^2 \right)=1
+        \end{align*}
+        i, pel Lema de Schwarz, $g$ és automorfisme i $f=\varphi_{-f(\omega)}\circ g\circ \varphi_\omega$ també. 
+
+        Finalment, si $f$ és automorfisme de $\D$, apliquem \textit{(i)} a $f$ i $f^{-1}$ i obtenim \begin{equation}
+            \abs{\frac{z-\omega}{1-z\overline{\omega}}}=\abs{\frac{f^{-1}(f(z))-f^{-1}(f(\omega))}{1-f^{-1}(f(z))\overline{f^{-1}(f(\omega))}}}\leq\abs{\frac{f(z)-f(\omega)}{1-f(z)\overline{f(\omega)}}}\leq\abs{\frac{z-\omega}{1-z\overline{\omega}}}
+        \end{equation} per tant igualtat.
+        De la mateixa manera, per a \textit{(ii)} tenim \begin{equation}
+            \frac{1}{1-\abs{z}^2}=\frac{\abs{(f^{-1}\circ f)'(z)}}{1-\abs{(f^{-1}\circ f)(z)}^2}\leq\frac{f'(z)}{1-\abs{f(z)}^2}\leq\frac{1}{1-\abs{z}^2}
+        \end{equation} per tant igualtat.
+    \end{proof}
 \end{section}
 \end{document}
