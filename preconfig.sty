@@ -10,6 +10,7 @@
 \usepackage{mathtools}
 \usepackage{amsthm}
 \usepackage{stmaryrd} 
+\usepackage{eqparbox}
 %% COSAS DE FIGURAS
 \usepackage{graphicx} 
 \usepackage{subfigure} 
@@ -53,6 +54,7 @@
 \theoremstyle{remark}
 \newtheorem*{remark}{Observació}
 \renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\eqmathbox}[2][M]{\eqmakebox[#1]{$\displaystyle#2$}}
 %% CONFIGURACION DE PAQUETES 
 \hypersetup{ % configuracion de los links
     colorlinks=true,
