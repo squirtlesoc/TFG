@@ -48,9 +48,9 @@
         \end{proposition}
         \begin{proof}
             Si \begin{math}
-                \omega = \frac{az+b}{cz+d} 
+                 w  = \frac{az+b}{cz+d} 
             \end{math}, podem aïllar $z$ i obtenim \begin{math}
-                z = \frac{-d \omega+b}{c\omega-a}
+                z = \frac{-d  w +b}{c w -a}
             \end{math}
         \end{proof}
         Es desprèn directament la següent proposició
@@ -74,8 +74,8 @@
             \begin{displaymath}
                 g'(z)=\frac{1}{m}(z-a)h(z)^{\frac{1}{m}-1}h'(z)+h(z)^{\frac{1}{m}}
             \end{displaymath} per tant $g'(a)\neq0$.
-            Tenim, doncs, un entorn de $a$ on $g$ és una funció holomorfa i invertible que envia $a$ al zero. Amb el canvi de coordenades $\omega = g(z)$, veiem que localment \begin{displaymath}
-                \omega^m = \frac{1}{f(g^{-1}(z))}
+            Tenim, doncs, un entorn de $a$ on $g$ és una funció holomorfa i invertible que envia $a$ al zero. Amb el canvi de coordenades $ w  = g(z)$, veiem que localment \begin{displaymath}
+                 w ^m = \frac{1}{f(g^{-1}(z))}
             \end{displaymath} per tant en un entorn de $a$ la funció $1/f$ es comporta com la funció $z\to z^m$, que per $m>1$ no es injectiva.
         \end{proof}
         \begin{theorem}
@@ -186,7 +186,7 @@
     \end{proof}
 \end{chapter}
 \begin{chapter}[Automorfismes al Disc Unitat]{Automorfismes a $\D$}
-    Com ja hem comentat previament, centrarem la nostra atenció exclusivament a $\D$, per tant els teoremes i proposicions que enunciarem a partir d'ara seran sempre en aquesta regió. Recordem primer la definició \begin{definition}{Disc Unitat $\D$}
+    Com ja hem comentat prèviament, centrarem la nostra atenció exclusivament a $\D$, per tant els teoremes i proposicions que enunciarem a partir d'ara seran sempre en aquesta regió. Recordem primer la definició \begin{definition}{Disc Unitat $\D$}
         Definim la regió de $\C$ anomenada Disc Unitat com \begin{equation}
             \D=\{\, z\in\C\mid |z|<1\, \}
         \end{equation}
@@ -274,45 +274,238 @@
         \end{equation} 
         A més, si $\abs{f'(0)}=\abs{h(0)}=1$, pel teorema del mòdul màxim un altre cop tenim $h=e^{i\alpha}$ per a un cert $\alpha\in\mathbb{R}$ i per tant $f(z)=e^{i\alpha}z$, $\forall z\in\D$.
     \end{proof}
+
     No tan famosa és una generalització d'aquest lema, on es relaxen les hipòtesis i no es suposa que $f(0)=0$. Aquest és el lema de Schwarz-Pick:
-    \begin{theorem}[Lema de Schwarz-Pick]
+    \begin{theorem}[Lema de Schwarz-Pick]\label{lema:SP}
         Sigui $f:\D\to\D$ una funció holomorfa. Llavors
         \begin{enumerate}[(i)]
-            \item \(\displaystyle \abs{\frac{f(z)-f(\omega)}{1-f(z)\overline{f(\omega)}}}\leq\frac{z-\omega}{1-z\overline{\omega}},\text{ per a tot }z,\omega\in\D\)
+            \item \(\displaystyle \abs{\frac{f(z)-f( w )}{1-f(z)\overline{f( w )}}}\leq\frac{z- w }{1-z\overline{ w }},\text{ per a tot }z, w \in\D\)
             \item \(\displaystyle \frac{\abs{f'(z)}}{1-\abs{f(z)}^2}\leq\frac{1}{1-\abs{z}^2}\text{ per a tot }z\in\D\) 
         \end{enumerate}
         La igualtat en tots dos casos es dona si $f$ és automorfisme de $\D$.
 
-        Si la igualtat de \textit{(i)} es compleix per $z\neq\omega$, o si es compleix \textit{(ii)} en un $z$, llavors $f$ és automorfisme de $\D$.
+        Si la igualtat de \textit{(i)} es compleix per $z\neq w $, o si es compleix \textit{(ii)} en un $z$, llavors $f$ és automorfisme de $\D$.
     \end{theorem} 
     \begin{proof}
-        Sigui $g = \varphi_{f(\omega)}\circ f\circ \varphi_{-\omega}$. $g$ és un automorfisme de $\D$ holomorf. 
-        \begin{sloppypar}Com \({\displaystyle g(z)=\varphi_{f(\omega)}\left( f\left( \frac{z+\omega}{1+\overline{\omega}z} \right) \right)}\), en particular tenim $g(0)=\varphi_{f(\omega)}\left( f(\omega) \right)=0$. Pel lema de Schwarz \ref{th:sch}, $\abs{g(\xi)}\leq\abs{\xi}$ per a tot $\xi\in\D$ i \begin{displaymath}
-            \abs{g(\varphi_{f(\omega)}(z))}\leq\abs{\varphi_{\omega}(z)}\implies\abs{\varphi_{f(\omega)}(f(z))}\leq\abs{\varphi_\omega(z)}
+        Sigui $g = \varphi_{f( w )}\circ f\circ \varphi_{- w }$. $g$ és un automorfisme de $\D$ holomorf. 
+        \begin{sloppypar}Com \({\displaystyle g(z)=\varphi_{f( w )}\left( f\left( \frac{z+ w }{1+\overline{ w }z} \right) \right)}\), en particular tenim $g(0)=\varphi_{f( w )}\left( f( w ) \right)=0$. Pel lema de Schwarz \ref{th:sch}, $\abs{g(\xi)}\leq\abs{\xi}$ per a tot $\xi\in\D$ i \begin{displaymath}
+            \abs{g(\varphi_{f( w )}(z))}\leq\abs{\varphi_{ w }(z)}\implies\abs{\varphi_{f( w )}(f(z))}\leq\abs{\varphi_ w (z)}
         \end{displaymath} i substituint cada terme per la seva definició \begin{equation}
-            \abs{\frac{f(z)-f(\omega)}{1-\overline{f(\omega)}f(z)}}\leq\abs{\frac{z-\omega}{1-\overline{\omega}z}}
+            \abs{\frac{f(z)-f( w )}{1-\overline{f( w )}f(z)}}\leq\abs{\frac{z- w }{1-\overline{ w }z}}
         \end{equation}\end{sloppypar}
-        Si tenim igualtat per uns $z\neq\omega$, llavors $\abs{g(\varphi_\omega(z))}=\abs{\varphi_\omega(z)}$ i pel lema de Schwarz, $g(z)=ze^{i\alpha}\implies g$ és un automorfisme de $\D\implies$ $f=\varphi_{-f(\omega)}\circ g\circ \varphi_\omega$ també.
+        Si tenim igualtat per uns $z\neq w $, llavors $\abs{g(\varphi_ w (z))}=\abs{\varphi_ w (z)}$ i pel lema de Schwarz, $g(z)=ze^{i\alpha}\implies g$ és un automorfisme de $\D\implies$ $f=\varphi_{-f( w )}\circ g\circ \varphi_ w $ també.
         Veiem ara \textit{(ii)}.
 
         \begin{displaymath}
-            \frac{\abs{f'(z)}}{1-\abs{f(z)}^2}=\lim_{\omega\to z}\left( \abs{\frac{f(z)-f(\omega)}{z-\omega}}\frac{1}{\abs{1-\overline{f(\omega)}f(z)}} \right)\leq\lim_{\omega\to z}\frac{1}{1-\overline{\omega}z}=\frac{1}{1-\abs{z}^2}
+            \frac{\abs{f'(z)}}{1-\abs{f(z)}^2}=\lim_{ w \to z}\left( \abs{\frac{f(z)-f( w )}{z- w }}\frac{1}{\abs{1-\overline{f( w )}f(z)}} \right)\leq\lim_{ w \to z}\frac{1}{1-\overline{ w }z}=\frac{1}{1-\abs{z}^2}
         \end{displaymath}
 
-        Si tenim igualtat a \textit{(ii)}, considerem $z=\omega$ i com \(\displaystyle \varphi_{a}'(z)=\frac{1-\abs{a}^2}{(1-\overline{a}z)^2}\), tenim \begin{align*}
-            \abs{g'(0)} &= \abs{\varphi_{f(\omega)}'(f\circ\varphi_{-\omega}'(0))}\abs{f'\left( \varphi_{-\omega}(0) \right)}\abs{\varphi_{-\omega}'(0)}=\\
-            &=\abs{\varphi_{f(\omega)}'\left( f(\omega) \right)}\abs{f'(\omega)}\left( 1-\abs{\omega}^2 \right)=\\
-            &=\frac{1-\abs{f(\omega)}^2}{\left( 1-\overline{f(\omega)}f(\omega) \right)^2}\abs{f'(\omega)}\left( 1-\abs{\omega}^2 \right)=\\
-            &=\frac{\abs{f'(\omega)}}{1-\abs{f(\omega)}^2}\left( 1-\abs{\omega}^2 \right)=1
+        Si tenim igualtat a \textit{(ii)}, considerem $z= w $ i com \(\displaystyle \varphi_{a}'(z)=\frac{1-\abs{a}^2}{(1-\overline{a}z)^2}\), tenim \begin{align*}
+            \abs{g'(0)} &= \abs{\varphi_{f( w )}'(f\circ\varphi_{- w }'(0))}\abs{f'\left( \varphi_{- w }(0) \right)}\abs{\varphi_{- w }'(0)}=\\
+            &=\abs{\varphi_{f( w )}'\left( f( w ) \right)}\abs{f'( w )}\left( 1-\abs{ w }^2 \right)=\\
+            &=\frac{1-\abs{f( w )}^2}{\left( 1-\overline{f( w )}f( w ) \right)^2}\abs{f'( w )}\left( 1-\abs{ w }^2 \right)=\\
+            &=\frac{\abs{f'( w )}}{1-\abs{f( w )}^2}\left( 1-\abs{ w }^2 \right)=1
         \end{align*}
-        i, pel Lema de Schwarz, $g$ és automorfisme i $f=\varphi_{-f(\omega)}\circ g\circ \varphi_\omega$ també. 
+        i, pel Lema de Schwarz, $g$ és automorfisme i $f=\varphi_{-f( w )}\circ g\circ \varphi_ w $ també. 
 
         Finalment, si $f$ és automorfisme de $\D$, apliquem \textit{(i)} a $f$ i $f^{-1}$ i obtenim \begin{equation}
-            \abs{\frac{z-\omega}{1-z\overline{\omega}}}=\abs{\frac{f^{-1}(f(z))-f^{-1}(f(\omega))}{1-f^{-1}(f(z))\overline{f^{-1}(f(\omega))}}}\leq\abs{\frac{f(z)-f(\omega)}{1-f(z)\overline{f(\omega)}}}\leq\abs{\frac{z-\omega}{1-z\overline{\omega}}}
+            \abs{\frac{z- w }{1-z\overline{ w }}}=\abs{\frac{f^{-1}(f(z))-f^{-1}(f( w ))}{1-f^{-1}(f(z))\overline{f^{-1}(f( w ))}}}\leq\abs{\frac{f(z)-f( w )}{1-f(z)\overline{f( w )}}}\leq\abs{\frac{z- w }{1-z\overline{ w }}}
         \end{equation} per tant igualtat.
         De la mateixa manera, per a \textit{(ii)} tenim \begin{equation}
             \frac{1}{1-\abs{z}^2}=\frac{\abs{(f^{-1}\circ f)'(z)}}{1-\abs{(f^{-1}\circ f)(z)}^2}\leq\frac{f'(z)}{1-\abs{f(z)}^2}\leq\frac{1}{1-\abs{z}^2}
         \end{equation} per tant igualtat.
     \end{proof}
 \end{chapter}
+\chapter{El Teorema de Pick}
+L'última peça clau per al problema d'interpolació són els productes de Blaschke. No ens caldrà anar més enllà del cas finit.
+
+Un \textbf{producte de Blaschke finit} és una funció de la forma \begin{displaymath}
+    B(z)=e^{i\alpha}\prod_{j=1}^{n}\frac{z-z_j}{1-\overline{z_j}z},\;\ \abs{z_j}<1
+\end{displaymath}
+Ens seran útils les següents propietats
+\begin{proposition}
+    Si $B$ és un producte de Blaschke és compleix:
+    \begin{enumerate}[(i)]
+        \item $B$ és continua en $\partial\D$
+        \item $\abs{B}=1$ en $\partial\D$
+        \item $B$ té un nombre finit de zeros en $\D$
+    \end{enumerate}
+    Aquestes propietats, junt amb on són aquestes zeros, determinen $B$ tret d'una constant de mòdul 1.
+\end{proposition}
+\begin{proof}
+    No demostrarem $(i)$, $(ii)$, $(iii)$; el que demostrarem és això últim.
+
+    Si tenim una funció $f$ que compleix les tres i $B$ un producte de Blaschke amb els mateixos zeros, pel principi del mòdul màxim, $\abs{f/B}\leq1$ i $\abs{B/f}\leq1$ en $\D$. Per tant $f/B$ és constant.
+\end{proof}
+Els productes de Blaschke, a més de ser útils en la interpolació (com veurem pròximament),  juguen un paper important en l'aproximació de funcions del disc. 
+\begin{theorem}{Carathéodory}
+    Sigui $f$ un $\D$-holomorfisme. Existeix $\{B_k\}$ una successió de productes de Blaschke que convergeixen puntualment a $f$.
+\end{theorem}
+\begin{proof}
+    Com $f$ és holomorfa, és una serie de potencies. Siguin $\{c_k\}$ els seus coeficients. Demostrarem el teorema per inducció, trobant un producte de Blaschke de grau com a molt $n$ tal que els $n$ primers coeficients coincideixen amb els de $f$, i.e., \begin{displaymath}
+        B_n=c_0+c_1z+\dots+c_{n-1}z^{n-1}+d_nz^n\dots
+    \end{displaymath}
+    Com $\abs{c_0}\leq1$, podem fixar $B_0=\frac{z+c_0}{1+\overline{c_0}z}$. Si $\abs{c_0}=1$, llavors $B_0=c_0$ és un producte de Blaschke de grau 0.
+
+    Suposem que per a qualsevol $g$ $\D$-holomorfisme tenim construït el seu $B_{n-1}/z)$. Sigui $g=\frac{1}{z}\frac{f-f(0)}{1-\overline{f(0)}f}$ i sigui $B_{n-1}(z)$ el producte de Blaschke de grau com a màxim $n-1$ tal que $g-B_{n-1}$ té un zero d'ordre $n-1$ en $z=0$. Llavors $zg-zB_{n-1}$ té un zero d'ordre $n$ en $0$. 
+    
+    Sigui \begin{displaymath}
+        B_n(z)= \frac{zB_{n-1}+f(0)}{1+\overline{f(0)}zB_{n-1}(z)}
+    \end{displaymath}
+    Llavors $B_n(z)$ és un producte de Blaschke, $\text{grau}(B_n)=\text{grau}(zB_{n-1})\leq n$ i 
+    \footnotesize
+    \begin{displaymath}
+        f(z)-B_n(z)=\frac{zg(z)+f(0)}{1+\overline{f(0)}zg(z)}-\frac{zB_{n-1](z)+f(0)}}{1+\overline{f(0)}zB_{n-1}(z)}=\frac{(1-\abs{f(0)}^2z(g(z)-B_{n-1}(z)))}{(1+\overline{f(0)}zg(z))(1+\overline{f(0)}zB_{n-1}(z))}
+    \end{displaymath}
+    \normalsize
+    per tant $f-B_n$ té un zero d'ordre $n$ en $z=0$ i llavors \begin{displaymath}
+        B_n(z)=c_0+c_1z+\dots+c_nz^n+d_{n+1}z^{n+1}
+    \end{displaymath}
+\end{proof}
+Per últim, un lema que ens ajudarà amb la demostració del Teorema de Pick
+
+\begin{lemma}
+    Siguin $z_1. z_2\in\D$ diferents i siguin $ w _1, w _2\in\C$. Les següents afirmacions són equivalents:
+    \begin{enumerate}[(i)]
+        \item Existeix $f$ un $\D$-holomorfisme tal que $f(z_1)=w_1$, $f(z_2)=w_2$.
+        \item La forma quadràtica \(\displaystyle Q_2(t_1,t_2)=\sum_{j,k=1}^2\frac{1-w_j\overline{w_k}}{1-z_j\overline{z_k}}t_j\overline{t_k}\leq0\)
+        \item \(\displaystyle \abs{\frac{w_2-w_1}{1-\overline{w_1}w_2}}\leq\abs{\frac{z_2-z_1}{1-\overline{z_1}z_2}}\)
+        \item \(\displaystyle \frac{(1-\abs{w_2}^2)(1-\abs{w_1}^2)}{\abs{1-\overline{w_1}w_2}^2}\geq\frac{(1-\abs{z_1}^2)(1-\abs{z_2}^2)}{\abs{1-\overline{z_1}z_2}^2}\)
+    \end{enumerate}
+\end{lemma}
+    \begin{proof} Veurem $(i)\iff(iii)\iff(iv)\iff(ii)$
+
+        \large
+        $(i)\implies(iii)$
+        \normalsize
+        És el Lema de Schwarz-Pick \ref{lema:SP}.
+        
+        \large
+        $(iii)\implies(i)$
+        \normalsize
+        Construïm $f=\tau_3^{-1}\circ\tau_2\circ\tau_1$ a partir de la figura (\ref{fig:lema-prev-pick}).
+
+\begin{figure}[H]
+    \centering
+    \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    %uncomment if require: \path (0,407); %set diagram left start at 0, and has height of 407
+    
+    %Shape: Ellipse [id:dp1940871183710945] 
+    \draw   (355.2,82.55) .. controls (355.2,52.42) and (379.62,28) .. (409.74,28) .. controls (439.87,28) and (464.29,52.42) .. (464.29,82.55) .. controls (464.29,112.67) and (439.87,137.1) .. (409.74,137.1) .. controls (379.62,137.1) and (355.2,112.67) .. (355.2,82.55) -- cycle ;
+    %Shape: Ellipse [id:dp46982186242036084] 
+    \draw   (74.89,90) .. controls (74.89,89.26) and (75.49,88.65) .. (76.24,88.65) .. controls (76.99,88.65) and (77.59,89.26) .. (77.59,90) .. controls (77.59,90.75) and (76.99,91.36) .. (76.24,91.36) .. controls (75.49,91.36) and (74.89,90.75) .. (74.89,90) -- cycle ;
+    %Shape: Circle [id:dp8460884941367898] 
+    \draw   (50.55,122.45) .. controls (50.55,121.7) and (51.16,121.1) .. (51.91,121.1) .. controls (52.65,121.1) and (53.26,121.7) .. (53.26,122.45) .. controls (53.26,123.2) and (52.65,123.8) .. (51.91,123.8) .. controls (51.16,123.8) and (50.55,123.2) .. (50.55,122.45) -- cycle ;
+    %Shape: Circle [id:dp22422351868171242] 
+    \draw   (423.96,96.76) .. controls (423.96,96.02) and (424.57,95.41) .. (425.31,95.41) .. controls (426.06,95.41) and (426.66,96.02) .. (426.66,96.76) .. controls (426.66,97.51) and (426.06,98.12) .. (425.31,98.12) .. controls (424.57,98.12) and (423.96,97.51) .. (423.96,96.76) -- cycle ;
+    %Shape: Ellipse [id:dp05578671192736695] 
+    \draw   (409.09,82.79) .. controls (409.09,82.05) and (409.69,81.44) .. (410.44,81.44) .. controls (411.19,81.44) and (411.79,82.05) .. (411.79,82.79) .. controls (411.79,83.54) and (411.19,84.15) .. (410.44,84.15) .. controls (409.69,84.15) and (409.09,83.54) .. (409.09,82.79) -- cycle ;
+    %Shape: Ellipse [id:dp7086048713327018] 
+    \draw   (417.64,278.41) .. controls (417.64,277.67) and (418.24,277.06) .. (418.99,277.06) .. controls (419.74,277.06) and (420.34,277.67) .. (420.34,278.41) .. controls (420.34,279.16) and (419.74,279.76) .. (418.99,279.76) .. controls (418.24,279.76) and (417.64,279.16) .. (417.64,278.41) -- cycle ;
+    %Shape: Ellipse [id:dp8993168803355189] 
+    \draw   (426.65,300.94) .. controls (426.65,300.2) and (427.26,299.59) .. (428,299.59) .. controls (428.75,299.59) and (429.35,300.2) .. (429.35,300.94) .. controls (429.35,301.69) and (428.75,302.3) .. (428,302.3) .. controls (427.26,302.3) and (426.65,301.69) .. (426.65,300.94) -- cycle ;
+    %Shape: Ellipse [id:dp7992364884312477] 
+    \draw   (73.37,261.09) .. controls (73.37,260.34) and (73.98,259.74) .. (74.72,259.74) .. controls (75.47,259.74) and (76.08,260.34) .. (76.08,261.09) .. controls (76.08,261.84) and (75.47,262.44) .. (74.72,262.44) .. controls (73.98,262.44) and (73.37,261.84) .. (73.37,261.09) -- cycle ;
+    %Shape: Ellipse [id:dp09061757542467885] 
+    \draw   (58.05,294.44) .. controls (58.05,293.69) and (58.66,293.09) .. (59.4,293.09) .. controls (60.15,293.09) and (60.75,293.69) .. (60.75,294.44) .. controls (60.75,295.18) and (60.15,295.79) .. (59.4,295.79) .. controls (58.66,295.79) and (58.05,295.18) .. (58.05,294.44) -- cycle ;
+    %Shape: Ellipse [id:dp5032465020293418] 
+    \draw   (21.69,91.36) .. controls (21.69,61.23) and (46.11,36.81) .. (76.24,36.81) .. controls (106.37,36.81) and (130.79,61.23) .. (130.79,91.36) .. controls (130.79,121.48) and (106.37,145.9) .. (76.24,145.9) .. controls (46.11,145.9) and (21.69,121.48) .. (21.69,91.36) -- cycle ;
+    %Shape: Ellipse [id:dp6875011805442678] 
+    \draw   (364.44,277.06) .. controls (364.44,246.93) and (388.86,222.51) .. (418.99,222.51) .. controls (449.12,222.51) and (473.54,246.93) .. (473.54,277.06) .. controls (473.54,307.19) and (449.12,331.61) .. (418.99,331.61) .. controls (388.86,331.61) and (364.44,307.19) .. (364.44,277.06) -- cycle ;
+    %Shape: Ellipse [id:dp3952214457400949] 
+    \draw   (20.18,262.44) .. controls (20.18,232.32) and (44.6,207.89) .. (74.72,207.89) .. controls (104.85,207.89) and (129.27,232.32) .. (129.27,262.44) .. controls (129.27,292.57) and (104.85,316.99) .. (74.72,316.99) .. controls (44.6,316.99) and (20.18,292.57) .. (20.18,262.44) -- cycle ;
+    
+    % Text Node
+    \draw (114.92,82.43) node [anchor=north west][inner sep=0.75pt]   [align=left] {};
+    % Text Node
+    \draw (352.13,81.34) node [anchor=north west][inner sep=0.75pt]   [align=left] {};
+    % Text Node
+    \draw (187.72,40.4) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle \tau _{1} =\frac{z-z_{1}}{1-\overline{z_{1}} z}$};
+    % Text Node
+    \draw (188.72,104.29) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle z_{1} \mapsto 0$\\$\displaystyle z_{2} \mapsto \frac{z_{2} -z_{1}}{1-\overline{z_{1}} z_{2}}$};
+    % Text Node
+    \draw (411.95,128.43) node [anchor=north west][inner sep=0.75pt]   [align=left] {};
+    % Text Node
+    \draw (411.16,212.34) node [anchor=north west][inner sep=0.75pt]   [align=left] {};
+    % Text Node
+    \draw (336.6,149.14) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle \tau _{2} =z\frac{\frac{w_{2} -w_{1}}{1-\overline{w_{1}} w_{2}}}{\frac{z_{2} -z_{1}}{1-\overline{z_{1}} z_{2}}}$};
+    % Text Node
+    \draw (432.4,151.98) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle 0\mapsto 0$\\$\displaystyle \frac{z_{2} -z_{1}}{1-\overline{z_{1}} z_{2}} \mapsto \frac{w_{2} -w_{1}}{1-\overline{w_{1}} w_{2}}$};
+    % Text Node
+    \draw (122.89,259.27) node [anchor=north east][inner sep=0.75pt]  [xscale=-1] [align=left] {};
+    % Text Node
+    \draw (361.97,260.17) node [anchor=north east][inner sep=0.75pt]  [xscale=-1] [align=left] {};
+    % Text Node
+    \draw (182.78,227.99) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle \tau _{3} =\frac{w-w_{1}}{1-\overline{w_{1}} w}$};
+    % Text Node
+    \draw (187.78,288.09) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\mapsfrom w_{1}$\\$\displaystyle \frac{w_{2} -w_{1}}{1-\overline{w_{1}} w_{2}} \mapsfrom w_{2}$};
+    % Text Node
+    \draw (64.61,75.67) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle z_{1}$};
+    % Text Node
+    \draw (57.4,115.32) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle z_{2}$};
+    % Text Node
+    \draw (390.44,45.85) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle \frac{z_{2} -z_{1}}{1-\overline{z_{1}} z_{2}}$};
+    % Text Node
+    \draw (415.08,96.45) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {0};
+    % Text Node
+    \draw (423.63,271.34) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {0};
+    % Text Node
+    \draw (389,287.82) node [anchor=north west][inner sep=0.75pt]  [font=\fontsize{0.47em}{0.56em}\selectfont] [align=left] {$\displaystyle \frac{w_{2} -w_{1}}{1-\overline{w_{1}} w_{2}}$};
+    % Text Node
+    \draw (66.5,293.62) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle w_{1}$};
+    % Text Node
+    \draw (53.88,257.57) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle w_{2}$};
+    % Connection
+    \draw    (128.92,90.89) -- (347.13,89.88) ;
+    \draw [shift={(349.13,89.87)}, rotate = 539.73] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    % Connection
+    \draw    (417.33,149.43) -- (416.79,206.34) ;
+    \draw [shift={(416.78,208.34)}, rotate = 270.54] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    % Connection
+    \draw    (136.89,267.8) -- (356.97,268.63) ;
+    \draw [shift={(358.97,268.64)}, rotate = 180.22] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    
+    \end{tikzpicture}
+    \caption{$f=\tau_3^{-1}\circ\tau_2\circ\tau_1$}\label{fig:lema-prev-pick}
+\end{figure}
+
+\large
+$(iii)\iff(iv)$
+\normalsize
+És purament algebràic.
+\begin{align*}
+    &\frac{\abs{w_2-w_1}}{\abs{1-\overline{w_1}w_2}}\leq\frac{\abs{z_2-z_1}}{\abs{1-z_2\overline{z_1}}} \iff 1-\abs{\frac{w_2-w_1}{1-\overline{w_1}w_2}}^2\geq1-\abs{\frac{z_2-z_1}{1-\overline{z_1}z_2}}^2\\
+    &1-\abs{\frac{w_2-w_1}{1-\overline{w_1}w_2}}^2=\frac{\abs{1-\overline{w_1}w_2}^2-\abs{w_1-w_2}^2}{\abs{1-\overline{w_1}w_2}^2}=\frac{1-\abs{w_1}^2-\abs{w_2}^2+\abs{w_1w_2}^2}{\abs{1-\overline{w_1}w_2}^2}
+\end{align*}
+D'altra banda,
+\begin{displaymath}
+    \frac{(1-\abs{w_1}^2)(1-\abs{w_2}^2)}{\abs{1-\overline{w_1}w_2}^2}=\frac{1-\abs{w_1}^2-\abs{w_2}^2+\abs{w_1w_2}^2}{\abs{1-\overline{w_1}w_2}^2}
+\end{displaymath}
+Pel mateix càlcul ho tenim per \(\displaystyle \abs{\frac{z_2-z_1}{1-\overline{z_1}z_2}}\) , per tant $(iii)\iff(iv)$.   
+
+\large
+$(ii)\iff(iv)$
+\normalsize
+\begin{align*}
+    (ii) &= \sum_{j,k=1}^{2}\frac{1-w_j\overline{w_k}}{1-z_j\overline{z_k}}t_j\overline{t_k}\geq0\iff  \begin{pmatrix}
+        \frac{1-\left | w_1 \right |^2}{1-\left | z_1 \right |^2}& \frac{1-w_1\overline{w_2}}{1-z_1\overline{z_2}}\\ 
+        \frac{1-w_2\overline{w_1}}{1-z_2\overline{z_1}}& \frac{1-\left | w_2 \right |^2}{1-\left | z_2 \right |^2}
+       \end{pmatrix}\, \text{és definida positiva}\\
+       &\iff 
+       \begin{cases}
+        \frac{1-\left | w_1 \right |^2}{1-\left | z_1 \right |^2}\geq0\, \text{(cert)}\\
+        \text{i}\\
+        \frac{1-\left | w_1 \right |^2}{1-\left | z_1 \right |^2}\frac{1-\left | w_2 \right |^2}{1-\left | z_2 \right |^2}-\abs{\frac{1-w_2\overline{w_1}}{1-z_2\overline{z_1}}}^2\geq0
+       \end{cases}
+\end{align*}
+Aquesta última desigualtat ens porta a 
+\begin{align*}
+    &\frac{1-\left | w_1 \right |^2}{1-\left | z_1 \right |^2}\frac{1-\left | w_2 \right |^2}{1-\left | z_2 \right |^2}-\abs{\frac{1-w_2\overline{w_1}}{1-z_2\overline{z_1}}}^2\geq0\\
+    &\iff\frac{(1-\abs{w_1}^2)(1-\abs{w_2}^2)}{(1-\abs{z_1}^2)(1-\abs{z_2}^2)}\geq\frac{\abs{1- \overline{w_1}w_2}^2}{\abs{1-\overline{z_1}z_2}^2}\\
+    &\iff\frac{(1-\abs{w_1}^2)(1-\abs{w_2}^2)}{\abs{1- \overline{w_1}w_2}^2}\geq\frac{(1-\abs{z_1}^2)(1-\abs{z_2}^2)}{\abs{1-\overline{z_1}z_2}^2}=(iv)
+\end{align*}
+i amb això termina la demostració del lema.
+\end{proof}
 \end{document}
