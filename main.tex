@@ -562,6 +562,90 @@ té una solució $\D$-holomorfa $f(z)$.
 
     Si $\abs{w_n}=1$, llavors fixem un $k_0$ i $t_j=0$ $\forall j\neq k_0,n$. 
     
-    Llavors $Q_n(0,\dots,0,t_{k_0},0,\dots,0,t_n)$ és equivalent a $Q_2(t_{k_0},t_n)$.
+    Llavors $Q_n(0,\dots,0,t_{k_0},0,\dots,0,t_n)$ és equivalent a $Q_2(t_{k_0},t_n)$, per tant pel lema anterior tenim \begin{displaymath}
+        \abs{\frac{w_n-w_{k_0}}{1-\overline{w_{k_0}}w_n}}\leq\abs{\frac{z_n-z_{k_0}}{1-\overline{z_{k_0}}z_n}}
+    \end{displaymath}
+    Com $\frac{z-z_{k_0}}{1-\overline{z_{k_0}}z}$ és automorfisme del disc i $\abs{z_n}<1$, tenim \begin{displaymath}
+        \abs{\frac{z_k-z_{k_0}}{1-\overline{z_{k_0}}z_n}}<1
+    \end{displaymath}
+    D'altra banda, $\frac{z-w_{k_0}}{1-\overline{w_{k_0}}z}$ és un producte de Blaschke per tant té mòdul 1 a $\partial\D$. Com $\abs{w_n}=1$, \begin{displaymath}
+        \abs{\frac{w_n-w_{k_0}}{1-\overline{w_{k_0}}w_n}}=1
+    \end{displaymath}
+    Llavors \begin{displaymath}
+        1=\abs{\frac{w_n-w_{k_0}}{1-\overline{w_{k_0}}w_n}}<1
+    \end{displaymath}
+    per tant aquest quocient no té sentit i l'única opció és $w_n=w_{k_0}$. Com aquest argument es pot aplicar a qualsevol $1\leq k_0\leq n$, tenim que $w_j=w_n$ $\forall j$. Així doncs, si $\abs{w_n}=1$, triem $f\equiv w_n$. $f$ és producte de Blaschke.
+    
+    Queda clar que sempre $\abs{w_j}\leq1$ i que el cas amb igualtat es trivial, per tant podem assumir que $\abs{w_n}<1$.
+
+    Mourem $z_n$ i $w_n$ a l'origen. Sigui
+    \begin{displaymath}
+        z_j'=\frac{z_j-z_n}{1-\overline{z_n}z_j},\; 1\leq j\leq n;\quad w_j'=\frac{w_j-w_n}{1-\overline{w_n}w_j},\; 1\leq j\leq n
+    \end{displaymath}
+    Definim \begin{displaymath}
+        g:=\frac{f\left( \frac{z+z_n}{1-\overline{z_n}z} \right)-w_n}{1-\overline{w_n}f\left( \frac{z+z_n}{1-\overline{z_n}z} \right)}
+    \end{displaymath}
+    Llavors existeix $f$ $\D$-holomorfa que resol (\ref{eq:interpol}) si i nomès si $g$ és $\D$-holomorfa i resol \begin{equation}
+        g(z_j')=w_j',\quad 1\leq j\leq n
+    \end{equation} 
+    A més, $f$ és un producte de Blaschke de grau com a molt $n$ si i només si $g$ també ho és.
+
+    D'altra banda, la forma quadràtica $Q'_n$ corresponent als punts $\{z'_1,...,z_n'\}$ i
+    
+    \noindent $\{w'_1,...,w'_n\}$ té una forta relació amb $Q_n$:
+    Definim 
+    \begin{displaymath}
+        \alpha_j=\frac{(1-\abs{z_n}^2)^{1/2}}{1-\overline{z_n}z_j},\quad \beta_j=\frac{(1-\abs{w_n}^2)^{1/2}}{1-\overline{w_n}w_j} 
+    \end{displaymath}
+    Llavors \begin{equation}\label{eq:zprim}
+        \frac{1-z'_j\overline{z'_k}}{1-z_j\overline{z_k}}=\frac{1-\frac{z_j-z_n}{1-\overline{z_n}z_j}\overline{\left(\frac{z_k-z_n}{1-\overline{z_n}z_k}\right)}}{1-z_j\overline{z_k}}=\frac{(1-\overline{z_n}z_j)(1-z_n\overline{z_k})-(z_j-z_n)(\overline{z_k}-\overline{z_n})}{(1-z_j\overline{z_k})(1-\overline{z_n}z_j)(1-z_n\overline{z_k})}
+    \end{equation}
+Veiem que \(\displaystyle \alpha_j\overline{\alpha_k}=\frac{1-\abs{z_n}^2}{(1-z_j\overline{z_n})(1-\overline{z_k}z_n)}\) és igual a (\ref{eq:zprim}).
+
+Efectivament, \begin{align*}
+    &\frac{(1-\overline{z_n}z_j)(1-z_n\overline{z_k})-(z_j-z_n)(\overline{z_k}-\overline{z_n})}{(1-z_j\overline{z_k})\cancel{(1-\overline{z_n}z_j)}\cancel{(1-z_n\overline{z_k})}}=\frac{1-\abs{z_n}^2}{\cancel{(1-\overline{z_n}z_j)}\cancel{(1-z_n\overline{z_k})}}\\
+    \implies &\frac{1\cancel{-\overline{z_n}z_j}\cancel{-z_n\overline{z_k}}+\abs{z_n}^2z_j\overline{z_k}\cancel{+z_j\overline{z_n}}-z_j\overline{z_k}\cancel{+\overline{z_k}z_n}-\abs{z_n}^2}{(1-z_j\overline{z_k})}=1-\abs{z_n}^2\\
+    \implies &\frac{1-\abs{z_n}^2+z_j\overline{z_k}\abs{z_n}^2-z_j\overline{z_k}}{(1-z_j\overline{z_k})}=\frac{(1-\abs{z_n}^2)\cancel{(1-z_j\overline{z_k})}}{\cancel{(1-z_j\overline{z_k})}}=1+\abs{z_n}^2
+\end{align*}
+Pel mateix càlcul tenim \(\displaystyle \beta_j\overline{\beta_k}\frac{1-\abs{w_n}^2}{(1-\overline{w_n}w_j)(1-\overline{w_k})}\)
+
+Per tant, \begin{displaymath}
+    \frac{1-w_j'\overline{w_k'}}{1-z_j'\overline{z_k'}}t_j\overline{t_k}=\frac{1-w_j\overline{w_k}}{1-z_j\overline{z_k}}\left( \frac{\beta_j}{\alpha_j} \right)t_j\overline{\left( \frac{\beta_k}{\alpha_k} \right)t_k}
+\end{displaymath}
+i \begin{equation}
+    Q'_n(t_1,\dots,t_n)=Q_n\left(\frac{\beta_1}{\alpha_1}t_1,\dots,\frac{\beta_n}{\alpha_n}t_n\right)
+\end{equation}
+Així doncs $Q'_n\geq0 \iff Q_n\geq0$ i hem reduït el problema al cas $z_n=w_n=0$.
+
+Suposem, per tant, $z_n=w_n=0$.
+Existeix una $f$ $\D$-holomorfa tal que $f(0)=0$ i $f(z_j)=w_j$, $1\leq j \leq n-1$ si i només si existeix $g(z)=\frac{f(z)}{z}$ un $\D$-holomorfisme tal que \begin{equation}\label{eq:interpol_redux}
+    g(z_j)=w_j,\quad 1\leq j\leq n-1
+\end{equation}
+A més, $f$ és producte de Blaschke de grau $d$ si i només si $g$ ho és de grau $d-1$.
+
+Per la hipòtesi d'inducció, (\ref{eq:interpol_redux}) té solució si i només si \begin{displaymath}
+    \tilde{Q}_{n-1}(s_1,\dots,s_{n-1})=\sum_{j,k=1}^{n-1}\frac{1-\left( \frac{w_j}{z_j} \right)\overline{\left( \frac{w_k}{z_k} \right)}}{1-z_j\overline{z_k}}s_j\overline{s_k}\geq0
+\end{displaymath}
+El teorema es redueix a veure que \begin{displaymath}
+    Q_n\geq0\iff\tilde{Q}_{n-1}\geq0
+\end{displaymath}
+sota la condició $w_n=z_n=0$.
+
+Com $z_n=w_n=0$, \begin{displaymath}
+    Q_n(t_1,\dots,t_n)=\abs{t_n}^2+2\Re{\sum_{j=1}^{n-1}\overline{t_j}t_n}+\sum_{j,k=1}^{n-1}\frac{1-w_j\overline{w_k}}{1-z_j\overline{z_k}}t_j\overline{t_k}
+\end{displaymath}
+Si completem quadrats per a $t_n$, tenim \begin{displaymath}
+    Q_n(t_1,\dots,t_n)=\abs{t_n+\sum_{j=1}^{n-1}t_j}^2+\sum_{j,k=1}^{n-1}\left( \frac{1-w_j\overline{w_k}}{1-z_j\overline{z_k}}-1 \right)t_j\overline{t_k}
+\end{displaymath}
+Ara bé, \begin{displaymath}
+    \frac{1-w_j\overline{w_k}}{1-z_j\overline{z_k}}-1=\frac{z_j\overline{z_k}-w_j\overline{w_k}}{1-z_j\overline{z_k}}=\frac{1-\left( \frac{w_j}{z_j} \right)\overline{\left( \frac{w_k}{z_k} \right)}}{1-z_j\overline{z_k}}z_j\overline{z_k}
+\end{displaymath}
+i per tant 
+\begin{displaymath}
+    Q_n(t_1,\dots,t_n)=\abs{\sum_{j=1}^{n}t_j}^2+\tilde{Q}_{n-1}(z_1t_1,\dots,z_{n-1}t_{n-1})
+\end{displaymath}
+Llavors $\tilde{Q}_{n-1}\geq0\implies Q_n\geq0$.
+
+\noindent Fixant \(\displaystyle t_n=-\sum_{j=1}^{n-1}t_j\) veiem que $Q_n\geq0\implies\tilde{Q}_{n-1}\geq0$
 \end{proof}
 \end{document}
