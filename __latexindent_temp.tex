@@ -38,90 +38,92 @@
         \begin{figure}[H]
             \centering
 
-            \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
-            \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
-                %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
 
-                %Shape: Circle [id:dp8383721621718325] 
-                \draw   (254,131.5) .. controls (254,93.67) and (284.67,63) .. (322.5,63) .. controls (360.33,63) and (391,93.67) .. (391,131.5) .. controls (391,169.33) and (360.33,200) .. (322.5,200) .. controls (284.67,200) and (254,169.33) .. (254,131.5) -- cycle ;
-                %Curve Lines [id:da7214037578734126] 
-                \draw  [dash pattern={on 4.5pt off 4.5pt}]  (322.5,63) .. controls (341.5,100) and (352.5,146) .. (322.5,200) ;
-                %Curve Lines [id:da53708741098247] 
-                \draw  [dash pattern={on 4.5pt off 4.5pt}]  (391,131.5) .. controls (383.5,155) and (303.5,161) .. (254,131.5) ;
-               
-                % Text Node
-                \draw (318,52) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle \infty $};
-                % Text Node
-                \draw (344,156) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle i$};
-                % Text Node
-                \draw (241,134.5) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle -1$};
-                % Text Node
-                \draw (393,134.5) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle 1$};
-                % Text Node
-                \draw (324.5,203) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle 0$};
-            \end{tikzpicture}
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
 
-            \caption{L'esfera de Riemann.}
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Circle [id:dp8383721621718325] 
+\draw   (254,131.5) .. controls (254,93.67) and (284.67,63) .. (322.5,63) .. controls (360.33,63) and (391,93.67) .. (391,131.5) .. controls (391,169.33) and (360.33,200) .. (322.5,200) .. controls (284.67,200) and (254,169.33) .. (254,131.5) -- cycle ;
+%Curve Lines [id:da7214037578734126] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (322.5,63) .. controls (341.5,100) and (352.5,146) .. (322.5,200) ;
+%Curve Lines [id:da53708741098247] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (391,131.5) .. controls (383.5,155) and (303.5,161) .. (254,131.5) ;
+
+
+
+% Text Node
+\draw (318,52) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle \infty $};
+% Text Node
+\draw (344,156) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle i$};
+% Text Node
+\draw (241,134.5) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle -1$};
+% Text Node
+\draw (393,134.5) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle 1$};
+% Text Node
+\draw (324.5,203) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle 0$};
+
+
+\end{tikzpicture}
+
         \end{figure}
-        No ens cal preocupar-nos per les propietats topològiques de \(S^2\). Per al que a nosaltres ens ocupa, l'esfera de Riemann es comporta com \(\mathbb{C}\), però ens permet tractar \(\infty\) estalviant-nos límits. És fàcil veure que \(1/0 = \infty\) i que \(1/\infty = 0\).
+        No ens cal preocupar-nos per les propietats topològiques de \(S^2\), per al que a nosaltres ens ocupa, l'esfera de Riemann es comporta com \(\mathbb{C}\), però ens permet tractar \(\infty\) estalviant-nos limits. Es fàcil veure que \(1/0 = \infty\) i que \(1/\infty = 0\).
 
         De fet, aquest és el motiu principal per introduir el concepte de \(S^2\), ja que serveix de "cèrcol" per no deixar escapar els punts que habitualment hauríem de considerar pols de funcions altrament holomorfes. Per al nostre cas, ràpidament ens limitarem a no sortir de \(\D\).
 
-        Siguin \(a,b,c,d\in S^2\). Una \textbf{homografia} és una aplicació de la forma
-        \begin{displaymath}
-            z\to\frac{az+b}{cz+d},\quad ad-bc\neq0 
-        \end{displaymath}
 
-        Observem que si $z\neq -d/c$, les homografies són holomorfes a $\C$ i $ad-bc\neq0$ ens dona conformitat.
-        
+        \begin{definition}[Homografia]
+            Siguin \(a,b,c,d\in S^2\). L'aplicació \begin{displaymath}
+                z\to\frac{az+b}{cz+d}
+            \end{displaymath}
+            és una homografia.
+        \end{definition}
+        Observem que si \begin{math}
+            z\neq -d/c
+        \end{math}, les homografies són holomorfes a \begin{math}
+            \mathbb{C}
+        \end{math}
         \begin{proposition}
-            Les homografies són invertibles i la seva inversa és una homografia.
+            Les homografies son invertibles i la seva inversa es una homografia.
         \end{proposition}
-        
         \begin{proof}
             Si \begin{math}
                  w  = \frac{az+b}{cz+d} 
             \end{math}, podem aïllar $z$ i obtenim \begin{math}
                 z = \frac{-d  w +b}{c w -a}
-            \end{math}.
+            \end{math}
         \end{proof}
-
-        \begin{corollary}
-            Les homografies són bijeccions de $S^2$.
-        \end{corollary}
-
+        Es desprèn directament la següent proposició
+        \begin{proposition}
+            Les homografies son bijeccions de $S^2$.
+        \end{proposition}
+        Abans d'un teorema de caracterització veiem el següent lema:
         \begin{lemma}
             Donada $f$  una funció holomorfa tret d'un nombre finit de punts, si $f$ té un pol d'ordre igual o superior a 2, $f$ no pot ser injectiva.  
         \end{lemma}
-
         \begin{proof}
-            Considerem la funció $1/f$. $f$ és injectiva si i només si $1/f$ ho és. Per tant demostrar la no injectivitat de $1/f$ és suficient.
+            Considerem la funció $1/f$. $f$ és injectiva si i només si $1/f$ ho és, per tant demostrar la no injectivitat de $1/f$ és suficient.
             
-            Sigui $a$ un pol d'ordre $m>1$ de $f$. Llavors $a$ és un zero d'ordre $m$ de $1/f$, per tant 
-            \begin{displaymath}
-                \frac{1}{f}=(z-a)^mh(z),\quad  h(a)\neq0
-            \end{displaymath} 
-            per a una certa funció holomorfa $h$.
+            Sigui $a$ un pol d'ordre $m>1$ de $f$. Llavors $a$ és un zero d'ordre $m$ de $1/f$, per tant \begin{math}
+                \frac{1}{f}=(z-a)^mh(z)
+            \end{math} amb $h(a)\neq0$, per a una certa funció holomorfa $h$.
 
-            Considerem $ g(z)=(z-a)h(z)^{1/m}$. Aquesta funció és holomorfa i ben definida sobre l'arrel principal $m$-èssima. La seva derivada és 
+            Considerem \begin{math}
+                g(z)=(z-a)h(z)^{1/m}
+            \end{math}. Aquesta funció és holomorfa i ben definida sobre l'arrel principal $m$-èssima. La seva derivada és 
             \begin{displaymath}
                 g'(z)=\frac{1}{m}(z-a)h(z)^{\frac{1}{m}-1}h'(z)+h(z)^{\frac{1}{m}}
-            \end{displaymath} 
-            per tant $g'(a)\neq0$.
+            \end{displaymath} per tant $g'(a)\neq0$.
             Tenim, doncs, un entorn de $a$ on $g$ és una funció holomorfa i invertible que envia $a$ al zero. Amb el canvi de coordenades $ w  = g(z)$, veiem que localment \begin{displaymath}
                  w ^m = \frac{1}{f(g^{-1}(z))}
-            \end{displaymath} 
-            per tant en un entorn de $a$ la funció $1/f$ es comporta com la funció $z\to z^m$, que per $m>1$ no és injectiva.
+            \end{displaymath} per tant en un entorn de $a$ la funció $1/f$ es comporta com la funció $z\to z^m$, que per $m>1$ no es injectiva.
         \end{proof}
-
         \begin{theorem}
             Si, tret d'un nombre finit de punts de $S^2$, tenim una bijecció conforme entre $S^2$ i una regió del propi $S^2$, aquesta bijecció es una homografia.
         \end{theorem}
-
         \begin{proof}
-            Sigui $f$ aquesta bijecció i $q_1,\dots,q_n$ els punts exclòsos. Com $f$ és conforme, $f$ és holomorfa tret de en $q_i$. Aquests punts només poden ser pols, singularitats essencials o evitables. 
-            
-            La possibilitat de que siguin essencials queda descartada, ja que en tot entorn d'una discontinuïtat d'aquest tipus la imatge és tot el pla complex, per tant $f$ no podria ser bijectiva. Com les discontinuïtats de $f$ són o evitables o pols, podem assegurar que $f$ es una funció racional. 
+            Sigui $f$ aquesta bijecció i $q_1,\dots,q_n$ els punts exclòsos. Com $f$ és conforme, $f$ és holomorfa tret de en $q_i$. Aquests punts només poden ser pols, singularitats essencials o evitables. La possibilitat de que siguin essencials queda descartada, ja que en tot entorn d'una discontinuitat d'aquest tipus la imatge es tot el pla complex, per tant $f$ no podria ser bijectiva. Com les discontinuitats de $f$ són o evitables o pols, podem assegurar que $f$ es una funció racional. 
             
             A més, per la injectivitat a $S^2$, només un dels punts pot ser un pol, el qual pel lema anterior seria d'ordre 1. Si aquest es troba en un punt finit $q_k$, \begin{displaymath}
                 f(z)=\frac{A_1}{z-q_k}+A_0=\frac{A_0z+A_1-A_0q_k}{z-q_k}\,\text{, } A_1\neq0
@@ -131,28 +133,22 @@
             \end{displaymath}
             Sigui com sigui, la funció és una homografia.
         \end{proof}
-
         \begin{proposition}\label{prop:comp_homo}
             La composició finita d'homografies és equivalent a una sola homografia.
         \end{proposition}
-
         \begin{proof}
-            És suficient demostrar-ho per la composició de dues homografies. Siguin 
-            \begin{displaymath}
+            És suficient demostrar-ho per la composició de dues homografies. Siguin \begin{displaymath}
                 T(z)=\frac{az+b}{cz+d}
             \end{displaymath}
             \begin{displaymath}
                 S(z)=\frac{a'z+b'}{c'z+d'}
             \end{displaymath}
-            Llavors
-            \begin{displaymath}
+            Llavors\begin{displaymath}
                 (T\circ S)(z)=\frac{a\frac{a'z+b'}{c'z+d'}+b}{c\frac{a'z+b'}{c'z+d'}+d}=\frac{aa'z+ab'+bc'z+bd'}{ca'z+cb'+dc'z+dd'}=\frac{\left( aa'+bc' \right)z+(ab'+bd')}{\left( ca'+dc' \right)z+(cb'+dd')}
             \end{displaymath}
-            \normalsize
             que clarament és una homografia.
         \end{proof}
-
-        Degut a això, podem descompondre totes les homografies en combinacions de tres classes fonamentals:
+        Degut a això, podem descomposar totes les homografies en combinacions de tres classes fonamentals:
         \begin{theorem}
             Tota homografia és composició finita de translacions, rotacions, homotècies i inversions.
         \end{theorem}
@@ -161,13 +157,10 @@
             
             Si $c=0$, simplement $z\to az\to az+b\to \frac{az+b}{d}$.
 
-            Si $c\neq0$, llavors 
-            \begin{align*}
-                &z\to cz\to cz+d\to \frac{1}{cz+d}\to \frac{\frac{bc-ad}{c}}{cz+d}\\
-                &\to \frac{\frac{bc-ad}{c}}{cz+d}+\frac{a}{c}=\frac{bc-ad}{c(cz+d)}+\frac{a}{c}=\frac{bc-ad+azc+ad}{c(cz+d)}=\frac{az+b}{cz+d}
-            \end{align*}
+            Si $c\neq0$, llavors \begin{displaymath}
+                z\to cz\to cz+d\to \frac{1}{cz+d}\to \frac{\frac{bc-ad}{c}}{cz+d}\to \frac{\frac{bc-ad}{c}}{cz+d}+\frac{a}{c}=\frac{bc-ad}{c(cz+d)}+\frac{a}{c}=\frac{bc-ad+azc+ad}{c(cz+d)}=\frac{az+b}{cz+d}
+            \end{displaymath}
         \end{proof}
-
         \begin{definition}[Raó doble]
             Donats $z_1,z_2,z_3,z_4\in\mathbb{C}$, la raó doble entre ells es defineix per \begin{displaymath}
                 (z_1,z_2,z_3,z_4) = \frac{(z_1-z_3)(z_2-z_4)}{(z_2-z_3)(z_1-z_4)}
