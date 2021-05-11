@@ -19,6 +19,8 @@
 \usepackage[labelfont=bf]{caption} 
 \usepackage{svg}
 \usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
 %% COLORES 
 \usepackage{xcolor} % las opciones de este pkg están en el document class pq si no se ralla
 %% CODIGO Y CONSOLA EN EL DOC
@@ -43,9 +45,9 @@
 \usepackage{siunitx} % no se
 \usepackage{float} % no se
 %%CONFIG TEOREMAS EJEMPLOS ETC
-\numberwithin{equation}{chapter}
+\numberwithin{equation}{section}
 \newtheorem*{theorem*}{Teorema}
-\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{theorem}{Teorema}[section]
 \newtheorem{corollary}{Corol·lari}[theorem]
 \newtheorem{lemma}[theorem]{Lema}
 \newtheorem{proposition}[theorem]{Proposició}

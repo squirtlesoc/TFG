@@ -1,16 +1,26 @@
-\documentclass[dvipsnames, svgnames, leqno, a4paper, 12pt]{report}
+\documentclass[dvipsnames, svgnames, leqno, a4paper, 12pt]{article}
 \usepackage{preconfig}
 
 \title{El Problema d'interpolació de Pick--Nevanlinna}
 \date{}
 \author{Daniel Benages}
 \begin{document}
+\tikzset{font=\scriptsize}
 \shorthandoff{"}
-    \maketitle
+    \begin{titlepage}
+      \maketitle
+
+    \end{titlepage}
+
     \begin{abstract}
-        WIP
+        L'anàlisi complexa sol destacar per l'elegància i finor dels seus teoremes i demostracions, des del Teorema de representació en sèries de potències fins al Teorema global de Cauchy. Aquest treball, però, busca resoldre un problema molt més concret. Allunyem-nos de Teoremes omnipotents, de resultats que ressonen per tot el món complex. Centrem-nos en un petit disc de radi 1. Mirem dos conjunts finits de punts. Hi pot haver una funció holomorfa que els aparelli? 
+        
+        El camí que recorre aquest treball termina amb el resultat que va donar Georg Pick l'any 1917. Veurem com l'anàlisi complexa, amb la seva elegància habitual, redueix el problema a l'estudi del signe d'una forma quadràtica. Això serà gràcies al Lema de Schwarz-Pick, una generalització natural del conegut Lema de Schwarz.
+
+
     \end{abstract}
-    \begin{chapter}{Introducció}
+\newpage
+    \section{Introducció}
         L'objectiu d'aquest treball és donar un resultat sobre el següent problema d'interpolació:
         \begin{problem}\label{problema}
             Siguin $z_1,\dots,z_n$ punts diferents dins el disc unitat $\D$. Quines condicions han de complir $w_1,\dots,w_n$ per tal de que existeixi una funció $f$ amb\begin{equation}
@@ -29,8 +39,10 @@
         \end{theorem*}
 
         Aquesta tasca, però, és inabordable sense fer algunes concessions. La més important és que donarem per fetes la majoria de nocions que s'obtindrien en un curs elemental d'anàlisi complexa. Si més no, fins al teorema del mòdul màxim (tot i que l'enunciarem per refrescar la memòria).
-    \end{chapter}
-    \begin{chapter}{Homografies}
+
+
+
+    \section{Homografies}
         Sigui  \(\Omega\) un domini de \(\mathbb{C}\) i \(f: \Omega\to\Omega\) una funció holomorfa, diem que \(f\) és \textbf{conforme} si \(f'(z) \neq 0\,\  \forall z\in\Omega\).
         
         Diem \textbf{esfera de Riemann} a la compactificació del pla complex per un punt. La manera usual de pensar en aquest espai topològic és considerar una esfera on el pol nord és \(\infty\). La denotem per \(S^2\).
@@ -38,28 +50,23 @@
         \begin{figure}[H]
             \centering
 
-            \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
-            \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
-                %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
-
-                %Shape: Circle [id:dp8383721621718325] 
-                \draw   (254,131.5) .. controls (254,93.67) and (284.67,63) .. (322.5,63) .. controls (360.33,63) and (391,93.67) .. (391,131.5) .. controls (391,169.33) and (360.33,200) .. (322.5,200) .. controls (284.67,200) and (254,169.33) .. (254,131.5) -- cycle ;
-                %Curve Lines [id:da7214037578734126] 
-                \draw  [dash pattern={on 4.5pt off 4.5pt}]  (322.5,63) .. controls (341.5,100) and (352.5,146) .. (322.5,200) ;
-                %Curve Lines [id:da53708741098247] 
-                \draw  [dash pattern={on 4.5pt off 4.5pt}]  (391,131.5) .. controls (383.5,155) and (303.5,161) .. (254,131.5) ;
-               
-                % Text Node
-                \draw (318,52) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle \infty $};
-                % Text Node
-                \draw (344,156) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle i$};
-                % Text Node
-                \draw (241,134.5) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle -1$};
-                % Text Node
-                \draw (393,134.5) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle 1$};
-                % Text Node
-                \draw (324.5,203) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle 0$};
-            \end{tikzpicture}
+            \begin{tikzpicture}
+                \coordinate (aux) at (0, -2);
+                \coordinate (aux2) at (0, 2);
+                \shade[ball color = gray!60, opacity = 0.6] (0,0) circle (2cm);
+                \draw (0,0) circle (2cm);
+                \draw (-2,0) arc (180:360:2 and 0.6) node[pos=.5] (A) {};
+                \draw ($(A) + (0, 1pt)$) -- ($(A) + (0,-1pt)$) node [pos=.5, below]{$-i$};
+                \draw[dashed] (2,0) arc (0:180:2 and 0.6) node[pos=.5] (B) {};
+                \draw ($(B) + (0, 1.1pt)$) -- ($(B) + (0,-1.1pt)$) node [pos=.5, above]{$i$};
+                \draw[cm={cos(90) ,-sin(90) ,sin(90) ,cos(90) ,(0 cm,0 cm)}] (2,0) arc (0:180:2 and 0.6);
+                \draw[dashed,cm={cos(90) ,-sin(90) ,sin(90) ,cos(90) ,(0 cm,0 cm)} ] (-2,0) arc (180:360:2 and 0.6);
+                \fill[fill=black] (0,0) circle (1pt);
+                \draw (2 cm,1pt) -- (2 cm,-1pt) node[anchor=west] {1};
+                \draw (-2 ,1pt) -- (-2,-1pt) node[anchor=east] {-1};
+                \draw ($(aux) + (0,1pt)$)-- ($(aux) + (0,-1pt)$) node[anchor=north] {0};
+                \draw ($(aux2) + (0,1pt)$)-- ($(aux2) + (0,-1pt)$) node[anchor=south] {$\infty$};
+              \end{tikzpicture}
 
             \caption{L'esfera de Riemann.}
         \end{figure}
@@ -253,10 +260,10 @@
         és la homografia que busquem.
     \end{proof}
 
-\end{chapter}
 
 
-\begin{chapter}[Automorfismes al Disc Unitat]{Automorfismes a $\D$}
+
+\section[Automorfismes al Disc Unitat]{Automorfismes a $\D$}
     Com ja hem comentat prèviament, centrarem la nostra atenció exclusivament a $\D$. Per tant, els teoremes i proposicions que enunciarem a partir d'ara seran sempre en aquesta regió. Recordem que definim com Disc Unitat
     
     \begin{equation*}
@@ -436,11 +443,11 @@
         aconseguint novament la igualtat.
     \end{proof}
 
-\end{chapter}
 
-\chapter{El Teorema de Pick}
 
-\section{Productes de Blaschke finits}
+\section{El Teorema de Pick}
+
+\subsection{Productes de Blaschke finits}
 
 L'última peça clau per al problema d'interpolació són els productes de Blaschke. No ens caldrà anar més enllà del cas finit.
 
@@ -533,91 +540,68 @@ Per últim, un lema que ens ajudarà amb la demostració del Teorema de Pick.
 
     \begin{figure}[H]
         \centering
-        \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
-
-        \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
-            %uncomment if require: \path (0,407); %set diagram left start at 0, and has height of 407
-            
-            %Shape: Ellipse [id:dp1940871183710945] 
-            \draw   (355.2,82.55) .. controls (355.2,52.42) and (379.62,28) .. (409.74,28) .. controls (439.87,28) and (464.29,52.42) .. (464.29,82.55) .. controls (464.29,112.67) and (439.87,137.1) .. (409.74,137.1) .. controls (379.62,137.1) and (355.2,112.67) .. (355.2,82.55) -- cycle ;
-            %Shape: Ellipse [id:dp46982186242036084] 
-            \draw   (74.89,90) .. controls (74.89,89.26) and (75.49,88.65) .. (76.24,88.65) .. controls (76.99,88.65) and (77.59,89.26) .. (77.59,90) .. controls (77.59,90.75) and (76.99,91.36) .. (76.24,91.36) .. controls (75.49,91.36) and (74.89,90.75) .. (74.89,90) -- cycle ;
-            %Shape: Circle [id:dp8460884941367898] 
-            \draw   (50.55,122.45) .. controls (50.55,121.7) and (51.16,121.1) .. (51.91,121.1) .. controls (52.65,121.1) and (53.26,121.7) .. (53.26,122.45) .. controls (53.26,123.2) and (52.65,123.8) .. (51.91,123.8) .. controls (51.16,123.8) and (50.55,123.2) .. (50.55,122.45) -- cycle ;
-            %Shape: Circle [id:dp22422351868171242] 
-            \draw   (423.96,96.76) .. controls (423.96,96.02) and (424.57,95.41) .. (425.31,95.41) .. controls (426.06,95.41) and (426.66,96.02) .. (426.66,96.76) .. controls (426.66,97.51) and (426.06,98.12) .. (425.31,98.12) .. controls (424.57,98.12) and (423.96,97.51) .. (423.96,96.76) -- cycle ;
-            %Shape: Ellipse [id:dp05578671192736695] 
-            \draw   (409.09,82.79) .. controls (409.09,82.05) and (409.69,81.44) .. (410.44,81.44) .. controls (411.19,81.44) and (411.79,82.05) .. (411.79,82.79) .. controls (411.79,83.54) and (411.19,84.15) .. (410.44,84.15) .. controls (409.69,84.15) and (409.09,83.54) .. (409.09,82.79) -- cycle ;
-            %Shape: Ellipse [id:dp7086048713327018] 
-            \draw   (417.64,278.41) .. controls (417.64,277.67) and (418.24,277.06) .. (418.99,277.06) .. controls (419.74,277.06) and (420.34,277.67) .. (420.34,278.41) .. controls (420.34,279.16) and (419.74,279.76) .. (418.99,279.76) .. controls (418.24,279.76) and (417.64,279.16) .. (417.64,278.41) -- cycle ;
-            %Shape: Ellipse [id:dp8993168803355189] 
-            \draw   (426.65,300.94) .. controls (426.65,300.2) and (427.26,299.59) .. (428,299.59) .. controls (428.75,299.59) and (429.35,300.2) .. (429.35,300.94) .. controls (429.35,301.69) and (428.75,302.3) .. (428,302.3) .. controls (427.26,302.3) and (426.65,301.69) .. (426.65,300.94) -- cycle ;
-            %Shape: Ellipse [id:dp7992364884312477] 
-            \draw   (73.37,261.09) .. controls (73.37,260.34) and (73.98,259.74) .. (74.72,259.74) .. controls (75.47,259.74) and (76.08,260.34) .. (76.08,261.09) .. controls (76.08,261.84) and (75.47,262.44) .. (74.72,262.44) .. controls (73.98,262.44) and (73.37,261.84) .. (73.37,261.09) -- cycle ;
-            %Shape: Ellipse [id:dp09061757542467885] 
-            \draw   (58.05,294.44) .. controls (58.05,293.69) and (58.66,293.09) .. (59.4,293.09) .. controls (60.15,293.09) and (60.75,293.69) .. (60.75,294.44) .. controls (60.75,295.18) and (60.15,295.79) .. (59.4,295.79) .. controls (58.66,295.79) and (58.05,295.18) .. (58.05,294.44) -- cycle ;
-            %Shape: Ellipse [id:dp5032465020293418] 
-            \draw   (21.69,91.36) .. controls (21.69,61.23) and (46.11,36.81) .. (76.24,36.81) .. controls (106.37,36.81) and (130.79,61.23) .. (130.79,91.36) .. controls (130.79,121.48) and (106.37,145.9) .. (76.24,145.9) .. controls (46.11,145.9) and (21.69,121.48) .. (21.69,91.36) -- cycle ;
-            %Shape: Ellipse [id:dp6875011805442678] 
-            \draw   (364.44,277.06) .. controls (364.44,246.93) and (388.86,222.51) .. (418.99,222.51) .. controls (449.12,222.51) and (473.54,246.93) .. (473.54,277.06) .. controls (473.54,307.19) and (449.12,331.61) .. (418.99,331.61) .. controls (388.86,331.61) and (364.44,307.19) .. (364.44,277.06) -- cycle ;
-            %Shape: Ellipse [id:dp3952214457400949] 
-            \draw   (20.18,262.44) .. controls (20.18,232.32) and (44.6,207.89) .. (74.72,207.89) .. controls (104.85,207.89) and (129.27,232.32) .. (129.27,262.44) .. controls (129.27,292.57) and (104.85,316.99) .. (74.72,316.99) .. controls (44.6,316.99) and (20.18,292.57) .. (20.18,262.44) -- cycle ;
-            
-            % Text Node
-            \draw (114.92,82.43) node [anchor=north west][inner sep=0.75pt]   [align=left] {};
-            % Text Node
-            \draw (352.13,81.34) node [anchor=north west][inner sep=0.75pt]   [align=left] {};
-            % Text Node
-            \draw (187.72,40.4) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle \tau _{1} =\frac{z-z_{1}}{1-\overline{z_{1}} z}$};
-            % Text Node
-            \draw (188.72,104.29) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle z_{1} \mapsto 0$\\$\displaystyle z_{2} \mapsto \frac{z_{2} -z_{1}}{1-\overline{z_{1}} z_{2}}$};
-            % Text Node
-            \draw (411.95,128.43) node [anchor=north west][inner sep=0.75pt]   [align=left] {};
-            % Text Node
-            \draw (411.16,212.34) node [anchor=north west][inner sep=0.75pt]   [align=left] {};
-            % Text Node
-            \draw (336.6,149.14) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle \tau _{2} =z\frac{\frac{w_{2} -w_{1}}{1-\overline{w_{1}} w_{2}}}{\frac{z_{2} -z_{1}}{1-\overline{z_{1}} z_{2}}}$};
-            % Text Node
-            \draw (432.4,151.98) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle 0\mapsto 0$\\$\displaystyle \frac{z_{2} -z_{1}}{1-\overline{z_{1}} z_{2}} \mapsto \frac{w_{2} -w_{1}}{1-\overline{w_{1}} w_{2}}$};
-            % Text Node
-            \draw (122.89,259.27) node [anchor=north east][inner sep=0.75pt]  [xscale=-1] [align=left] {};
-            % Text Node
-            \draw (361.97,260.17) node [anchor=north east][inner sep=0.75pt]  [xscale=-1] [align=left] {};
-            % Text Node
-            \draw (182.78,227.99) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle \tau _{3} =\frac{w-w_{1}}{1-\overline{w_{1}} w}$};
-            % Text Node
-            \draw (187.78,288.09) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {
-                $\displaystyle\begin{aligned} 
-                    0\mapsfrom &w_{1}\\
-                    \frac{w_{2} -w_{1}}{1-\overline{w_{1}} w_{2}} \mapsfrom &w_{2}
-                \end{aligned}$};
-            % Text Node
-            \draw (64.61,75.67) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle z_{1}$};
-            % Text Node
-            \draw (57.4,115.32) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle z_{2}$};
-            % Text Node
-            \draw (390.44,45.85) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$\displaystyle \frac{z_{2} -z_{1}}{1-\overline{z_{1}} z_{2}}$};
-            % Text Node
-            \draw (415.08,96.45) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {0};
-            % Text Node
-            \draw (423.63,271.34) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {0};
-            % Text Node
-            \draw (389,287.82) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {$ \frac{w_{2} -w_{1}}{1-\overline{w_{1}} w_{2}}$};
-            % Text Node
-            \draw (66.5,293.62) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle w_{1}$};
-            % Text Node
-            \draw (53.88,257.57) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {$\displaystyle w_{2}$};
-            % Connection
-            \draw    (128.92,90.89) -- (347.13,89.88) ;
-            \draw [shift={(349.13,89.87)}, rotate = 539.73] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-            % Connection
-            \draw    (417.33,149.43) -- (416.79,206.34) ;
-            \draw [shift={(416.78,208.34)}, rotate = 270.54] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-            % Connection
-            \draw    (136.89,267.8) -- (356.97,268.63) ;
-            \draw [shift={(358.97,268.64)}, rotate = 180.22] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-            
+        \usetikzlibrary{arrows}
+        \usetikzlibrary{calc}
+        \begin{tikzpicture}[scale = 1.4,>=stealth']
+            \draw (0,0) circle [radius=1cm];
+            \draw[->] (-1.25,0) -- (1.25,0) coordinate (x axis);
+            \draw[->] (0, -1.25) -- (0, 1.25) coordinate (y axis);
+            \draw (1 cm,1pt) -- (1 cm,-1pt) node[anchor=north,fill=white] {1};
+            \coordinate[label=right:$z_1$] (B) at (0.5, -0.3);
+            \coordinate[label=right:$z_2$] (C) at (-0.4, 0.2);
+            \node[right] (A) at (1.3,0) {\space};
+            \node[left] (H) at (0,-1) {\space};
+            \fill[black] (B) circle (1pt);
+            \fill[black] (C) circle (1pt);
+        
+            \draw (5,0) circle [radius=1cm];
+            \draw[->] (3.75,0) -- (6.25,0) coordinate (x axis);
+            \draw[->] (5, -1.25) -- (5, 1.25) coordinate (y axis);
+            \draw (6 cm,1pt) -- (6 cm,-1pt) node[anchor=north,fill=white] {1};
+            \coordinate[label=left:{\tiny$\displaystyle\frac{z_2-z_1}{1-\overline{z_1}z_2}$}] (D) at (4.8, 0.2);
+            \coordinate (E) at (5, 0);
+            \node[left] (G) at (3.7,0) {\space};
+            \node[right] (R) at (5,-1) {\space};
+            \fill[black] (D) circle (1pt);
+            \fill[black] (E) circle (1pt) node[anchor=north, fill=white] {$0$};
+        
+        
+            \draw (0,-4) circle [radius=1cm];
+            \draw[->] (-1.25,-4) -- (1.25,-4) coordinate (x axis);
+            \draw[->] (0, -5.25) -- (0, -2.75) coordinate (y axis);
+            \coordinate (aux1) at (1, -4);
+            \draw ($(aux1) + (0, 1 pt)$) -- ($(aux1) + (0,-1pt)$) node[anchor=north,fill=white] {1};
+            \coordinate[label=below:$w_1$] (I) at (-.5, -4);
+            \coordinate[label=right:$w_2$] (J) at (0.3, -4.6);
+            \node[right, fill=white] (K) at (1.3,-4) {\space};
+            \node[left] (L) at (0,-3) {\space};
+            \fill[black] (I) circle (1pt);
+            \fill[black] (J) circle (1pt);
+        
+        
+            \draw (5,-4) circle [radius=1cm];
+            \draw[->] (3.75,-4) -- (6.25,-4) coordinate (x axis);
+            \draw[->] (5, -5.25) -- (5, -2.75) coordinate (y axis);
+            \coordinate (aux2) at (6, -4);
+            \draw ($(aux2) + (0, 1 pt)$) -- ($(aux2) + (0,-1pt)$) node[anchor=north,fill=white] {1};
+            \coordinate[label=left:{\tiny$\displaystyle\frac{w_2-w_1}{1-\overline{w_1}w_2} $}] (M) at (5.5, -3.3);
+            \coordinate (N)  at (5, -4);
+            \node[left] (P) at (3.7,-4) {\space};
+            \node[right] (Q) at (5,-3) {\space};
+            \fill[black] (M) circle (1pt);
+            \fill[black] (N) circle (1pt) node[anchor=north, fill=white] {$0$};
+        
+        
+            \path[->]
+            (A) edge node [pos=.5, above] {$\displaystyle \tau_1=\frac{z-z_1}{1-\overline{z_1}z}$} node[pos=.5, below] {\tiny$\displaystyle\begin{aligned} z_1&\mapsto 0 \\
+                z_2 &\mapsto  \frac{z_2-z_1}{1-\overline{z_1}z_2} \end{aligned}$ } (G)
+            (H) edge[bend right, dashed] node [left] {$f$} (L)
+            (K) edge node [pos=.5, above] {$\displaystyle \tau_3=\frac{w-w_1}{1-\overline{w_1}w}$} node[pos=.5, below] {\tiny$\displaystyle\begin{aligned} w_1&\mapsto 0 \\
+                w_2 &\mapsto  \frac{w_2-w_1}{1-\overline{w_1}w_2} \end{aligned}$ } (P)
+            (R) edge[bend left] node [right] {$\displaystyle \tau _{2} =z\frac{\frac{w_{2} -w_{1}}{1-\overline{w_{1}} w_{2}}}{\frac{z_{2} -z_{1}}{1-\overline{z_{1}} z_{2}}}$} node[pos=0.3, below, xshift=-1.2cm] {\tiny$\displaystyle\begin{aligned} 0&\mapsto 0 \\
+                 \tau_1(z_2) &\mapsto  \frac{w_2-w_1}{1-\overline{w_1}w_2}\end{aligned}$ }(Q);
         \end{tikzpicture}
+
         \caption{$f=\tau_3^{-1}\circ\tau_2\circ\tau_1$}\label{fig:lema-prev-pick}
     \end{figure}
 
@@ -660,7 +644,7 @@ Per últim, un lema que ens ajudarà amb la demostració del Teorema de Pick.
     i amb això termina la demostració del lema.
 \end{proof}
 
-\section{El Problema d'interpolació}
+\subsection{El Problema d'interpolació}
 Per fi sóm en condicions de resoldre el problema que dóna nom a aquest treball.
 
 Siguin $\{z_1,\dots,z_n\}$ un conjunt finit de punts diferents de $\D$. Pick va determinar  $\{w_1,\dots,w_n\}$ per als quals el problema d'interpolació
@@ -734,7 +718,69 @@ té una solució $\D$-holomorfa $f(z)$.
     
     Queda clar que sempre $\abs{w_j}\leq1$ i que el cas amb igualtat és trivial, per tant podem assumir que $\abs{w_n}<1$.
 
-    Mourem $z_n$ i $w_n$ a l'origen. Sigui
+    Volem reduir-nos a $n-1$ per tal d'aplicar les hipòtesis d'inducció. Per a això, movem $z_n$ i $w_n$ al 0 amb automorfismes del disc (\ref{fig:pick}).
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale = 1.5,>=stealth']
+            \draw (0,0) circle [radius=1cm];
+            \draw[->] (-1.25,0) -- (1.25,0) coordinate (x axis);
+            \draw[->] (0, -1.25) -- (0, 1.25) coordinate (y axis);
+            \draw (1 cm,1pt) -- (1 cm,-1pt) node[anchor=north,fill=white] {1};
+            \coordinate[label=right:$z_1$] (B) at (0.5, -0.3);
+            \coordinate[label=right:$z_n$] (C) at (-0.4, 0.2);
+            \node[right] (A) at (1.3,0) {\space};
+            \node[left] (H) at (0,-1) {\space};
+            \fill[black] (B) circle (1pt);
+            \fill[black] (C) circle (1pt);
+
+            \draw (5,0) circle [radius=1cm];
+            \draw[->] (3.75,0) -- (6.25,0) coordinate (x axis);
+            \draw[->] (5, -1.25) -- (5, 1.25) coordinate (y axis);
+            \draw (6 cm,1pt) -- (6 cm,-1pt) node[anchor=north,fill=white] {1};
+            \coordinate[label=left:$z'_1$] (D) at (4.8, 0.2);
+            \coordinate[label=below:{$z'_n=0$}] (E) at (5, 0);
+            \node[left] (G) at (3.7,0) {\space};
+            \node[right] (R) at (5,-1) {\space};
+            \fill[black] (D) circle (1pt);
+            \fill[black] (E) circle (1pt);
+
+
+            \draw (0,-3) circle [radius=1cm];
+            \draw[->] (-1.25,-3) -- (1.25,-3) coordinate (x axis);
+            \draw[->] (0, -4.25) -- (0, -1.75) coordinate (y axis);
+            \coordinate (aux1) at (1, -3);
+            \draw ($(aux1) + (0, 1 pt)$) -- ($(aux1) + (0,-1pt)$) node[anchor=north,fill=white] {1};
+            \coordinate[label=below:$w_1$] (I) at (-.5, -3);
+            \coordinate[label=right:$w_n$] (J) at (0.3, -3.6);
+            \node[right, fill=white] (K) at (1.3,-3) {\space};
+            \node[left] (L) at (0,-2) {\space};
+            \fill[black] (I) circle (1pt);
+            \fill[black] (J) circle (1pt);
+
+
+            \draw (5,-3) circle [radius=1cm];
+            \draw[->] (3.75,-3) -- (6.25,-3) coordinate (x axis);
+            \draw[->] (5, -4.25) -- (5, -1.75) coordinate (y axis);
+            \coordinate (aux2) at (6, -3);
+            \draw ($(aux2) + (0, 1 pt)$) -- ($(aux2) + (0,-1pt)$) node[anchor=north,fill=white] {1};
+            \coordinate[label=left:$w'_1$] (M) at (5.5, -2.3);
+            \coordinate[label=below:{$w'_n=0$}] (N) at (5, -3);
+            \node[left] (P) at (3.7,-3) {\space};
+            \node[right] (Q) at (5,-2) {\space};
+            \fill[black] (M) circle (1pt);
+            \fill[black] (N) circle (1pt);
+
+        
+            \path[->]
+            (A) edge node [pos=.5, above] {$\displaystyle z'_j=\frac{z_j-z_n}{1-\overline{z_n}z_j}$} (G)
+            (H) edge[bend right] node [left] {$f$} (L)
+            (K) edge node [pos=.5, above] {$\displaystyle w'_j=\frac{w_j-w_n}{1-\overline{w_n}w_j}$} (P)
+            (R) edge[bend left] node [right] {$g$} (Q);
+        \end{tikzpicture}
+        \caption{}\label{fig:pick}
+    \end{figure}
+     Sigui
     \begin{displaymath}
         z_j'=\frac{z_j-z_n}{1-\overline{z_n}z_j},\; 1\leq j\leq n;\quad w_j'=\frac{w_j-w_n}{1-\overline{w_n}w_j},\; 1\leq j\leq n.
     \end{displaymath}
