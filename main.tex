@@ -13,12 +13,14 @@
     \end{titlepage}
 
     \begin{abstract}
-        L'anàlisi complexa sol destacar per l'elegància i finor dels seus teoremes i demostracions, des del Teorema de representació en sèries de potències fins al Teorema global de Cauchy. Aquest treball, però, busca resoldre un problema molt més concret. Allunyem-nos de Teoremes omnipotents, de resultats que ressonen per tot el món complex. Centrem-nos en un petit disc de radi 1. Mirem dos conjunts finits de punts. Hi pot haver una funció holomorfa que els aparelli? 
+        L'anàlisi complexa sol destacar per l'elegància i finor dels seus teoremes i demostracions, des del Teorema de representació en sèries de potències fins al Teorema global de Cauchy. Aquest treball, però, busca resoldre un problema molt més concret. Allunyem-nos de teoremes omnipotents, de resultats que ressonen per tot el món complex. Centrem-nos en un petit disc de radi 1. Mirem dos conjunts finits de punts. Hi pot haver una funció holomorfa que els aparelli? 
         
-        El camí que recorre aquest treball termina amb el resultat que va donar Georg Pick l'any 1917. Veurem com l'anàlisi complexa, amb la seva elegància habitual, redueix el problema a l'estudi del signe d'una forma quadràtica. Això serà gràcies al Lema de Schwarz-Pick, una generalització natural del conegut Lema de Schwarz.
+        El camí que recorre aquest treball termina amb el resultat que va donar Georg Pick l'any 1917. Veurem com l'anàlisi complexa, amb la seva elegància habitual, redueix el problema a l'estudi del signe d'una forma quadràtica. Això serà gràcies al Lema de Schwarz-Pick, una generalització natural del conegut Lema de Schwarz que enunciarem després de parlar d'homografies i d'automorfismes del disc. La funció que resoldrà el problema serà un producte de Blaschke finit, una classe de funcions molt útils per a la interpolació i aproximació de funcions dins $\D$.
 
 
     \end{abstract}
+\newpage
+\tableofcontents
 \newpage
     \section{Introducció}
         L'objectiu d'aquest treball és donar un resultat sobre el següent problema d'interpolació:
@@ -28,14 +30,19 @@
             \end{equation}
             i $f\colon\D\to\D$ holomorfa?
         \end{problem}
-        Per a això, començarem amb un breu estudi de les homografies. Aquestes ens permetran endinsar-nos en els automorfismes de \(\D\) i demostrar dos resultats de Schwarz i de Pick.
 
-        Posteriorment parlarem de l'última peça clau: els productes de Blaschke finits. Finalment, demostrarem el teorema de Pick:
+        La resposta ens la donarà el Teorema de Pick (1917), anomenat per Georg Pick, matemàtic austríac jueu que després de tota una vida dedicada a l'estudi de les matemàtiques va perdre la seva plaça a la Academia Txeca de les Arts i les Ciències amb l'arribada del nazisme al poder. Va morir als 82 anys al camp de concentració de Theresienstadt.
+
+
+        Per poder enunciar i demostrar aquest teorema, començarem amb un breu estudi de les homografies. Aquestes ens permetran endinsar-nos en els automorfismes de \(\D\) i demostrar el famós Lema de Schwarz. Ens serà més útil una generalització feta junt amb el propi Georg Pick, el Lema de Schwarz-Pick.
+
+        Posteriorment parlarem de l'última peça clau: els productes de Blaschke finits. Aquesta classe de funcions del disc són precisament les solucions del Problema \ref{problema}. Finalment, arribarem al teorema final:
         \begin{theorem*}[Pick]
-            Existeix solució per al problema \normalfont{\ref{problema}} si i només si la forma quadràtica \begin{displaymath}
+            Existeix solució per al problema \ref{problema} 
+            si i només si la forma quadràtica \begin{displaymath}
                 Q_n(t_1,\dots,t_n)=\sum_{j,k=1}^n=\frac{1-w_j\overline{w_k}}{1-z_j\overline{z_k}}t_j\overline{t_k}
             \end{displaymath}
-            és semidefinida positiva. En aquest cas, existeix un producte de Blaschke finit de grau com a molt $n$ que resol \normalfont{\ref{problema}}.
+            és semidefinida positiva. En aquest cas, existeix un producte de Blaschke finit de grau com a molt $n$ que resol \ref{problema}.
         \end{theorem*}
 
         Aquesta tasca, però, és inabordable sense fer algunes concessions. La més important és que donarem per fetes la majoria de nocions que s'obtindrien en un curs elemental d'anàlisi complexa. Si més no, fins al teorema del mòdul màxim (tot i que l'enunciarem per refrescar la memòria).

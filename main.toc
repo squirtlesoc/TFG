@@ -1,0 +1,7 @@
+\babel@toc {catalan}{}
+\contentsline {section}{\numberline {1}Introducció}{3}{section.1}%
+\contentsline {section}{\numberline {2}Homografies}{3}{section.2}%
+\contentsline {section}{\numberline {3}Automorfismes al Disc Unitat}{7}{section.3}%
+\contentsline {section}{\numberline {4}El Teorema de Pick}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Productes de Blaschke finits}{11}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}El Problema d'interpolació}{14}{subsection.4.2}%
