@@ -15,7 +15,7 @@
     \begin{abstract}
         L'anàlisi complexa sol destacar per l'elegància i finor dels seus teoremes i demostracions, des del Teorema de representació en sèries de potències fins al Teorema global de Cauchy. Aquest treball, però, busca resoldre un problema molt més concret. Allunyem-nos de teoremes omnipotents, de resultats que ressonen per tot el món complex. Centrem-nos en un petit disc de radi 1. Mirem dos conjunts finits de punts. Hi pot haver una funció holomorfa que els aparelli? 
         
-        El camí que recorre aquest treball termina amb el resultat que va donar Georg Pick l'any 1917. Veurem com l'anàlisi complexa, amb la seva elegància habitual, redueix el problema a l'estudi del signe d'una forma quadràtica. Això serà gràcies al Lema de Schwarz-Pick, una generalització natural del conegut Lema de Schwarz que enunciarem després de parlar d'homografies i d'automorfismes del disc. La funció que resoldrà el problema serà un producte de Blaschke finit, una classe de funcions molt útils per a la interpolació i aproximació de funcions dins $\D$.
+        El camí que recorre aquest treball acaba amb el resultat que va donar Georg Pick l'any 1917. Veurem com l'anàlisi complexa, amb la seva elegància habitual, redueix el problema a l'estudi del signe d'una forma quadràtica. Això serà gràcies al Lema de Schwarz-Pick, una generalització natural del conegut Lema de Schwarz que enunciarem després de parlar d'homografies i d'automorfismes del disc. La funció que resoldrà el problema serà un producte de Blaschke finit, una classe de funcions molt útils per a la interpolació i aproximació de funcions dins $\D$.
 
 
     \end{abstract}
@@ -25,10 +25,12 @@
     \section{Introducció}
         L'objectiu d'aquest treball és donar un resultat sobre el següent problema d'interpolació:
         \begin{problem}\label{problema}
-            Siguin $z_1,\dots,z_n$ punts diferents dins el disc unitat $\D$. Quines condicions han de complir $w_1,\dots,w_n$ per tal de que existeixi una funció $f$ amb\begin{equation}
+            Siguin $z_1,\dots,z_n$ punts diferents dins el disc unitat $\D$. Quines condicions han de complir $w_1,\dots,w_n$ per tal de que existeixi una funció holomorfa $f\colon\D\to\D$ amb
+            
+            \begin{equation}
                 f(z_j)=w_j,\quad j=1,\dots,n
             \end{equation}
-            i $f\colon\D\to\D$ holomorfa?
+            
         \end{problem}
 
         La resposta ens la donarà el Teorema de Pick (1917), anomenat per Georg Pick, matemàtic austríac jueu que després de tota una vida dedicada a l'estudi de les matemàtiques va perdre la seva plaça a la Academia Txeca de les Arts i les Ciències amb l'arribada del nazisme al poder. Va morir als 82 anys al camp de concentració de Theresienstadt.
@@ -42,7 +44,7 @@
             si i només si la forma quadràtica \begin{displaymath}
                 Q_n(t_1,\dots,t_n)=\sum_{j,k=1}^n=\frac{1-w_j\overline{w_k}}{1-z_j\overline{z_k}}t_j\overline{t_k}
             \end{displaymath}
-            és semidefinida positiva. En aquest cas, existeix un producte de Blaschke finit de grau com a molt $n$ que resol \ref{problema}.
+            és semidefinida positiva. En aquest cas, existeix un producte de Blaschke finit de grau com a molt $n$ que resol el problema \ref{problema}.
         \end{theorem*}
 
         Aquesta tasca, però, és inabordable sense fer algunes concessions. La més important és que donarem per fetes la majoria de nocions que s'obtindrien en un curs elemental d'anàlisi complexa. Si més no, fins al teorema del mòdul màxim (tot i que l'enunciarem per refrescar la memòria).
@@ -77,15 +79,15 @@
 
             \caption{L'esfera de Riemann.}
         \end{figure}
-        No ens cal preocupar-nos per les propietats topològiques de \(S^2\). Per al que a nosaltres ens ocupa, l'esfera de Riemann es comporta com \(\mathbb{C}\), però ens permet tractar \(\infty\) estalviant-nos límits. És fàcil veure que \(1/0 = \infty\) i que \(1/\infty = 0\).
+        No ens cal preocupar-nos per les propietats topològiques de \(S^2\). Per al que a nosaltres ens ocupa, l'esfera de Riemann es comporta com \(\mathbb{C}\), però ens permet tractar \(\infty\) estalviant-nos límits. Entendrem que \(1/0 = \infty\) i que \(1/\infty = 0\).
 
         De fet, aquest és el motiu principal per introduir el concepte de \(S^2\), ja que serveix de "cèrcol" per no deixar escapar els punts que habitualment hauríem de considerar pols de funcions altrament holomorfes.
 
-        Siguin \(a,b,c,d\in S^2\). Una \textbf{homografia} és una aplicació de la forma
+        Siguin \(a,b,c,d\in \C\). Una \textbf{homografia} és una aplicació de la forma
         \begin{displaymath}
             T(z)=\frac{az+b}{cz+d},\quad ad-bc\neq0.
         \end{displaymath}
-        Observem que si $z\neq -d/c$, les homografies són holomorfes a $\C$ i $ad-bc\neq0$ ens dona conformitat.
+        Observem que $T$ és holomorfa a $\C\mysetminus\{-d/c\}$ i $ad-bc\neq0$ ens dona conformitat.
         
         \begin{proposition}
             Les homografies són invertibles i la seva inversa és una homografia.
@@ -100,28 +102,29 @@
         \end{proof}
 
         \begin{corollary}
-            Les homografies són bijeccions holomorfes de $S^2$.
+            Les homografies són bijeccions meromorfes de $\C$.
         \end{corollary}
 
         \begin{lemma}
-            Sigui $f$  una funció holomorfa tret d'un nombre finit de punts. Si $f$ té un pol d'ordre igual o superior a 2, $f$ no pot ser injectiva.  
+            Si una funció $f$ té un pol d'ordre igual o superior a 2, $f$ no pot ser injectiva.  
         \end{lemma}
 
         \begin{proof}
-            Considerem la funció $1/f$. $f$ és injectiva si i només si $1/f$ ho és. Per tant demostrar la no injectivitat de $1/f$ és suficient.
+            Considerem la funció $1/f$. Com $f$ és injectiva si i només si $1/f$ ho és. És suficient demostrar la no injectivitat de $1/f$.
             
             Sigui $a$ un pol d'ordre $m>1$ de $f$. Llavors $a$ és un zero d'ordre $m$ de $1/f$, per tant 
             \begin{displaymath}
                 \frac{1}{f}=(z-a)^mh(z),\quad  h(a)\neq0
             \end{displaymath} 
-            per a una certa funció holomorfa $h$.
+            per a una certa funció holomorfa $h$ en un entorn del punt $a$.
 
-            Considerem $ g(z)=(z-a)h(z)^{1/m}$. Aquesta funció és holomorfa i ben definida sobre l'arrel principal $m$-èssima. La seva derivada és 
+            Considerem $ g(z)=(z-a)h(z)^{1/m}$. Aquesta funció és holomorfa i ben definida a un entorn del punt $a$. La seva derivada és 
             \begin{displaymath}
                 g'(z)=\frac{1}{m}(z-a)h(z)^{\frac{1}{m}-1}h'(z)+h(z)^{\frac{1}{m}}
             \end{displaymath} 
             per tant $g'(a)\neq0$.
-            Tenim, doncs, un entorn de $a$ on $g$ és una funció holomorfa i invertible que envia $a$ al zero. Amb el canvi de coordenades $ w  = g(z)$, veiem que localment \begin{displaymath}
+            Tenim, doncs, un entorn de $a$ on $g$ és una funció holomorfa i invertible que envia $a$ al zero. Amb el canvi de coordenades $ w  = g(z)$, veiem que localment 
+            \begin{displaymath}
                  w ^m = \frac{1}{f(g^{-1}(z))}
             \end{displaymath} 
             per tant en un entorn de $a$ la funció $1/f$ es comporta com la funció $z\to z^m$, que per $m>1$ no és injectiva.
@@ -147,7 +150,7 @@
         \end{proof}
 
         \begin{proposition}\label{prop:comp_homo}
-            La composició finita d'homografies és equivalent a una sola homografia.
+            La composició finita d'homografies és una sola homografia.
         \end{proposition}
 
         \begin{proof}
@@ -168,7 +171,7 @@
 
         Degut a això, podem descompondre totes les homografies en combinacions de tres classes fonamentals:
         
-        \begin{theorem}
+        \begin{theorem}\label{th:deschomo}
             Tota homografia és composició finita de translacions, rotacions, homotècies i inversions.
         \end{theorem}
         
@@ -208,27 +211,32 @@
     \end{proposition}
 
     \begin{proof}
-        Siguin $z_1,z_2,z_3,z_4\in \C$ (finits); $z'_1,z'_2,z'_3,z'_4$ la seva imatge per una homografia que no envii cap a $\infty$. Tenim 
-        \footnotesize
-        \begin{align*}
-            z'_1-z'_3 &=\frac{az_1+b}{cz_1+d}-\frac{az_3+b}{cz_3+d}\\
-            &= \frac{acz_1z_3+adz_1+bcz_3+bd-acz_1z_3-adz_3-bcz_1-bd}{(cz_1+d)(cz_3+d)}
-            = \frac{(ad-bc)(z_1-z_3)}{(cz_1+d)(cz_3+d)}.
-        \end{align*}
-        \normalsize
-        Ídem per a $z'_1-z'_4, z'_2-z'_4, z'_2-z'_3$, per tant un cop simplifiquem tenim 
+        % Siguin $z_1,z_2,z_3,z_4\in \C$ (finits); $z'_1,z'_2,z'_3,z'_4$ la seva imatge per una homografia que no envii cap a $\infty$. Tenim 
+        % \footnotesize
+        % \begin{align*}
+        %     z'_1-z'_3 &=\frac{az_1+b}{cz_1+d}-\frac{az_3+b}{cz_3+d}\\
+        %     &= \frac{acz_1z_3+adz_1+bcz_3+bd-acz_1z_3-adz_3-bcz_1-bd}{(cz_1+d)(cz_3+d)}
+        %     = \frac{(ad-bc)(z_1-z_3)}{(cz_1+d)(cz_3+d)}.
+        % \end{align*}
+        % \normalsize
+        % Ídem per a $z'_1-z'_4, z'_2-z'_4, z'_2-z'_3$, per tant un cop simplifiquem tenim 
+        % \begin{displaymath}
+        %     \frac{(z'_1-z'_3)(z'_2-z'_4)}{(z'_1-z'_4)(z'_2-z'_3)}=\frac{\frac{(ad-bc)^2(z_1-z_3)(z_2-z_4)}{(cz_1+d)(cz_2+d)(cz_3+d)(cz_4+d)}}{\frac{(ad-bc)^2(z_1-z_4)(z_2-z_3))}{(cz_1+d)(cz_2+d)(cz_3+d)(cz_4+d)}} = \frac{(z_1-z_3)(z_3-z_4)}{(z_1-z_4)(z_2-z_3)}.
+        % \end{displaymath}
+        % Per últim, suposem un dels punts és $\infty$. Per exemple, sigui $z'_1=\infty$, tenim que $d=-cz_1$. La raó doble de les imatges és 
+        % \begin{align*}
+        %     (\infty,z'_2,z'_3,z'_4) &=\frac{(z'_2-z'_4)}{(z'_2-z'_3)}=\frac{(z_2-z_4)(cz_3+d)}{(z_2-z_3)(cz_4+d)}=\frac{(z_2-z_4)(cz_3-cz_1)}{(z_2-z_3)(cz_4-cz_1)}\\
+        %     &=\frac{(z_1-z_3)(z_2-z_4)}{(z_1-z_4)(z_2-z_3)},
+        % \end{align*}
+        % per tant es conserva.
+        Pel Teorema \ref{th:deschomo}, és suficient veure que per a tota inversió es conserva la raó doble. És a dir, que 
         \begin{displaymath}
-            \frac{(z'_1-z'_3)(z'_2-z'_4)}{(z'_1-z'_4)(z'_2-z'_3)}=\frac{\frac{(ad-bc)^2(z_1-z_3)(z_2-z_4)}{(cz_1+d)(cz_2+d)(cz_3+d)(cz_4+d)}}{\frac{(ad-bc)^2(z_1-z_4)(z_2-z_3))}{(cz_1+d)(cz_2+d)(cz_3+d)(cz_4+d)}} = \frac{(z_1-z_3)(z_3-z_4)}{(z_1-z_4)(z_2-z_3)}.
+            \left( \frac{1}{z_1}, \frac{1}{z_2}, \frac{1}{z_3}, \frac{1}{z_4} \right)=\left( z_1, z_2, z_3, z_4 \right),\quad \text{per a tot }\, z_1,z_2,z_3,z_4\in\C.
         \end{displaymath}
-        Per últim, suposem un dels punts és $\infty$. Per exemple, sigui $z'_1=\infty$, tenim que $d=-cz_1$. La raó doble de les imatges és 
-        \begin{align*}
-            (\infty,z'_2,z'_3,z'_4) &=\frac{(z'_2-z'_4)}{(z'_2-z'_3)}=\frac{(z_2-z_4)(cz_3+d)}{(z_2-z_3)(cz_4+d)}=\frac{(z_2-z_4)(cz_3-cz_1)}{(z_2-z_3)(cz_4-cz_1)}\\
-            &=\frac{(z_1-z_3)(z_2-z_4)}{(z_1-z_4)(z_2-z_3)},
-        \end{align*}
-        per tant es conserva.
+        Això es comprova fent un càlcul senzill.
     \end{proof}
 
-    \begin{theorem}
+    \begin{theorem}\label{th:homounic}
         L'única homografia que deixa fixos més de dos punts és la identitat.
     \end{theorem}
 
@@ -237,29 +245,26 @@
         \begin{displaymath}
             \frac{az+b}{cz+d}=z\implies cz^2+(d-a)z+b=0.
         \end{displaymath}
-        Si $c=0$, només hi ha un punt fix $z=\frac{b}{d-a}$. Si $c\neq0$, tenim una equació de segon grau i l'única forma que es compleixi per a tot $z$ és que $c=b=0$ i $a=d$, per tant 
-        \begin{displaymath}
-            \frac{az+b}{cz+d}=\frac{az}{a}=z\implies \text{és la aplicació identitat.}
-        \end{displaymath}
+        Si hi ha més de dos punts fixos, deduïm que $c=b=0$, $d=a$ i, per tant, l'aplicació és la identitat.
     \end{proof}
 
     Això ens porta al teorema de caracterització de les homografies.
 
     \begin{theorem}
         Tota homografia està definida per les imatges de tres punts diferents.
-        Dit d'una altra manera, donats $z_1,z_2,z_3,z_4,z'_1,z'_2,z'_3,z'_4\in\C$, existeix una única homografia $T$ tal que $T(z_1)=z'_1$, $T(z_2)=z'_2$, $T(z_3)=z'_3$, $T(z_4)=z'_4$.
+        Dit d'una altra manera, donats $z_1,z_2,z_3,z'_1,z'_2,z'_3\in\C$, existeix una única homografia $T$ tal que $T(z_1)=z'_1$, $T(z_2)=z'_2$, $T(z_3)=z'_3$.
     \end{theorem}
 
     \begin{proof}
         Demostrem primer la unicitat. Siguin $S$, $T$ dues homografies tals que $S(z_i)=T(z_i)=z'_i$. Llavors, per Proposició \ref{prop:comp_homo}, $S^{-1}T$ és una homografia que compleix 
         \begin{displaymath}
-            S^{-1}T(z_i)=S^{-1}(z'_i)=z_i\, i=1,\dots4.
+            S^{-1}T(z_i)=S^{-1}(z'_i)=z_i\, i=1,\dots3.
         \end{displaymath}
-        Com té quatre punts fixos, $S^{-1}T=id\implies T=S$.
+        Com té tres punts fixos, pel Teorema \ref{th:homounic}  $S^{-1}T=id$. Per tant, $T=S$.
 
         Per veure l'existència, recordem que per (\ref{eq:rao_doble}), la rao doble $(z,z_1,z_2,z_3)$ ens envia $z_1\to1,\, z_2\to0,\, z_3\to\infty$. 
 
-        Siguin $S=(z,z'_1,z'_2,z'_3)$ i $T=(z,z_1,z_2,z_3)$
+        Siguin $S(z)=(z,z'_1,z'_2,z'_3)$ i $T(z)=(z,z_1,z_2,z_3)$
         Llavors, la composició 
         \begin{displaymath}
             S^{-1}\circ T
@@ -274,7 +279,7 @@
     Com ja hem comentat prèviament, centrarem la nostra atenció exclusivament a $\D$. Per tant, els teoremes i proposicions que enunciarem a partir d'ara seran sempre en aquesta regió. Recordem que definim com Disc Unitat
     
     \begin{equation*}
-            \D:=\{\, z\in\C\mid |z|<1\, \}.
+            \D:=\{\, z\in\C\colon |z|<1\, \}.
     \end{equation*}
 
     \noindent Observem que $\D$ és un domini acotat de $\C$.
@@ -283,12 +288,12 @@
     
     \begin{theorem}[Teorema del Mòdul Màxim]\label{th:TMM}
         Sigui $K$ la clausura d'una regió acotada $\Omega$. Si $f$ és continua en $K$ i holomorfa en $\Omega$, llavors \begin{equation}
-            \abs{f(z)}\leq\norm{f}_{\partial\Omega},\;\forall z\in\Omega.
+            \abs{f(z)}\leq\sup\{\abs{f(w)}\colon w\in\partial\Omega\},\;\text{per a tot } z\in\Omega.
         \end{equation}
         Si es dona la igualtat per a algun $z\in\Omega$, llavors $f$ és constant.
     \end{theorem}
     
-    Anomenarem $\mathbbb{D}$\textbf{-holomorfisme} o funció $\mathbbb{D}$\textbf{-holomorfa} a totes aquelles funcions $\D\to\D$ holomorfes.
+    Anomenarem $\mathbbb{D}$\textbf{-holomorfisme} o funció $\mathbbb{D}$\textbf{-holomorfa} a totes aquelles funcions  holomorfes que envien $\D$ en si mateix.
     
     Enunciem ara el Teorema de caracterització dels automorfismes holomorfs de $\D$:
     
@@ -310,19 +315,20 @@
         \begin{align*}
             \frac{\abs{a-z}}{\abs{1-\overline{a}z}}<1 &\iff \abs{a-z}^2<\abs{1-\overline{a}z}^2\\
             &\iff\abs{a}^2+\abs{z}^2-2\Re{a\overline{z}}<1+\abs{\overline{a}z}^2-2\Re{\overline{\overline{a}z}}\iff\\
-            &\iff\abs{a}^2\abs{z}^2-\abs{a}^2\abs{z}^2-1<0\iff\left( \abs{z}^2-1 \right)\left( 1-\abs{a}^2 \right)<0\\
+            &\iff\left( \abs{z}^2-1 \right)\left( 1-\abs{a}^2 \right)<0\\
             &\iff\abs{a}<1.
         \end{align*}
         Per tant $\D\xrightarrow{T} \D$ és automorfisme holomorf.
 
         Vegem ara la implicació contraria. Sigui $T$ un $\D$-holomorfisme bijectiu. 
-        Suposem primer que $T(0)=0$. Com $T$ és holomorfa, és una serie de potencies i si deixa el 0 fix, $\frac{T(z)}{z}$ és holomorfa en $\D$. Considerem $\abs{\frac{T(z)}{z}}$ en un disc $U$ de radi $r<1$ centrat a l'origen. Pel Teorema del Mòdul Màxim \ref{th:TMM}, $T(z)/z$ és màxim en $\abs{z}=r$. Llavors en $U$ tenim 
+        Suposem primer que $T(0)=0$. Com $T$ és holomorfa, és una serie de potencies i si deixa el 0 fix, $\frac{T(z)}{z}$ és holomorfa en $\D$. Considerem $\abs{\frac{T(z)}{z}}$ en un disc $U$ de radi $r<1$ centrat a l'origen. Pel Teorema del Mòdul Màxim \ref{th:TMM}, $\abs{T(z)/z}$ és màxim en $\abs{z}=r$. Llavors en $U$ tenim 
         \begin{displaymath}
-            \abs{\frac{T(z)}{z}}<\frac{1}{r}\xrightarrow{r\to1}\abs{\frac{T(z)}{z}}\leq1,\, \text{en }\D.
+            \abs{\frac{T(z)}{z}}\leq\frac{1}{r}.
         \end{displaymath}
-        Sigui $S$ la inversa de $T$. Pel mateix raonament tenim $\abs{\frac{S(z)}{z}}<1$ en $\D$. Així doncs,
+        Fent tendir $r\to1$, deduïm que $\abs{T(z)}\leq\abs{z}$.
+        Sigui $S$ la inversa de $T$. Pel mateix raonament tenim $\abs{\frac{S(z)}{z}}\leq1$ per a tot $z\in\D$. Si notem $z'=T(z)$, llavors
         \begin{displaymath}
-            \frac{S(z)}{z}=\frac{z}{T(z)}\implies \abs{\frac{T(z)}{z}}=1,\; \forall z\in\D.
+            1\geq\abs{\frac{S(z')}{z'}}=\abs{\frac{z}{T(z)}}\implies \abs{\frac{T(z)}{z}}=1,\; \text{per a tot } z\in\D.
         \end{displaymath}
         i com el valor absolut és constant, també ho és la funció (pel fet de ser holomorfa). Llavors 
         
@@ -350,7 +356,7 @@
         \varphi_a(z):=\frac{a-z}{1-\overline{a}z}.
     \end{equation}
 
-    Vegem ara un clàssic de l'anàlisi complexa.
+    Vegem ara un resultat clàssic de l'anàlisi complexa.
 
     \begin{theorem}[Lema de Schwarz]\label{th:sch}
         Sigui $f:\D\to\D$ una funció holomorfa amb $f(0)=0$.
@@ -378,7 +384,7 @@
             \sup_{z\in\D}\abs{h(z)}\leq 1\implies \abs{f(z)}\leq \abs{z}.
         \end{equation}
         
-        Veiem també que si $\abs{f(z_0)}=\abs{z_0}$ per a algun $z_0\in\D\setminus\{0\}$, llavors $\abs{h(z_0)}=1$ i, pel teorema del mòdul màxim, $h$ és constant de mòdul 1. Així, $\exists\alpha\in\mathbb{R}$ tal que 
+        Veiem també que si $\abs{f(z_0)}=\abs{z_0}$ per a algun $z_0\in\D\setminus\{0\}$, llavors $\abs{h(z_0)}=1$ i, pel teorema del mòdul màxim, $h$ és constant de mòdul 1. Així, existeix $\alpha\in\mathbb{R}$ tal que 
         \begin{displaymath}
             f(z)=zh(z)=ze^{i\alpha}, \; \forall z\in\D.
         \end{displaymath}
@@ -391,7 +397,7 @@
             \abs{f'(0)}=\lim_{z\to0}\frac{\abs{f(z)}}{\abs{z}}=\lim_{z\to0}\abs{h(z)}=\abs{h(0)}\leq1.
         \end{equation} 
     
-        A més, si $\abs{f'(0)}=\abs{h(0)}=1$, pel teorema del mòdul màxim un altre cop tenim $h=e^{i\alpha}$ per a un cert $\alpha\in\mathbb{R}$ i per tant $f(z)=e^{i\alpha}z$, $\forall z\in\D$.
+        A més, si $\abs{f'(0)}=\abs{h(0)}=1$, pel teorema del mòdul màxim un altre cop tenim $h=e^{i\alpha}$ per a un cert $\alpha\in\mathbb{R}$ i per tant $f(z)=e^{i\alpha}z$, per a tot $z\in\D$.
     \end{proof}
 
     No tan famosa és una generalització d'aquest lema, on es relaxen les hipòtesis i no es suposa que $f(0)=0$. Aquest és el lema de Schwarz-Pick:
@@ -399,37 +405,35 @@
     \begin{theorem}[Lema de Schwarz-Pick]\label{lema:SP}
         Sigui $f\colon\D\to\D$ una funció holomorfa. Llavors
         \begin{enumerate}[(i)]
-            \item \(\displaystyle \abs{\frac{f(z)-f( w )}{1-f(z)\overline{f( w )}}}\leq\frac{z- w }{1-z\overline{ w }},\text{ per a tot }z, w \in\D\).
+            \item \(\displaystyle \abs{\frac{f(z)-f( w )}{1-f(z)\overline{f( w )}}}\leq\abs{\frac{z- w }{1-z\overline{ w }}},\text{ per a tot }z, w \in\D\).
             \item \(\displaystyle \frac{\abs{f'(z)}}{1-\abs{f(z)}^2}\leq\frac{1}{1-\abs{z}^2}\text{ per a tot }z\in\D\).
         \end{enumerate}
         La igualtat en tots dos casos es dona si $f$ és automorfisme de $\D$. Si la igualtat de \textit{(i)} es compleix per a uns $z, w$ amb $z\neq w $, o si es dona en \textit{(ii)} per a algun $z$, llavors $f$ és automorfisme de $\D$.
     \end{theorem} 
 
     \begin{proof}
-        Sigui $g = \varphi_{f( w )}\circ f\circ \varphi_{- w }$. $g$ és un automorfisme de $\D$ holomorf. 
-        \begin{sloppypar}Com \({\displaystyle g(z)=\varphi_{f( w )}\left( f\left( \frac{z+ w }{1+\overline{ w }z} \right) \right)}\), en particular tenim $g(0)=\varphi_{f( w )}\left( f( w ) \right)=0$. Pel lema de Schwarz \ref{th:sch}, $\abs{g(\xi)}\leq\abs{\xi}$ per a tot $\xi\in\D$ i 
+        Sigui $g = \varphi_{f( w )}\circ f\circ \varphi_{- w }$. En particular tenim $g(0)=\varphi_{f( w )}\left( f( w ) \right)=0$. Pel lema de Schwarz \ref{th:sch}, $\abs{g(\xi)}\leq\abs{\xi}$ per a tot $\xi\in\D$ i deduïm que 
         \begin{displaymath}
-            \abs{g(\varphi_{f( w )}(z))}\leq\abs{\varphi_{ w }(z)}\implies\abs{\varphi_{f( w )}(f(z))}\leq\abs{\varphi_ w (z)}.
+            \abs{\varphi_{f( w )}(f(z))}\leq\abs{\varphi_ w (z)}.
         \end{displaymath}
         Substituint cada terme per la seva definició 
         
         \begin{equation}
             \abs{\frac{f(z)-f( w )}{1-\overline{f( w )}f(z)}}\leq\abs{\frac{z- w }{1-\overline{ w }z}}.
-        \end{equation}\end{sloppypar}
+        \end{equation}
         
-        Si tenim igualtat per uns $z\neq w $, llavors $\abs{g(\varphi_ w (z))}=\abs{\varphi_ w (z)}$ i pel lema de Schwarz, $g(z)=ze^{i\alpha}\implies g$ és un automorfisme de $\D\implies$ $f=\varphi_{-f( w )}\circ g\circ \varphi_ w $ també.
+        Si tenim igualtat per uns $z\neq w $, llavors $\abs{g(\varphi_ w (z))}=\abs{\varphi_ w (z)}$ i pel lema de Schwarz, $g(z)=ze^{i\alpha}$.Per tant, $g$ és un automorfisme de $\D$ i deduïm que  $f=\varphi_{-f( w )}\circ g\circ \varphi_ w $ també ho és.
 
         Veiem ara \textit{(ii)}.
 
         \begin{displaymath}
-            \frac{\abs{f'(z)}}{1-\abs{f(z)}^2}=\lim_{ w \to z}\left( \abs{\frac{f(z)-f( w )}{z- w }}\frac{1}{\abs{1-\overline{f( w )}f(z)}} \right)\leq\lim_{ w \to z}\frac{1}{1-\overline{ w }z}=\frac{1}{1-\abs{z}^2}.
+            \frac{\abs{f'(z)}}{1-\abs{f(z)}^2}=\lim_{ w \to z}\left( \abs{\frac{f(z)-f( w )}{z- w }}\frac{1}{\abs{1-\overline{f( w )}f(z)}} \right)\leq\lim_{ w \to z}\abs{\frac{1}{1-\overline{ w }z}}=\frac{1}{1-\abs{z}^2}.
         \end{displaymath}
 
         Si tenim igualtat a \textit{(ii)}, considerem $z= w $ i com \(\displaystyle \varphi_{a}'(z)=\frac{1-\abs{a}^2}{(1-\overline{a}z)^2}\), tenim 
         \begin{align*}
-            \abs{g'(0)} &= \abs{\varphi_{f( w )}'(f\circ\varphi_{- w }'(0))}\abs{f'\left( \varphi_{- w }(0) \right)}\abs{\varphi_{- w }'(0)}\\
+            \abs{g'(0)} &= \abs{\varphi_{f( w )}'(f\circ\varphi_{- w }(0))}\abs{f'\left( \varphi_{- w }(0) \right)}\abs{\varphi_{- w }'(0)}\\
             &=\abs{\varphi_{f( w )}'\left( f( w ) \right)}\abs{f'( w )}\left( 1-\abs{ w }^2 \right)\\
-            &=\frac{1-\abs{f( w )}^2}{\left( 1-\overline{f( w )}f( w ) \right)^2}\abs{f'( w )}\left( 1-\abs{ w }^2 \right)\\
             &=\frac{\abs{f'( w )}}{1-\abs{f( w )}^2}\left( 1-\abs{ w }^2 \right)=1
         \end{align*}
         i, pel Lema de Schwarz, $g$ és automorfisme i $f=\varphi_{-f( w )}\circ g\circ \varphi_ w $ també. 
@@ -475,7 +479,7 @@ Ens seran útils les següents propietats:
 \end{proposition}
 
 \begin{proof}
-    No demostrarem $(i)$, $(ii)$, $(iii)$; el que sí veurem és la part final.
+   Les propietats $(i)$, $(ii)$, $(iii)$ són evidents. Veurem la part final.
 
     Sigui una funció $f$ que compleix les tres i $B$ un producte de Blaschke amb els mateixos zeros. Pel principi del mòdul màxim, $\abs{f/B}\leq1$ i $\abs{B/f}\leq1$ en $\D$. Per tant $f/B$ és constant.
 \end{proof}
@@ -487,7 +491,7 @@ Els productes de Blaschke, a més de ser útils en la interpolació (com veurem 
 \end{theorem}
 
 \begin{proof}
-    Com $f$ és holomorfa, és una serie de potencies. Siguin $\{c_k\}$ els seus coeficients. Demostrarem el teorema per inducció, trobant un producte de Blaschke de grau com a molt $n$ tal que els $n$ primers coeficients coincideixen amb els de $f$, i.e., 
+    Com $f$ és holomorfa, és una serie de potencies. Siguin $\{c_k\}$ els seus coeficients. Demostrarem el teorema per inducció, trobant un producte de Blaschke amb com a molt $n$ zeros tal que els $n$ primers coeficients coincideixen amb els de $f$, i.e., 
     \begin{displaymath}
         B_n=c_0+c_1z+\dots+c_{n-1}z^{n-1}+d_nz^n\dots
     \end{displaymath}
@@ -501,12 +505,12 @@ Els productes de Blaschke, a més de ser útils en la interpolació (com veurem 
     
     Sigui 
     \begin{displaymath}
-        B_n(z)= \frac{zB_{n-1}+f(0)}{1+\overline{f(0)}zB_{n-1}(z)}.
+        B_n(z)= \frac{zB_{n-1}(z)+f(0)}{1+\overline{f(0)}zB_{n-1}(z)}.
     \end{displaymath}
     Llavors $B_n(z)$ és un producte de Blaschke, $\text{grau}(B_n)=\text{grau}(zB_{n-1})\leq n$ i 
     \footnotesize
     \begin{displaymath}
-        f(z)-B_n(z)=\frac{zg(z)+f(0)}{1+\overline{f(0)}zg(z)}-\frac{zB_{n-1](z)+f(0)}}{1+\overline{f(0)}zB_{n-1}(z)}=\frac{(1-\abs{f(0)}^2z(g(z)-B_{n-1}(z)))}{(1+\overline{f(0)}zg(z))(1+\overline{f(0)}zB_{n-1}(z))}.
+        f(z)-B_n(z)=\frac{zg(z)+f(0)}{1+\overline{f(0)}zg(z)}-\frac{zB_{n-1}(z)+f(0)}{1+\overline{f(0)}zB_{n-1}(z)}=\frac{(1-\abs{f(0)}^2)z(g(z)-B_{n-1}(z))}{(1+\overline{f(0)}zg(z))(1+\overline{f(0)}zB_{n-1}(z))}.
     \end{displaymath}
     \normalsize
     Per tant $f-B_n$ té un zero d'ordre $n$ en $z=0$ i llavors \begin{displaymath}
@@ -519,7 +523,7 @@ Per últim, un lema que ens ajudarà amb la demostració del Teorema de Pick.
     Siguin $z_1, z_2\in\D$ diferents i siguin $ w _1, w _2\in\C$. Les següents afirmacions són equivalents:
     \begin{enumerate}[(i)]
         \item Existeix $f$ un $\D$-holomorfisme tal que $f(z_1)=w_1$, $f(z_2)=w_2$.
-        \item La forma quadràtica \(\displaystyle Q_2(t_1,t_2)=\sum_{j,k=1}^2\frac{1-w_j\overline{w_k}}{1-z_j\overline{z_k}}t_j\overline{t_k}\leq0\).
+        \item La forma quadràtica \(\displaystyle Q_2(t_1,t_2)=\sum_{j,k=1}^2\frac{1-w_j\overline{w_k}}{1-z_j\overline{z_k}}t_j\overline{t_k}\geq0\).
         \item \(\displaystyle \abs{\frac{w_2-w_1}{1-\overline{w_1}w_2}}\leq\abs{\frac{z_2-z_1}{1-\overline{z_1}z_2}}\).
         \item \(\displaystyle \frac{(1-\abs{w_2}^2)(1-\abs{w_1}^2)}{\abs{1-\overline{w_1}w_2}^2}\geq\frac{(1-\abs{z_1}^2)(1-\abs{z_2}^2)}{\abs{1-\overline{z_1}z_2}^2}\).
     \end{enumerate}
@@ -537,13 +541,9 @@ Per últim, un lema que ens ajudarà amb la demostració del Teorema de Pick.
     \normalsize
     Construïm $f=\tau_3^{-1}\circ\tau_2\circ\tau_1$ a partir de la figura (\ref{fig:lema-prev-pick}).
     \begin{displaymath}
-        \tau_1=\frac{z-z_1}{1-\overline{z_1}z},\quad \tau_2=z\frac{\frac{w_2-w_1}{1-\overline{w_1}w_2}}{\frac{z_2-z_1}{1-\overline{z_1}z_2}},\quad \tau_3=\frac{w-w_1}{1-\overline{w_1}w}.
+        \tau_1(z)=\frac{z-z_1}{1-\overline{z_1}z},\quad \tau_2(z)=z\frac{\frac{w_2-w_1}{1-\overline{w_1}w_2}}{\frac{z_2-z_1}{1-\overline{z_1}z_2}},\quad \tau_3(w)=\frac{w-w_1}{1-\overline{w_1}w}.
     \end{displaymath}
-    $\tau_1$ i $\tau_3$ són automorfismes del disc. Com 
-    \begin{displaymath}
-        (iii)\iff\abs{\frac{\frac{w_2-w_1}{1-\overline{w_1}w_2}}{\frac{z_2-z_1}{1-\overline{z_1}z_2}}}\leq1,
-    \end{displaymath}
-    $\tau_2$ també ho és i per tant $f$ és el $\D$-holomorfisme de $(i)$.
+    $\tau_1$ i $\tau_3$ són automorfismes del disc. Com $(iii)$ es compleix, $t_2$ porta $\D$ en $\D$ i per tant $f$ és el $\D$-holomorfisme de $(i)$.
 
     \begin{figure}[H]
         \centering
@@ -615,7 +615,7 @@ Per últim, un lema que ens ajudarà amb la demostració del Teorema de Pick.
     \large
     $(iii)\iff(iv)$
     \normalsize
-    És purament algebràic.
+    És un càlcul. Efectivament,
     \begin{align*}
         &\frac{\abs{w_2-w_1}}{\abs{1-\overline{w_1}w_2}}\leq\frac{\abs{z_2-z_1}}{\abs{1-z_2\overline{z_1}}} \iff 1-\abs{\frac{w_2-w_1}{1-\overline{w_1}w_2}}^2\geq1-\abs{\frac{z_2-z_1}{1-\overline{z_1}z_2}}^2\\
         &1-\abs{\frac{w_2-w_1}{1-\overline{w_1}w_2}}^2=\frac{\abs{1-\overline{w_1}w_2}^2-\abs{w_1-w_2}^2}{\abs{1-\overline{w_1}w_2}^2}=\frac{1-\abs{w_1}^2-\abs{w_2}^2+\abs{w_1w_2}^2}{\abs{1-\overline{w_1}w_2}^2}.
@@ -646,9 +646,9 @@ Per últim, un lema que ens ajudarà amb la demostració del Teorema de Pick.
     \begin{align*}
         &\frac{1-\left | w_1 \right |^2}{1-\left | z_1 \right |^2}\frac{1-\left | w_2 \right |^2}{1-\left | z_2 \right |^2}-\abs{\frac{1-w_2\overline{w_1}}{1-z_2\overline{z_1}}}^2\geq0\\
         &\iff\frac{(1-\abs{w_1}^2)(1-\abs{w_2}^2)}{(1-\abs{z_1}^2)(1-\abs{z_2}^2)}\geq\frac{\abs{1- \overline{w_1}w_2}^2}{\abs{1-\overline{z_1}z_2}^2}\\
-        &\iff\frac{(1-\abs{w_1}^2)(1-\abs{w_2}^2)}{\abs{1- \overline{w_1}w_2}^2}\geq\frac{(1-\abs{z_1}^2)(1-\abs{z_2}^2)}{\abs{1-\overline{z_1}z_2}^2}=(iv).
+        &\iff\frac{(1-\abs{w_1}^2)(1-\abs{w_2}^2)}{\abs{1- \overline{w_1}w_2}^2}\geq\frac{(1-\abs{z_1}^2)(1-\abs{z_2}^2)}{\abs{1-\overline{z_1}z_2}^2},
     \end{align*}
-    i amb això termina la demostració del lema.
+    que és la condició $(iv)$. Això acaba la demostració del lema.
 \end{proof}
 
 \subsection{El Problema d'interpolació}
@@ -665,9 +665,9 @@ té una solució $\D$-holomorfa $f(z)$.
 \begin{theorem}[Pick]
     Existeix $f$ $\D$-holomorfisme que satisfà la interpolació \normalfont{(\ref{eq:interpol})} si i només si la forma quadràtica 
     \begin{displaymath}
-        Q_n(t_1,\dots,t_n)=\sum_{j,k=1}^n=\frac{1-w_j\overline{w_k}}{1-z_j\overline{z_k}}t_j\overline{t_k}
+        Q_n(t_1,\dots,t_n)=\sum_{j,k=1}^n=\frac{1-w_j\overline{w_k}}{1-z_j\overline{z_k}}t_j\overline{t_k}\geq0
     \end{displaymath}
-    és semidefinida positiva. En aquest cas, existeix un producte de Blaschke finit de grau com a molt $n$ que resol \normalfont{(\ref{eq:interpol})}.
+    per a tot $t_1,\dots, t_n\in\mathbb{R}$. En aquest cas, existeix un producte de Blaschke finit de grau com a molt $n$ que resol \normalfont{(\ref{eq:interpol})}.
 \end{theorem}
 
 \begin{proof}

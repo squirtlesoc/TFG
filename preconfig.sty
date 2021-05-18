@@ -13,6 +13,7 @@
 \usepackage{eqparbox}
 \usepackage{cancel}
 \usepackage[bb = boondox]{mathalpha} %negrita mathbb
+
 %% COSAS DE FIGURAS
 \usepackage{graphicx} 
 \usepackage{subfigure} 
@@ -59,6 +60,12 @@
 \theoremstyle{remark}
 \newtheorem*{remark}{Observació}
 \newcommand{\eqmathbox}[2][M]{\eqmakebox[#1]{$\displaystyle#2$}}
+%%para le setminus k no sea feo
+\newcommand{\mysetminusD}{\hbox{\tikz{\draw[line width=0.6pt,line cap=round] (3pt,0) -- (0,6pt);}}}
+\newcommand{\mysetminusT}{\mysetminusD}
+\newcommand{\mysetminusS}{\hbox{\tikz{\draw[line width=0.45pt,line cap=round] (2pt,0) -- (0,4pt);}}}
+\newcommand{\mysetminusSS}{\hbox{\tikz{\draw[line width=0.4pt,line cap=round] (1.5pt,0) -- (0,3pt);}}}
+\newcommand{\mysetminus}{\mathbin{\mathchoice{\mysetminusD}{\mysetminusT}{\mysetminusS}{\mysetminusSS}}}
 %% CONFIGURACION DE PAQUETES 
 \hypersetup{ % configuracion de los links
     colorlinks=true,
