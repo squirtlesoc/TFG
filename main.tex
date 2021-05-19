@@ -52,6 +52,7 @@
 
 
     \section{Homografies}
+    Aquesta secció del treball està basada en les primeres seccions del capítol 1 del llibre \cite{ford_1972}, amb alguns resultats del capítol 14 de \cite{rudin_1974}.
         Sigui  \(\Omega\) un domini de \(\mathbb{C}\) i \(f: \Omega\to\Omega\) una funció holomorfa, diem que \(f\) és \textbf{conforme} si \(f'(z) \neq 0\,\  \forall z\in\Omega\).
         
         Diem \textbf{esfera de Riemann} a la compactificació del pla complex per un punt. La manera usual de pensar en aquest espai topològic és considerar una esfera on el pol nord és \(\infty\). La denotem per \(S^2\).
@@ -131,13 +132,13 @@
         \end{proof}
 
         \begin{theorem}
-            Si, tret d'un nombre finit de punts de $S^2$, tenim una bijecció conforme entre $S^2$ i una regió del propi $S^2$, aquesta bijecció és una homografia.
+            Sigui una $f\colon S^2\to S^2$ una bijecció conforme a tot $S^2$ tret, potser, d'un nombre finit de punts. Llavors $f$ és una homografia.
         \end{theorem}
 
         \begin{proof}
             Sigui $f$ aquesta bijecció i $q_1,\dots,q_n$ els punts exclòsos. Com $f$ és conforme, $f$ és holomorfa tret de en $q_i$. Aquests punts només poden ser pols, singularitats essencials o evitables. 
             
-            La possibilitat de que siguin essencials queda descartada, ja que en tot entorn d'una discontinuïtat d'aquest tipus la imatge és tot el pla complex, per tant $f$ no podria ser bijectiva. Com les discontinuïtats de $f$ són o evitables o pols, podem assegurar que $f$ es una funció racional. 
+            La possibilitat de que siguin essencials queda descartada, ja que pel Gran Teorema de Picard, en tot entorn d'una discontinuïtat d'aquest tipus la funció $f$ pren com a valors tots els punts de $\C$ un nombre infinit de vegades, per tant $f$ no podria ser bijectiva. Com les discontinuïtats de $f$ són o evitables o pols, podem assegurar que $f$ es una funció racional. 
             
             A més, per la injectivitat a $S^2$, només un dels punts pot ser un pol, el qual pel lema anterior seria d'ordre 1. Si aquest es troba en un punt finit $q_k$, \begin{displaymath}
                 f(z)=\frac{A_1}{z-q_k}+A_0=\frac{A_0z+A_1-A_0q_k}{z-q_k}\,\text{, } A_1\neq0.
@@ -276,6 +277,7 @@
 
 
 \section[Automorfismes al Disc Unitat]{Automorfismes a $\D$}
+    Aquesta secció del treball conté resultats de la secció 12 del primer capítol del llibre \cite{ford_1972}, del capítol 12 de \cite{rudin_1974} i del primer capítol de \cite{dineen_2016}, amb les demostracions adaptades a $\D$.
     Com ja hem comentat prèviament, centrarem la nostra atenció exclusivament a $\D$. Per tant, els teoremes i proposicions que enunciarem a partir d'ara seran sempre en aquesta regió. Recordem que definim com Disc Unitat
     
     \begin{equation*}
@@ -457,7 +459,7 @@
 
 
 \section{El Teorema de Pick}
-
+Aquesta part del treball està basada en les seccions 1 i 2 del llibre \cite{garnett_2007}.
 \subsection{Productes de Blaschke finits}
 
 L'última peça clau per al problema d'interpolació són els productes de Blaschke. No ens caldrà anar més enllà del cas finit.
@@ -676,26 +678,10 @@ té una solució $\D$-holomorfa $f(z)$.
         f(z_1)=w_1\iff\frac{1-\abs{w_1}^2}{1-\abs{z_1}^2}\abs{t_1}^2\geq0.  
     \end{displaymath}
     
-    Com $1-\abs{z_1}^2\geq0$ i $1-\abs{t_1}^2\geq0$, és equivalent dir que $\abs{w_1}\leq1$.
+    Com $1-\abs{z_1}^2\geq0$, és equivalent dir que $\abs{w_1}\leq1$. Per tant s'ha de veure que existeix $f$ $\D$-holomorfisme amb $f(z_1)=w_1$ si i només si $\abs{w_1}\leq1$. La necessitat és evident, ja que $\norm{f}_\infty\leq1$. Recíprocament, si $\abs{w_1}\leq1$, podem triar $f$ la funció constant igual a $w_1$.
     
-    \large
-    \noindent $(\impliedby)$
-    \normalsize
-    Si $\abs{w_1}<1$, construïm 
-    
-    \begin{alignat*}{2}
-    f:z &\xrightarrow{\phantom{eeeeeee}}\eqmathbox{\frac{z-z_1}{1-\overline{z_1}z}}&&\xrightarrow{\phantom{eeeeeee}}\eqmathbox{\frac{z+w_1}{1+\overline{w_1}z}}\\[-1ex]
-    z_1&\xmapsto{\phantom{eeeeeee}} \eqmathbox{0} &&\xmapsto{\phantom{eeeeeee}} \eqmathbox{w_1} 
-    \end{alignat*}
-    %
-    i $f$ és composició d'automorfismes del disc. Si $\abs{w_1}=1$, prenem $f\equiv w_1$.
-
-    \large
-    \noindent $(\implies)$
-    \normalsize
-    Si $\exists f$ $\D$-holomorfa tal que $f(z_1)=w_1$, llavors $\abs{w_1}\leq1$, que ja hem vist que és equivalent a $\frac{1-\abs{w_1}^2}{1-\abs{z_1}^2}\abs{t_1}^2\geq0$.
-
-    Vist el cas $n=1$, suposem que $n > 1$. Suposem que existeix la $f$. Com és $\D$-holomorfa, llavors $\abs{w_n}\leq1$.
+   
+    Vist el cas $n=1$, suposem que $n > 1$. Suposem que existeix la funció $f$ que resol el problema d'interpolació. Com és $\D$-holomorfa, llavors $\abs{w_n}\leq1$.
     Si $\abs{w_n}=1$, llavors pel principi del mòdul màxim, $f\equiv w_n$ i $w_j=w_n$ per a tot $j$.
 
     Suposem que $Q_n\geq0$. Si fixem $t_n=1$, $t_j=0$  $j<n$ Tenim
@@ -822,7 +808,7 @@ Efectivament,
 \begin{align*}
     &\frac{(1-\overline{z_n}z_j)(1-z_n\overline{z_k})-(z_j-z_n)(\overline{z_k}-\overline{z_n})}{(1-z_j\overline{z_k})\cancel{(1-\overline{z_n}z_j)}\cancel{(1-z_n\overline{z_k})}}=\frac{1-\abs{z_n}^2}{\cancel{(1-\overline{z_n}z_j)}\cancel{(1-z_n\overline{z_k})}}\\
     \implies &\frac{1\cancel{-\overline{z_n}z_j}\cancel{-z_n\overline{z_k}}+\abs{z_n}^2z_j\overline{z_k}\cancel{+z_j\overline{z_n}}-z_j\overline{z_k}\cancel{+\overline{z_k}z_n}-\abs{z_n}^2}{(1-z_j\overline{z_k})}=1-\abs{z_n}^2\\
-    \implies &\frac{1-\abs{z_n}^2+z_j\overline{z_k}\abs{z_n}^2-z_j\overline{z_k}}{(1-z_j\overline{z_k})}=\frac{(1-\abs{z_n}^2)\cancel{(1-z_j\overline{z_k})}}{\cancel{(1-z_j\overline{z_k})}}=1+\abs{z_n}^2.
+    \implies &\frac{1-\abs{z_n}^2+z_j\overline{z_k}\abs{z_n}^2-z_j\overline{z_k}}{(1-z_j\overline{z_k})}=\frac{(1-\abs{z_n}^2)\cancel{(1-z_j\overline{z_k})}}{\cancel{(1-z_j\overline{z_k})}}=1-\abs{z_n}^2.
 \end{align*}
 Pel mateix càlcul tenim \(\displaystyle \beta_j\overline{\beta_k}=\frac{1-\abs{w_n}^2}{(1-\overline{w_n}w_j)(1-\overline{w_k})}\).
 
@@ -845,16 +831,16 @@ Suposem, per tant, $z_n=w_n=0$. Existeix una $f$ $\D$-holomorfa tal que $f(0)=0$
 si i només si existeix $g(z)=\frac{f(z)}{z}$ un $\D$-holomorfisme tal que 
 
 \begin{equation}\label{eq:interpol_redux}
-    g(z_j)=w_j,\quad 1\leq j\leq n-1.
+    g(z_j)=\frac{w_j}{z_j},\quad 1\leq j\leq n-1.
 \end{equation}
 
 A més, $f$ és producte de Blaschke de grau $d$ si i només si $g$ ho és de grau $d-1$.
 
 Per la hipòtesi d'inducció, (\ref{eq:interpol_redux}) té solució si i només si 
 \begin{displaymath}
-    \tilde{Q}_{n-1}(s_1,\dots,s_{n-1})=\sum_{j,k=1}^{n-1}\frac{1-\left( \frac{w_j}{z_j} \right)\overline{\left( \frac{w_k}{z_k} \right)}}{1-z_j\overline{z_k}}s_j\overline{s_k}\geq0.
+    \tilde{Q}_{n-1}(s_1,\dots,s_{n-1})=\sum_{j,k=1}^{n-1}\frac{1-\left( \frac{w_j}{z_j} \right)\overline{\left( \frac{w_k}{z_k} \right)}}{1-z_j\overline{z_k}}s_j\overline{s_k}\geq0,
 \end{displaymath}
-El teorema es redueix a veure que 
+per a tot $s_1,\dots,s_{n-1}\in\mathbb{R}$. El teorema es redueix a veure que 
 \begin{displaymath}
     Q_n\geq0\iff\tilde{Q}_{n-1}\geq0
 \end{displaymath}
@@ -880,4 +866,7 @@ Llavors $\tilde{Q}_{n-1}\geq0\implies Q_n\geq0$.
 
 \noindent Finalment, fixant \(\displaystyle t_n=-\sum_{j=1}^{n-1}t_j\) veiem que $Q_n\geq0\implies\tilde{Q}_{n-1}\geq0$.
 \end{proof}
+\newpage
+\bibliography{bibliografia}
+\bibliographystyle{plain}
 \end{document}

@@ -338,6 +338,16 @@ INPUT /usr/share/texmf-dist/tex/latex/tools/enumerate.sty
 INPUT /usr/share/texmf-dist/tex/latex/tools/enumerate.sty
 INPUT /usr/share/texmf-dist/tex/latex/tools/enumerate.sty
 INPUT /usr/share/texmf-dist/tex/latex/tools/enumerate.sty
+INPUT /usr/share/texmf-dist/tex/latex/cite/cite.sty
+INPUT /usr/share/texmf-dist/tex/latex/cite/cite.sty
+INPUT /usr/share/texmf-dist/tex/latex/cite/cite.sty
+INPUT /usr/share/texmf-dist/tex/latex/cite/cite.sty
+INPUT /usr/share/texmf-dist/tex/latex/cite/cite.sty
+INPUT /usr/share/texmf-dist/tex/latex/cite/cite.sty
+INPUT /usr/share/texmf-dist/tex/latex/cite/cite.sty
+INPUT /usr/share/texmf-dist/tex/latex/cite/cite.sty
+INPUT /usr/share/texmf-dist/tex/latex/cite/cite.sty
+INPUT /usr/share/texmf-dist/tex/latex/cite/cite.sty
 INPUT /usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
 INPUT /usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
 INPUT /usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -1503,6 +1513,10 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/boondox/BOONDOX-b-ds.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/boondox/BOONDOX-b-ds.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/boondox/BOONDOX-r-ds.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/boondox/BOONDOX-b-ds.tfm
+INPUT /home/dani/Documents/TFG/main.bbl
+INPUT /home/dani/Documents/TFG/main.bbl
+INPUT /home/dani/Documents/TFG/main.bbl
+INPUT /home/dani/Documents/TFG/main.bbl
 INPUT /home/dani/Documents/TFG/main.aux
 INPUT /home/dani/Documents/TFG/main.out
 INPUT /home/dani/Documents/TFG/main.out
