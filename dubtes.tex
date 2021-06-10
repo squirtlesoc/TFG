@@ -1,0 +1,68 @@
+\documentclass[14pt]{article}
+\usepackage{preconfig}
+\begin{document}
+    \Large\noindent\textbf{A la primera pàgina de la secció 6 del capítol 4.}
+   
+    \medskip
+    \normalsize
+    \fbox{\begin{minipage}{0.8\textwidth}
+    Cas $n=1$.
+
+    Fix $c_1\in\D$, no el determinem encara.
+Si $f\in E_\infty$, llavors 
+\begin{displaymath}
+    \frac{f-w_1}{1-\overline{w_1}f}=\frac{f_1+c_1}{1+\overline{c_1}f_1}\frac{z-z_1}{1-\overline{z_1}z}
+\end{displaymath}
+per a algun $\D$-holomorfisme $f_1$.
+\end{minipage}}
+\\
+
+Sobre l'existència de solucions, 
+\begin{itemize}
+    \item $\abs{w_1}>1$ no pot haver-hi (sortim del disc)
+    \item $\abs{w_1}=1$ pel principi del mòdul màxim la solució única es $f\equiv1$ 
+    \item $\abs{w_1}<1$ tenim infinites. 
+\end{itemize}
+
+\bigskip
+\Large\noindent\textbf{Per què existeix $f_1$?}
+\normalsize
+\medskip
+
+Més fàcil (?) veure que existeix funció $g_1$ $\D$-holomorfisme
+\begin{displaymath}
+    \frac{f(z)-w_1}{1-\overline{w_1}f(z)}=g_1(z)\, \frac{z-z_1}{1-\overline{z_1}z}
+\end{displaymath}
+
+$\star$ \textbf{d'aquesta forma t'estalvies tot el tema de les $c_k$?}
+
+Definim 
+\large
+\begin{displaymath}
+    g_1(z):= \frac{\frac{f(z)-w_1}{1-\overline{w_1}f(z)}}{\frac{z-z_1}{1-\overline{z_1}z}}
+\end{displaymath}
+\normalsize
+Per Schwarz-Pick és $\D$-holomorfisme en $z\neq z_1$. Fent tendir $z$ a $z_1$,
+\begin{displaymath}
+    g_1(z_1)=f'(z_1)\frac{1-\abs{z_1}^2}{1-\abs{f(z_1)}^2}
+\end{displaymath}
+\bigskip
+\huge\noindent$\star$ \textbf{És holomorfa $g_1$ en $z_1$?}
+\normalsize
+
+Entenc que sí, però no ho sé veure.
+Definim $\varphi_{z_1}(z)=\frac{z-z_1}{1-\overline{z_1}z}$
+
+Llavors
+\begin{displaymath}
+    \frac{f(z)-w_1}{1-\overline{w_1}f(z)}=g_1(z)\, \varphi_{z_1}(z)
+\end{displaymath}
+Reordenant
+\begin{equation}\label{eq:formasol1}
+    f=\frac{\varphi_{z_1}g_1+w_1}{1+\overline{w_1}\varphi_{z_1}g_1}
+\end{equation}
+
+Per tant, tota solució és d'aquesta forma (\ref{eq:formasol1}).
+
+Llavors podem fer iteració$+$inducció i estudiar els coeficients $P_n$, $Q_n$, $R_n$, $S_n$ dels que parla més endavant.
+\end{document}

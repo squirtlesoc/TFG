@@ -272,10 +272,60 @@
         \end{displaymath}
         és la homografia que busquem.
     \end{proof}
+    
+    Per últim, estudiem les rectes i circumferències a $\C$. Donates $p,q\in\C$, la mediatriu del segment que va de $p$ a $q$ és 
+    \begin{displaymath}
+        \abs{z-p}=\abs{z-q}.
+    \end{displaymath}
+    Elevant al quadrat i reordenant termes,  obtenim 
+    \begin{displaymath}
+        (\bar{p}-\bar{q})z+\bar{z}(p-q)+\abs{p}^2+\abs{q}^2=0
+    \end{displaymath}
+    Diem $\beta=\bar{p}-\bar{q}$, $\gamma=\abs{p}^2-\abs{q}^2$, les rectes del pla són de la forma
+    \begin{equation}
+        \beta z+\bar{\beta}\bar{z}+\gamma=0.
+    \end{equation}
 
+    Veiem que les circumferències són de la forma 
+    \begin{displaymath}
+        \abs{z-p}=\rho\abs{z-q},
+    \end{displaymath}
+    per $\rho\neq1$. Sigui $z=w+q$, $c=p-q$. Llavors 
+    \begin{displaymath}
+        \abs{w-c}=\rho\abs{w}.
+    \end{displaymath}
+    Com abans, quadrats i reordenant
+    \begin{equation}\label{eq:circ}
+        (1-\rho^2)\abs{w}^2-w\bar{c}-\bar{w}c+\abs{c}^2=0.
+    \end{equation}
+    Completem quadrats
+    \begin{align*}
+        0 &=(1-\rho^2)\abs{w}^2-w\bar{c}-\bar{w}c+\abs{c}^2\\
+        &=\abs{w}^2-\frac{w\bar{c}-\bar{w}c}{(1-\rho^2)}+\frac{\abs{c}^2(1-\rho^2)}{(1-\rho^2)^2}
+    \end{align*}
+    i per tant
+    \begin{align*}
+        &\abs{w}^2-\frac{w\bar{c}-\bar{w}c}{(1-\rho^2)}+\frac{\abs{c}^2}{(1-\rho^2)^2}=\frac{\abs{c}^2\rho^2}{(1-\rho^2)^2}\\
+        &\implies \abs{w-\frac{c}{1-\rho^2}}=\abs{c}\frac{\rho}{1-\rho^2},
+    \end{align*}
+    que és una circumferència. Siguin $\alpha=1-\rho^2$, $\beta=-c$, $\gamma=\abs{c}^2$, a (\ref{eq:circ}) tenim
+    \begin{equation}\label{eq:recticirc}
+        \alpha z\bar{z}+\beta z+ \bar{\beta}\bar{z}+\gamma=0,\quad \alpha,\gamma\in\mathbb{R}, \beta\in\C.
+    \end{equation}
+    Com el radi ha de ser positiu, és necessari que $\abs{\beta}^2>\alpha\gamma$. 
+    
+    Tenim doncs que si $\alpha=0$, (\ref{eq:recticirc}) ens l'equació d'una recta. Si $\alpha\neq0$, (\ref{eq:recticirc}) és l'equació d'una circumferència.
 
-
-
+    \begin{theorem}
+        Les homografies envien rectes i circumferències a rectes i circumferències.
+    \end{theorem}
+    \begin{proof}
+        És suficient veure-ho per translacions, rotacions, homotècies i inversions. Les tres primeres és evident que envien rectes a rectes i circumferències a circumferències.  Les inversions no, però sigui $w=\frac{1}{z}$, podem veure que fer la inversió a (\ref{eq:recticirc}) ens dona 
+        \begin{equation*}
+            \alpha w\bar{w}+\beta w+ \bar{\beta}\bar{w}+\gamma=0,
+        \end{equation*}
+        que és una equació del mateix tipus.
+    \end{proof}
 \section[Automorfismes al Disc Unitat]{Automorfismes a $\D$}
     Aquesta secció del treball conté resultats de la secció 12 del primer capítol del llibre \cite{ford_1972}, del capítol 12 de \cite{rudin_1974} i del primer capítol de \cite{dineen_2016}, amb les demostracions adaptades a $\D$.
     Com ja hem comentat prèviament, centrarem la nostra atenció exclusivament a $\D$. Per tant, els teoremes i proposicions que enunciarem a partir d'ara seran sempre en aquesta regió. Recordem que definim com Disc Unitat
@@ -516,8 +566,19 @@ Els productes de Blaschke, a més de ser útils en la interpolació (com veurem 
     \end{displaymath}
     \normalsize
     Per tant $f-B_n$ té un zero d'ordre $n$ en $z=0$ i llavors \begin{displaymath}
-        B_n(z)=c_0+c_1z+\dots+c_nz^n+d_{n+1}z^{n+1}.
+        B_n(z)=c_0+c_1z+\dots+c_nz^n+d_{n+1}z^{n+1}+\dots
     \end{displaymath}
+
+    Finalment, és suficient veure que per a tota parcial de $B_{n}$ que convergeix uniformement sobre els compactes de $\D$ a una funció $g$, aquesta funció $g$ és exactament $f$. Llavors, en particular, $B_{n}(z)$ convergirà puntualment a $f(z)$ per a tot $z\in\D$.
+    Efectivament, si $B_{n_k}$ tendeix cap a $g$ uniformement sobre compactes, llavors les derivades de $B_{n_k}$ també. Fixant $1\leq j\leq n_k$, 
+    \begin{displaymath}
+        B_{n_k}^{(j)}(0) \xrightarrow[n_k\to\infty]{} g^{(j)}(0),
+    \end{displaymath}
+    però com $j\leq n_k$, llavors $B_{n_k}^{(j)}(0)=f^{(j)}(0)$ i per tant $g^{(j)}(0)=f^{(j)}(0)$. Pel Principi de Prolongació Analítica, 
+    \begin{displaymath}
+        g\equiv f.
+    \end{displaymath}
+
 \end{proof}
 Per últim, un lema que ens ajudarà amb la demostració del Teorema de Pick.
 
@@ -664,7 +725,7 @@ Siguin $\{z_1,\dots,z_n\}$ un conjunt finit de punts diferents de $\D$. Pick va 
 %
 té una solució $\D$-holomorfa $f(z)$.
 
-\begin{theorem}[Pick]
+\begin{theorem}[Pick]\label{th:pick}
     Existeix $f$ $\D$-holomorfisme que satisfà la interpolació \normalfont{(\ref{eq:interpol})} si i només si la forma quadràtica 
     \begin{displaymath}
         Q_n(t_1,\dots,t_n)=\sum_{j,k=1}^n=\frac{1-w_j\overline{w_k}}{1-z_j\overline{z_k}}t_j\overline{t_k}\geq0
@@ -866,6 +927,186 @@ Llavors $\tilde{Q}_{n-1}\geq0\implies Q_n\geq0$.
 
 \noindent Finalment, fixant \(\displaystyle t_n=-\sum_{j=1}^{n-1}t_j\) veiem que $Q_n\geq0\implies\tilde{Q}_{n-1}\geq0$.
 \end{proof}
+\newpage
+\section{El treball de Nevanlinna}
+No oblidem, però, que el problema d'interpolació (\ref{problema}) porta el nom d'un altre matemàtic, Rolf Nevanlinna.
+
+Nevanlinna, tot i publicar els seu treball més tard, dona uns resultats molt rellevants. Amb una construcció basada en l'\textit{algorisme de Schur}, construeix les solucions del problema i, amb unes hipòtesis extra, construeix també les solucions per la problema amb un nombre infinit de punts. Dit d'una altra manera, amb una condició addicional, Nevanlinna descriu totes les funcions $f$ que són $\D$-holomorfes i tals que 
+\begin{equation}\label{eq:problemainf}
+    f(z_j)=w_j,\quad j=1,2,\dots.
+\end{equation}
+
+Abans d'enunciar aquest teorema, introduïm una mica de notació. Al conjunt del tots els $\D$-holomorfismes el denotarem per $\B$, i al conjunt de les solucions del problema de Pick-Nevanlinna per $n$ punts el denotarem per $E_n$. 
+\begin{align*}
+    \B &=\left\{ f\colon f \text{ és un } \D\text{-holomorfisme} \right\}\\
+    E_n &=\left\{ f\in\B\colon f(z_j)=w_j,\, 1\leq j\leq n \right\}
+\end{align*}
+Seguint aquesta notació, les solucions de (\ref{eq:problemainf}) formen el conjunt $\Einf$.
+Aquesta secció requerirà d'una lleugera noció d'anàlisi funcional i teoria de la mesura. Parlarem de \textbf{gairebé en tot punt} per dir que una propietat és compleix tret d'un conjunt de mesura nul·la.
+
+Per últim, introduïm un concepte nou. Diem que una funció $f\in\B$ és \textbf{inner function} si $\abs{f(e^{i\theta})}=1$ gairebé per a tot $\theta\in\mathbb{R}$.
+
+\begin{theorem}[Nevanlinna]
+    Si hi ha dues funcions de \B que satisfan la interpolació \textup{(\ref{eq:problemainf})}, llavors hi ha una inner function que també satisfà \textup{(\ref{eq:problemainf})}.
+\end{theorem}
+
+La demostració d'aquest teorema serà orgànica, veient els resultats auxiliars conforme els anem necessitant. Començarem parametritzant $E_n$ (i per tant resolent el problema per a $n$ punts) i posteriorment farem el pas a $\displaystyle\Einf=\cap_n E_n$ per veure finalment que aquest conjunt conté inner functions.
+
+Comencem per $E_1$. Aprofitem la idea que va sortir a la demostració del Teorema de Pick \ref{th:pick}. Per mitjà d'homografies, el problema de trobar $f\in\B$ tal que $f(z_1)=w_1$ es redueix a trobar $h\in\B$ tal que $f(0)=0$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%FIGURA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Llavors $h(z)=zg_1(z)$ per a algun $g_1\in\B$.
+\begin{displaymath}
+    f=\tau_{w_1}^{-1}\circ h\circ \tau_{z_1}\iff\tau_{w_1}\circ f= h\circ\tau_{z_1}
+\end{displaymath}
+Com $h(z)=zg_1(z)$, tenim que $h\circ\tau_{z_1}=\tau_{z_1}\cdot(g_1\circ\tau_{z_1})$.
+Reescrivim $(g_1\circ\tau_{z_1})(z)$ com $(\tau_{-c_1}\circ f_1)(z)$ per a un cert $c_1\in\D$ i $f_1\in\B$, que podríem escriure en termes de $g_1$ i $c_1$ si fos necessari (no ho serà). El $c_1$ ens serà útil triar-lo més endavant. Tenim, doncs, 
+
+\begin{equation}\label{eq:f1}
+    \frac{f-w_1}{1-\bar{w}_1f}=\frac{f_1+c_1}{1+\bar{c}_1f_1}\frac{z-z_1}{1-\bar{z}_1z}.
+\end{equation}
+
+Siguin 
+\begin{align*}
+    A_1(z) &= w_1(1-\bar{z}_1z)+c_1(z-z_1),\\
+    B_1(z) &= \bar{c}_1w_1(1-\bar{z}_1z)+(z-z_1),\\
+    C_1(z) &= (1-\bar{z}_1z)+c_1\bar{w}_1(z-z_1),\\
+    D_1(z) &= \bar{c}_1(1-\bar{z}_1z)+\bar{w}_1(z-z_1),
+\end{align*}
+llavors per a tota $f_1\in\B$, (\ref{eq:f1}) defineix una funció $f\in E_1$,
+\begin{equation}\label{eq:f}
+    f(z)=\frac{A_1(z)+B_1(z)f_1(z)}{C_1(z)+D_1(z)f_1(z)}
+\end{equation}
+i aquesta es la parametrització de $E_1$.
+
+Suposem ara $f\in E_n$, $n\geq2$. Llavors (\ref{eq:f1}) determina $f_1(z_j)$ per $2\leq j\leq n$. Resolent (\ref{eq:f1}) obtenim 
+\begin{equation}\label{eq:n1}
+    f_1(z_j)=w_j^{(1)},\quad 2\leq j\leq n.
+\end{equation}
+%
+És clar que $\abs{w_j^{(1)}}\leq 1$, ja que $f_1\in\B$. A més, el cas $\abs{w_j^{(1)}}=1$ per a algun $j$ no és possible, ja que llavors pel principi del mòdul máxim $f_1(z)\equiv w_j^{(1)}$, $\abs{z}<1$ i per (\ref{eq:f1}) $E_n$ conté només una funció. Tenim doncs
+\begin{equation*}
+    \abs{w_j^{(1)}}<1, j = 2,3,\dots.
+\end{equation*}
+
+Hem aconseguit poder ignorar el valor $f_1(z_1)$, i ara $E_n$ està definit només per les $n-1$ equacions (\ref{eq:n1}), en lloc de les $n$ originals. Repetint el raonament, per a un cert $c_2\in\D$, escrivim
+
+\begin{equation}\label{eq:f2}
+    \frac{f_1-w_2^{(1)}}{1-\bar{w}_2^{(1)}f_1}=\frac{f_2+c_2}{1+\bar{c}_2f_2}\frac{z-z_2}{1-\bar{z}_2z}.
+\end{equation}
+%
+Ara $f\in E_2$ si i només si $f_1(z_2)=w_2^{(1)}$, la qual cosa succeeix si i només si (\ref{eq:f2}) es compleix per a alguna $f_2\in\B$. A més, quan $n>2$, $f\in E_n$ si i només si
+\begin{equation*}
+    f_2(z_j)=w_j^{(2)},\quad 3\leq j\leq n,
+\end{equation*}
+on $w_j^{(2)}$ queda determinat per (\ref{eq:f2}). També tenim $\abs{w_j^{(2)}}<1$ pel mateix raonament que ens donava $\abs{w_j^{(1)}}<1$.
+
+Continuem per inducció, sempre assumint que $E_n$ conté més d'una funció. Per $k\leq n$, $f\in E_n$ si i només si hi ha $f_0,f_1,\dots, f_k\in \B$ tals que $f_0=f$ i 
+\begin{displaymath}
+    f_k(z_j)=w_j^{(k)},\quad k+1\leq j\leq n
+\end{displaymath}
+amb $\abs{w_j^{(k)}}<1$ i $w_j^{(0)}=w_j$ i tals que 
+\begin{equation}\label{eq:fk1}
+    \frac{f_{k-1}-w_k^{(k-1)}}{1-\bar{w}_k^{(k-1)}f_{k-1}}=\frac{f_k+c_k}{1+\bar{c}_kf_k}\frac{z-z_k}{1-\bar{z}_kz}.
+\end{equation}
+%
+on $c_k\in\D$ queden per determinar. Els valors concrets de $w_j^{(k)}$ no ens són rellevants.
+
+Definim
+\begin{equation}\label{eq:greek}
+    \begin{split}
+        \alpha_k(z) &= w_k^{(k-1)}(1-\bar{z}_kz)+c_k(z-z_k),\\
+        \beta_k(z) &= \bar{c}_kw_k^{(k-1)}(1-\bar{z}_kz)+(z-z_k),\\
+        \gamma_k(z) &= (1-\bar{z}_kz)+c_k\bar{w}_k^{(k-1)}(z-z_k),\\
+        \delta_k(z) &= \bar{c}_k(1-\bar{z}_kz)+\bar{w}_k^{(k-1)}(z-z_k),
+    \end{split}
+\end{equation}
+%
+i reescrivim (\ref{eq:fk1}) a l'estil de (\ref{eq:f}),
+\begin{equation}\label{eq:fk1bis}
+    f_{k-1}(z)=\frac{\alpha_k(z)+\beta_k(z)f_k(z)}{\gamma_k(z)+\delta_k(z)f_k(z)}.
+\end{equation}
+
+Per inducció, (\ref{eq:fk1bis}) i (\ref{eq:f}) ens donen
+\begin{equation}\label{eq:fbis}
+        f(z)=\frac{A_n(z)+B_n(z)f_n(z)}{C_n(z)+D_n(z)f_n(z)}
+\end{equation}
+%
+on 
+\begin{equation}\label{eq:An}
+    \begin{split}
+        A_n(z)=\gamma_n(z)A_{n-1}(z)+\alpha_n(z)B_{n-1}(z),\\
+        B_n(z)=\delta_n(z)A_{n-1}(z)+\beta_n(z)B_{n-1}(z),\\
+        C_n(z)=\gamma_n(z)C_{n-1}(z)+\alpha_n(z)D_{n-1}(z),\\
+        D_n(z)=\delta_n(z)C_{n-1}(z)+\beta_n(z)D_{n-1}(z),
+    \end{split}
+\end{equation}
+%
+són polinomis de grau com a molt $n$ en $z$. Queda demostrat
+\begin{lemma}\label{lema0}
+    Siguin $A_n,B_n,C_n,D_n$ els polinomis definits per (\ref{eq:An}) i (\ref{eq:greek}). Llavors $f(z)\in E_n$ si i només si $f$ compleix (\ref{eq:fbis}) per a algun $f_n\in\B$.
+\end{lemma}
+
+És hora de parlar dels $c_k$. Fixem $c_k=\bar{z}_kw_k^{(k-1)}$. Això famosa
+\begin{displaymath}
+    \delta_k(0)=0,\quad k=1,2,\dots,n.
+\end{displaymath}
+A més, com $D_1(0)=z_1\bar{w}_1(1-0)+\bar{w}_1(0-z_1)=0$ i $D_k(0)=\delta_k(0)C_{k-1}(0)+\beta_k(0)D_k-1(0)$ tenim
+\begin{displaymath}
+    D_k(0)=0,\quad k=1,2,\dots,n.
+\end{displaymath}
+Ens serà important en particular que $\delta_n(0)=D_n(0)=0$.
+
+Fix $n$ i $z\in\D$,
+\begin{displaymath}
+    \hg(w)=\frac{A_n(z)+B_n(z)w}{C_n(z)+D_n(z)w}
+\end{displaymath}
+és una homografia. Triant $f_n(w)=w$ a (\ref{eq:fbis}), tenim 
+\begin{displaymath}
+    \hg(\bar{\D})\subseteq\bar{\D}.
+\end{displaymath}
+Com $\hg$ és una homografia, $\hg(\partial\D)$ és una recta o una circumferència, i com ha de ser dins $\bar\D$, $\hg(\partial\D)$ és necessàriament una circumferència. Llavors $\hg(\bar\D)$ és un disc dins $\D$, diem-li $\Delta_n(z)$.
+
+Per $\abs{z}<1$ tenim doncs que $\left\{ f(z)\colon f\in E_n \right\}$ és un disc tancat $\Delta_n(z)\subseteq\bar\D$ definit per 
+\begin{equation}\label{eq:gencirc}
+    \left\{ \frac{A_n(z)+B_n(z)w}{C_n(z)+D_n(z)w}\colon\abs{w}\leq1 \right\}.
+\end{equation}
+%
+Per $\abs{z}=1$ la fórmula té sentit, tot  i que potser algun $f\in E_n$ no és definit a $z$.
+
+Busquem ara el radi i centre de $\Delta_n(z)$. Per trobar el centre raonarem geomètricament. L'antiimatge de $\infty$ per $\hg$ és $-C_n/D_n$. Per simetría, la seva reflexió respecte $\partial\D$ serà el centre de $\Delta_n(z)$. Per tant, $ \hg( -\overline{D_n/C_n})$ és el centre de $\Delta_n(z)$.
+
+Per trobar el radi $\rho_n(z)$, observem que per a qualsevol $\abs{w}=1$, 
+\begin{displaymath}
+    \rho_n(z)=\abs{\hg\left( -\frac{D_n}{C_n} \right)-\hg(w)}
+\end{displaymath}
+triem $w=1$ i tenim 
+\begin{align*}
+    \rho_n(z) &=\abs{\frac{A_n\bar{C}_n-B_n\bar{D}_n}{\abs{C_n}^2-\abs{D_n}^2}-\frac{A_n+B_n}{C_n+D_n}}=\abs{\frac{A_nD_n-B_nC_n}{\abs{C_n}^2-\abs{D_n}^2}}\abs{\frac{\bar{C}_n+\bar{D}_n}{C_n+D_n}}\\
+    &=\abs{\frac{A_nD_n-B_nC_n}{\abs{C_n}^2-\abs{D_n}^2}}.
+\end{align*}
+
+Observem que $\Delta_n(z)$ degenera en un sol punt si i només si $z=z_j$ per a algun $1\leq j\leq n$, ja que
+\begin{equation}\label{eq:delta0}
+    \begin{split}
+    A_nD_n-B_nC_n &=(\gamma_n\beta_n-\alpha_n\delta_n)(A_{n-1}D_{n-1}-B_{n-1}C_{n-1})\\
+    &=\prod_{k=1}^n(1-\abs{z_k}^2\abs{w_k^{(k-1)}}^2)(1-\abs{w_k^{(k-1)}}^2)(z-z_k)(1-\bar{z}_kz).
+    \end{split}
+\end{equation}
+
+El següent pas serà normaltitzar $A_n,B_n,C_n,D_n$. Per a això ens calen dos lemes:
+\begin{lemma}\label{lemma1}
+    Si $E_n\neq\varnothing$, llavors quan $\abs{z}=1$, $\Delta_n(z)=\bar{\D}$, $\rho_n(z)=1$ i 
+    \begin{align*}
+        \abs{B_n(z)} &= \abs{C_n(z)}\\
+        \abs{A_n(z)} &= \abs{D_n(z)}\\
+        \frac{A_n(z)}{C_n(z)} &= \overline{\left( \frac{D_n(z)}{B_n(z)} \right)}=\lambda_n(z),\quad \text{amb } \abs{\lambda_n(z)}<1.
+    \end{align*}
+\end{lemma}
+
 \newpage
 \bibliography{bibliografia}
 \bibliographystyle{plain}
