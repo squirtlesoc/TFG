@@ -1,8 +1,8 @@
 \babel@toc {catalan}{}
-\contentsline {section}{\numberline {1}Introducció}{3}{section.1}%
-\contentsline {section}{\numberline {2}Homografies}{3}{section.2}%
-\contentsline {section}{\numberline {3}Automorfismes al Disc Unitat}{8}{section.3}%
-\contentsline {section}{\numberline {4}El Teorema de Pick}{12}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Productes de Blaschke finits}{12}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}El Problema d'interpolació}{15}{subsection.4.2}%
-\contentsline {section}{\numberline {5}El treball de Nevanlinna}{20}{section.5}%
+\contentsline {section}{\numberline {1}Introducció}{1}{section.1}%
+\contentsline {section}{\numberline {2}Homografies}{1}{section.2}%
+\contentsline {section}{\numberline {3}Automorfismes al Disc Unitat}{6}{section.3}%
+\contentsline {section}{\numberline {4}El Teorema de Pick}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Productes de Blaschke finits}{10}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}El Problema d'interpolació}{13}{subsection.4.2}%
+\contentsline {section}{\numberline {5}El treball de Nevanlinna}{18}{section.5}%

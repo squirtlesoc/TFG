@@ -11,7 +11,7 @@
       \maketitle
 
     \end{titlepage}
-
+    \pagenumbering{roman}
     \begin{abstract}
         L'anàlisi complexa sol destacar per l'elegància i finor dels seus teoremes i demostracions, des del Teorema de representació en sèries de potències fins al Teorema global de Cauchy. Aquest treball, però, busca resoldre un problema molt més concret. Allunyem-nos de teoremes omnipotents, de resultats que ressonen per tot el món complex. Centrem-nos en un petit disc de radi 1. Mirem dos conjunts finits de punts. Hi pot haver una funció holomorfa que els aparelli? 
         
@@ -23,6 +23,7 @@
 \tableofcontents
 \newpage
     \section{Introducció}
+    \pagenumbering{arabic}
         L'objectiu d'aquest treball és donar un resultat sobre el següent problema d'interpolació:
         \begin{problem}\label{problema}
             Siguin $z_1,\dots,z_n$ punts diferents dins el disc unitat $\D$. Quines condicions han de complir $w_1,\dots,w_n$ per tal de que existeixi una funció holomorfa $f\colon\D\to\D$ amb
@@ -506,6 +507,15 @@
         aconseguint novament la igualtat.
     \end{proof}
 
+    Per últim, definim la \textit{distància pseudohiperbòlica} a $\D$ com 
+    \begin{displaymath}
+        \rho(z,w)=\abs{\frac{z-w}{1-\bar{w}z}}.
+    \end{displaymath}
+    Pel Lema \ref{lema:SP}, la distància $\rho(z,w)$ és invariant per homografies, i.e. 
+    \begin{displaymath}
+        \rho(z,w)=\rho(\tau(z),\tau(w)).
+    \end{displaymath}
+    La distància pseudohiperbòlica ens ajudarà molt més endavant, però és convenient deixar-la ja definida.
 
 
 \section{El Teorema de Pick}
@@ -950,14 +960,65 @@ Per últim, introduïm un concepte nou. Diem que una funció $f\in\B$ és \textb
     Si hi ha dues funcions de \B que satisfan la interpolació \textup{(\ref{eq:problemainf})}, llavors hi ha una inner function que també satisfà \textup{(\ref{eq:problemainf})}.
 \end{theorem}
 
-La demostració d'aquest teorema serà orgànica, veient els resultats auxiliars conforme els anem necessitant. Començarem parametritzant $E_n$ (i per tant resolent el problema per a $n$ punts) i posteriorment farem el pas a $\displaystyle\Einf=\cap_n E_n$ per veure finalment que aquest conjunt conté inner functions.
+Seguint la Secció 6 de Capítol IV d'en Garnett \cite{garnett_2007}, la demostració d'aquest teorema serà orgànica. Anirem veient els resultats auxiliars conforme els anem necessitant. Començarem parametritzant $E_n$ (i per tant resolent el problema per a $n$ punts) i posteriorment farem el pas a $\displaystyle\Einf=\cap_n E_n$ per veure finalment que aquest conjunt conté inner functions.
 
 Comencem per $E_1$. Aprofitem la idea que va sortir a la demostració del Teorema de Pick \ref{th:pick}. Per mitjà d'homografies, el problema de trobar $f\in\B$ tal que $f(z_1)=w_1$ es redueix a trobar $h\in\B$ tal que $f(0)=0$.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%FIGURA
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+    \centering
+    \usetikzlibrary{arrows}
+    \usetikzlibrary{calc}
+    \begin{tikzpicture}[scale = 1.4,>=stealth']
+        \draw (0,0) circle [radius=1cm];
+        \draw[->] (-1.25,0) -- (1.25,0) coordinate (x axis);
+        \draw[->] (0, -1.25) -- (0, 1.25) coordinate (y axis);
+        \draw (1 cm,1pt) -- (1 cm,-1pt) node[anchor=north,fill=white] {1};
+        \coordinate[label=right:$z_1$] (B) at (0.5, -0.3);
+        \node[right] (A) at (1.3,0) {\space};
+        \node[left] (H) at (0,-1) {\space};
+        \fill[black] (B) circle (1pt);
 
+        \draw (5,0) circle [radius=1cm];
+        \draw[->] (3.75,0) -- (6.25,0) coordinate (x axis);
+        \draw[->] (5, -1.25) -- (5, 1.25) coordinate (y axis);
+        \draw (6 cm,1pt) -- (6 cm,-1pt) node[anchor=north,fill=white] {1};
+        \coordinate[label=left:$w_1$] (D) at (4.8, 0.2);
+        \node[left] (G) at (3.7,0) {\space};
+        \node[right] (R) at (5,-1) {\space};
+        \fill[black] (D) circle (1pt);
+
+
+        \draw (0,-3) circle [radius=1cm];
+        \draw[->] (-1.25,-3) -- (1.25,-3) coordinate (x axis);
+        \draw[->] (0, -4.25) -- (0, -1.75) coordinate (y axis);
+        \coordinate (aux1) at (1, -3);
+        \draw ($(aux1) + (0, 1 pt)$) -- ($(aux1) + (0,-1pt)$) node[anchor=north,fill=white] {1};
+        \coordinate[label=below:{$z_1=0$}] (J) at (0, -3);
+        \node[right, fill=white] (K) at (1.3,-3) {\space};
+        \node[left] (L) at (0,-2) {\space};
+        \fill[black] (J) circle (1pt);
+
+
+        \draw (5,-3) circle [radius=1cm];
+        \draw[->] (3.75,-3) -- (6.25,-3) coordinate (x axis);
+        \draw[->] (5, -4.25) -- (5, -1.75) coordinate (y axis);
+        \coordinate (aux2) at (6, -3);
+        \draw ($(aux2) + (0, 1 pt)$) -- ($(aux2) + (0,-1pt)$) node[anchor=north,fill=white] {1};
+        \coordinate[label=below:{$w_1=0$}] (N) at (5, -3);
+        \node[left] (P) at (3.7,-3) {\space};
+        \node[right] (Q) at (5,-2) {\space};
+        \fill[black] (N) circle (1pt);
+
+    
+        \path[->]
+        (A) edge node [pos=.5, above] {$f$} (G)
+        (H) edge[bend right] node [left] {$\displaystyle \tau_{z_1}=\frac{z-z_1}{1-\overline{z_1}z}$} (L)
+        (K) edge node [pos=.5, above] {$f_1$} (P)
+        (R) edge[bend left] node [right] {$\displaystyle \tau_{w_1}=\frac{w-w_1}{1-\overline{w_1}w}$} (Q);
+    \end{tikzpicture}
+    \caption{Reduïm el problema enviant $z_1$ i $w_1$ al 0}
+    \label{fig:zw0}
+\end{figure}
 Llavors $h(z)=zg_1(z)$ per a algun $g_1\in\B$.
 \begin{displaymath}
     f=\tau_{w_1}^{-1}\circ h\circ \tau_{z_1}\iff\tau_{w_1}\circ f= h\circ\tau_{z_1}
@@ -1097,7 +1158,7 @@ Observem que $\Delta_n(z)$ degenera en un sol punt si i només si $z=z_j$ per a 
     \end{split}
 \end{equation}
 
-El següent pas serà normaltitzar $A_n,B_n,C_n,D_n$. Per a això ens calen dos lemes:
+El següent pas serà normalitzar $A_n,B_n,C_n,D_n$. Per a això ens calen dos lemes:
 \begin{lemma}\label{lemma1}
     Si $E_n\neq\varnothing$, llavors quan $\abs{z}=1$, $\Delta_n(z)=\bar{\D}$, $\rho_n(z)=1$ i 
     \begin{align*}
@@ -1106,7 +1167,225 @@ El següent pas serà normaltitzar $A_n,B_n,C_n,D_n$. Per a això ens calen dos 
         \frac{A_n(z)}{C_n(z)} &= \overline{\left( \frac{D_n(z)}{B_n(z)} \right)}=\lambda_n(z),\quad \text{amb } \abs{\lambda_n(z)}<1.
     \end{align*}
 \end{lemma}
+\begin{proof}
+    És suficient demostrar que $\Delta_n(z)=\bar\D$, $\rho_n(z)=1$. Ho provarem per inducció. Fix $z=e^{i\theta}$ i $\xi\in\bar\D$. Per $n=1$, existeix una constant $c_1$ i $f_1\in\B$ tals que 
+    \begin{equation}\label{eq:l1}
+        \frac{f_1(e^{i\theta})+c_1}{1+\bar{c}_1f_1(e^{i\theta})}=\left(\frac{\xi-w_1}{1-\bar{w}_1\xi}\right)\bigg/\left(\frac{e^{i\theta}-z_1}{1-\bar{z}_1e^{i\theta}}\right).
+    \end{equation}
+    i \ref{eq:f1}) ens dona $f\in E_1$ tal que $f(e^{i\theta})=\xi$. Per $n>1$, el conjunt 
+    \begin{displaymath}
+        \left\{ f_1\in\B\colon f_1(z_j)=w_j^{(1)},\, j=2,\dots,n \right\}
+    \end{displaymath}
+    és no-buit, ja que $E_n\neq\varnothing$. Per inducció aquest conjunt conté una funció $f_1$ que satisfà (\ref{eq:l1}). Com abans, per (\ref{eq:f1}), tenim $f\in E_n$ tal que $f(e^{i\theta})=\xi$.
+\end{proof}
 
+\begin{lemma}\label{lemma2}
+    $C_n(z)$ no té zeros en $\abs{z}\leq1$.
+\end{lemma}
+\begin{proof}
+    Si $C_n(z)=0$, per a $\xi=0$ en (\ref{eq:gencirc}) veiem que $A_n(z)=0$. Llavors $A_n(z)D_n(z)-B_nC_n(z)=0$ i per tant $z=z_j$ per a algun $j=1,2,\dots,n$. Com per (\ref{eq:delta0}) només té zero d'ordre 1, tenim 
+    \begin{displaymath}
+        A'_n(z_j)D_n(z_j)-B_n(z_j)C'_n(z_j)\neq0
+    \end{displaymath}
+    quan $C_n(z_j)=A_n(z_j)=0$. Mantenint $\xi=0$ en (\ref{eq:delta0}),
+    \begin{displaymath}
+        w_j=\lim_{z\to z_j}\frac{A_n(z)}{C_n(z)}=\lim_{z\to z_j}\frac{A'_n(z)}{C'_n(z)}.
+    \end{displaymath}
+    Si $C'_n(z_j)=0$, llavors $A'_n(z_j)=0$, mentre que si $C'_n(z_j)\neq0$, $A'_n)(z_j)/C'_n(z_j)=w_j$. Llavors
+    \begin{displaymath}
+        A'_n(z_j)=w_jC'_n(z_j).
+    \end{displaymath}
+    D'altra banda, si $\xi=1$ en (\ref{eq:gencirc}), ens surt 
+    \begin{displaymath}
+        B_n(z_j)=w_jD_n(z_j).
+    \end{displaymath}
+    Per tant $A'_n(z_j)D_n(z_j)-B_n(z_j)C'_n(z_j)=0$, una contradicció.
+\end{proof}
+
+Vist això, podem normalitzar. La tria és 
+\begin{displaymath}
+    \psi_n(z)=\left( \prod_{k=1}^n \frac{\abs{z_k}}{-\bar{z}_k}\left( 1-\abs{z_k}^2\abs{w_k^{(k-1)}}^2 \right)\left( 1-\abs{w_k^{(k-1)}}^2 \right)\left( 1-\bar{z}_kz \right)^2 \right)^{1/2}.
+\end{displaymath}
+
+Com $\psi_n(z)$ no té zeros a $\bar\D$, definim 
+\begin{displaymath}
+    P_n(\frac{A_n}{\psi_n}_n),\quad Q_n=\frac{B_n}{\psi_n},\quad R_n=\frac{C_n}{\psi_n},\quad S_n=\frac{D_n}{\psi_n}
+\end{displaymath}
+i són funcions racionals analítiques en $\abs{z}\leq1$. A més, 
+\begin{displaymath}
+    f(z)=\frac{P_n(z+Q_n(z)f_n(z))}{R_n(z)+S_n(z)f_n(z)},\quad f_n\in\B
+\end{displaymath}
+és la nova parametrització de $E_n$.
+
+l'avantatge és que aquesta parametrització és que
+\begin{displaymath}
+    P_n(z)S_n(z)-Q_n(z)R_n(z)=\prod_{k=1}^n\frac{-\bar{z}_k}{\abs{z_k}}\frac{z-z_k}{1-\bar{z}_kz}=:\Pi_n(z)
+\end{displaymath}
+és un producte de Blaschke amb zeros $z_1,\dots,z_n$ i també tenim 
+\begin{displaymath}
+    \rho_n(z)=\frac{\abs{\Pi_n(z)}}{\abs{R_n(z)}^2-\abs{S_n(z)}^2},
+\end{displaymath}
+que pel Lema \ref{lemma1} 
+\begin{equation}\label{eq:Rn}
+    \abs{R_n(z)}^2-\abs{S_n(z)}^2=1,\quad \text{si }\abs{z}=1.
+\end{equation}
+Pel Lema \ref{lemma2}, $R_n$ no té zeros en $\bar\D$ i de l'expressió anterior s'obté 
+\begin{displaymath}
+    \frac{1}{\abs{R_n(z)}}\leq1,\quad \abs{z}\leq1.
+\end{displaymath}
+Pel Principi del Mòdul Màxim, les identitats del Lema \ref{lemma1} ens donen 
+\begin{equation}\label{eq:pmm}
+    \begin{split}
+        \abs{P_n(z)}&\leq \abs{R_n(z)}\\
+        \abs{Q_n(z)}&\leq \abs{R_n(z)}\quad \quad \abs{z}\leq1.\\
+        \abs{S_n(z)}&\leq \abs{R_n(z)}
+    \end{split}
+\end{equation}
+\begin{theorem}\label{thlim}
+    Suposem $\Einf=\cap E_n$ conté dos funcions amb diferents valors a $z=0$. Llavors hi ha una parcial $n_j\to\infty$ tal que tots 
+    \begin{align*}
+        P(z)&=\lim_{j\to\infty}P_{n_j}(z)\\
+        Q(z)&=\lim_{j\to\infty}Q_{n_j}(z)\\
+        R(z)&=\lim_{j\to\infty}R_{n_j}(z)\\
+        S(z)&=\lim_{j\to\infty}S_{n_j}(z)
+    \end{align*}
+    existeixen i no són idènticament nuls. A més, 
+    \begin{displaymath}
+        P(z)S(z)-Q(z)R(z)=\Pi(z)
+    \end{displaymath}
+    el producte de Blaschke amb zeros $\left\{ z_j \right\}$.
+
+    Si $f\in\B$, llavors $f\in\Einf$ si i només si
+    \begin{equation}
+        f(z)=\frac{P(z)+Q(z)f_\infty(z)}{R(z)+S(z)f_\infty(z)},\quad \abs{z}<1
+    \end{equation}
+    per a algun $f_\infty\in\B$.
+\end{theorem}
+\begin{proof}
+    La hipòtesi que en $\cap E_n$ conté dues funcions amb diferents valors a $z=0$ implica que $\lim\rho_n(0)>0$. Aquest límit existeix ja que $E_{n+1}\subset E_n$, $\rho_{n+1}\leq\rho_n$.
+
+    Com $D_n(0)=0$, per la tria dels $c_n$ de (\ref{eq:fk1}) tenim
+    \begin{displaymath}
+        \abs{R_n(0)}^2=\frac{\abs{\Pi_n(0)}}{\rho_n(0)},
+    \end{displaymath}
+    per tant
+    \begin{equation}\label{eq:limR}
+        \lim_{n\to\infty}\abs{R_n(0)}<\infty.
+    \end{equation}
+    Triem $n_j$ tal que la seqüència acotada $\left\{ 1/R_{n_j}(z) \right\}$ convergeixi en $\D$. Com $1/R_n(z)$ no té zeros en $\abs{z}<1$, la funció límit és idènticament 0 a $\D$ o no és zero mai. Per (\ref{eq:limR}) tenim que no és idènticament 0, per tant no és zero en cap punt de $\D$. En conseqüència, $R_{n_j}(z)$ convergeix uniformement en compactes de $\D$ cap a una funció analítica $R(z)$, que no té zeros en $\D$. Per (\ref{eq:pmm}) podem fer una tria més fina del $\left\{ n_j \right\}$ tal que
+    \begin{align*}
+        P(z)&=\lim_{j\to\infty}P_{n_j}(z)\\
+        Q(z)&=\lim_{j\to\infty}Q_{n_j}(z)\\
+        S(z)&=\lim_{j\to\infty}S_{n_j}(z)
+    \end{align*}
+    també existeixin. Llavors
+    \begin{displaymath}
+        P(z)S(z)-Q(z)R(z)=\lim_{j\to\infty}\Pi_{n_j}(z)=\Pi(z)
+    \end{displaymath}
+    i aquestes funcions límit no són idènticament zero.
+
+    Si $f\in\cap E_n$, pel Lema \ref{lema0} hi ha $f_n\in\B$ tal que 
+    \begin{displaymath}
+        f=\frac{P_n+Q_nf_n}{R_n+S_nf_n}-
+    \end{displaymath}
+    Refinem $\left\{ n_j \right\}$ tal que $f_{n_j}(z)\to f_\infty(z)$, $\abs{z}<1$ amb $f_\infty\in\B$. Això dona
+    \begin{displaymath}
+        f=\frac{P+Qf_\infty}{R+Sf_\infty}.
+    \end{displaymath}
+    Anàlogament, si $f_\infty\in\B$, llavors 
+    \begin{displaymath}
+        f^{(n)}=\frac{P_n+Q_nf_\infty}{R_n+S_nf_\infty}\in E_n
+    \end{displaymath}
+    i $f^{(n)}$ té limit $f\in\Einf$.
+\end{proof}
+
+Aquest últim resultat ens determina totes les solucions del problema d'interpolació tant per a un nombre finit de punts com per a un nombre infinit, suposant que sapiguem que hi ha dues o més solucions diferents.
+
+No hem acabat, però. El Teorema de Nevanlinna donava un resultat més fort. Abans, un parell de comentaris. Es pot veure que $P,Q,R,S$ no depenen de $\left\{ n_j \right\}$ i són únicament determinats pel problema original i la tria de $c_n$ que es fa a (\ref{eq:fk1}). Aquest fet no ens és rellevant i no el demostrarem.
+
+Una conseqüència de la caracterització de $f$ que dona el teorema és que com $E_{n+1}\subseteq E_n$, els discs $\Delta_n(z)$ disminueixen al disc límit $\Delta_\infty(z)=\left\{ f(z)\colon f\in\Einf \right\}$ i 
+\begin{displaymath}
+    \Delta_\infty(z)=\left\{ \frac{P(z)+Q(z)\xi}{R(z)+S(z)\xi}\colon \abs{\xi}<1 \right\}.
+\end{displaymath}
+Com $P(z)S(z)-Q(z)R(z)=\Pi(z)$, $\Delta_\infty(z)$ és no-trivial per a $z\notin\left\{ z_j \right\}$. El radi és
+\begin{displaymath}
+    \rho_\infty(z)=\lim_{n\to\infty}\rho_n(z)=\frac{\abs{\Pi(z)}}{\abs{R(z)}^2-\abs{S(z)}^2}.
+\end{displaymath}
+
+Tornem al teorema que ha iniciat aquesta secció. El podem reescriure com
+
+\begin{theorem}
+    Si $\Einf$ conté dos funcions diferents i $e^{i\varphi}$ és una constant de mòdul 1, llavors
+    \begin{equation}\label{eq:th}
+        f(z)=\frac{P(z)+Q(z)e^{i\varphi}}{R(z)+S(z)e^{i\varphi}}
+    \end{equation}
+    és una inner function dins $\Einf$.
+\end{theorem}
+\begin{proof}
+    Pel teorema anterior \ref{thlim}, $f\in\Einf$ i, en particular, $\norm{f}_{\infty}\leq1$.    
+    Suposem que existeix $E\subset\partial\D$, $\abs{E}\cong\int\chi_E(\theta)d\theta/(2\pi)>0$ (una regió del cercle unitat amb mesura positiva) tal que 
+    \begin{equation}\label{eq:fless1}
+        \abs{f(e^{i\theta})}\leq\alpha<1,\quad \theta\in E.
+    \end{equation}
+    i busquem una contradicció.
+
+    Per alleugerar la notació, ometrem $n_j$ reindexant $\left\{ n \right\}$ tal que $R_n(z)\to R(z)$, $P_n(z)\to P(z)$, $Q_n(z) \to Q(z)$, $S_n(z)=S(z)$.
+
+    Fixem $M>\abs{R(0)}$. Pel Lema \ref{lemma2}, $R_n(z)$ no té zeros a $\bar\D$. Tenim 
+    \begin{equation}\label{eq:logM}
+        \log M> \log\abs{R_n(0)}=\frac{1}{2\pi}\int\log\abs{R_n(e^{i\theta})}\geq0.
+    \end{equation}
+    Per la Desigualtat de Markov, (\ref{eq:logM}) ens dona 
+    \begin{displaymath}
+        \abs{\left\{ \theta\colon \log\abs{R_n(e^{i\theta})}>2\log M/\abs{E} \right\}}\leq\frac{\abs{E}}{2\log M}\frac{1}{2\pi}\int\log\abs{R_n(e^{i\theta})}d\theta\leq\frac{\abs{E}}{2},
+    \end{displaymath}
+    per $n>n_0$. Llavors 
+    \begin{displaymath}
+        E_n=\left\{ \theta\in E\colon\abs{R_n(e^{i\theta})}<M^{2/\abs{E}} \right\}
+    \end{displaymath}
+    satisfà $\abs{E_n}\geq\abs{E}/2$, $n>n_0$.
+
+    Per (\ref{eq:Rn}) i el Lema \ref{lemma1}, també tenim 
+    \begin{equation*}
+        \abs{\frac{P_n(e^{i\theta})}{R_n(e^{i\theta})}}^2=1-\frac{1}{\abs{R_n(e^{i\theta})}^2},
+    \end{equation*}
+    que ens porta a 
+    \begin{equation}\label{eq:PR}
+        \abs{\frac{P_n(e^{i\theta})}{R_n(e^{i\theta})}}=\left( 1-M^{-4/\abs{E}} \right)^{1/2}=\beta<1
+    \end{equation}
+    per $\theta\in E_n$, $n>n_0$.
+
+    Com que $f\in E_n$, existeix $f_n\in\B$ tal que 
+    \begin{displaymath}
+        f(z)=\frac{P_n(z)+Q_n(z)f_n(z)}{R_n(z)+S_n(z)f_n(z)}.
+    \end{displaymath}
+    Com $P_n,Q_n,R_n,S_n$ són continues a $\bar\D$ o $\abs{P_nS_n-Q_nR_n}=1$ a $\partial\D$, $f_n(z)$ té límit radial $f_n(e^{i\theta})$ sempre que $f(z)$ el tingui a $f(e^{i\theta})$. Llavors en $e^{i\theta}\in E$, $f_k(e^{i\theta})$ existeix i 
+    \begin{equation}
+        f(e^{i\theta})=\frac{P_n(e^{i\theta})+Q_n(e^{i\theta})f_n(e^{i\theta})}{R_n(e^{i\theta})+S_n(e^{i\theta})f_n(e^{i\theta})}.
+    \end{equation}
+
+    Pel Lema \ref{lemma1}, la homografia 
+    \begin{displaymath}
+        \xi\to\frac{P_n(e^{i\theta})+Q_n(e^{i\theta})\xi}{R_n(e^{i\theta})+S_n(e^{i\theta})\xi}
+    \end{displaymath}
+    preserva la distància pseudohiperbòlica. Llavors $\abs{f_n(e^{i\theta})}=\rho(f_n(e^{i\theta}),0)=\rho(f(e^{i\theta}),P_n(e^{i\theta})/R_n(e^{i\theta}))$.
+
+    Per $n>n_0$ i per $e^{i\theta}\in E_n$, (\ref{eq:fless1}) i (\ref{eq:PR}) ens porten a 
+    \begin{displaymath}
+        \abs{f_n(e^{i\theta})}\leq\frac{\abs{f(e^{i\theta})}+\abs{P_n(e^{i\theta})}/\abs{R_n(e^{i\theta})}}{1+\abs{f(e^{i\theta})}\abs{P_n(e^{i\theta})}/\abs{R_n(e^{i\theta})}}\leq\frac{\alpha+\beta}{1+\alpha\beta}=\gamma<1.
+    \end{displaymath}
+
+    En conseqüència, 
+    \begin{displaymath}
+        \abs{f_n(0)}\leq\frac{1}{2\pi}\int\abs{f_n(e^{i\theta})}d\theta\leq(\gamma\abs{E_n}+(1-\abs{E_n}))\leq\left( \gamma\frac{\abs{E}}{2}+\left( 1-\frac{\abs{E}}{2} \right) \right)=\eta<1.
+    \end{displaymath}
+    Prenem una subseqüència $\left\{ f_{n_j} \right\}$ tal que $f_{n_j}(0)\to\xi$, $\abs{\xi}\leq\eta<1$.
+    Llavors
+    \begin{equation}
+        f(0)=\lim_{j\to\infty}\frac{P_{n_j}(0)+Q_{n_j}(0)+f_{n_j}(0)}{R_{n_j}(0)+S_{n_j}(0)f_{n_j}(0)}=\frac{P(0)+Q(0)\xi}{R(0)+S(0)\xi}.
+    \end{equation}
+    Com $P(0)S(0)-Q(0)R(0)\neq0$, a partir de (\ref{eq:th}) concloem que $\xi=e^{i\theta}$, fet que contradiu $\abs{\xi}\leq\eta<1$. Per tant $\abs{f(e^{i\theta})}=1$ gairebé per a tot $\abs{e^{i\theta}}=1$.
+\end{proof}
 \newpage
 \bibliography{bibliografia}
 \bibliographystyle{plain}
